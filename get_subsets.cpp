@@ -3,6 +3,12 @@
 
 using namespace std;
 
+/*
+
+Generating recursively subsets out of original set
+
+*/
+
 void getSubsets(set<int>  myset, set<set<int>> &mySubsets) {
     if(myset.size() == 0){
         set<int> emptySet;
