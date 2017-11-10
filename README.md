@@ -1,2 +1,2 @@
 # Exercises
-Some exercises - practicing for programming interviews.
+Some exercises - practicing for programming interviews
