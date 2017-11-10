@@ -16,8 +16,8 @@ way the numbers that are present.
 INPUT: vector<int> numbers
 OUTPUT: vector<string> gaps
 
- e.g. INPUT  = [1,2,3,4,5,10,11,12,50]
-      OUTPUT = ["1-5", "10-12", "50"]
+ e.g. INPUT  = [1,2,3,4,5,10,12,50]
+      OUTPUT = ["1-5", "10", "12", "50"]
 
 
 - Follow up: print the missing intervals:
