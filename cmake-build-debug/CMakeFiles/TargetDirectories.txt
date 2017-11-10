@@ -1,0 +1,3 @@
+/home/rogerlucena/Windows/Roger Leite Lucena/École Polytechnique/3A/Stage 3A/Study/Practicing/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/rogerlucena/Windows/Roger Leite Lucena/École Polytechnique/3A/Stage 3A/Study/Practicing/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/rogerlucena/Windows/Roger Leite Lucena/École Polytechnique/3A/Stage 3A/Study/Practicing/cmake-build-debug/CMakeFiles/Practicing.dir
