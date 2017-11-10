@@ -60,4 +60,4 @@ int main()
 
 // P.S.:
 // Always good to know:
-// INT_MAX = (2^32)/2 - 1 = 2147483647 (32 bits used - signed int, from limits.h)
+// INT_MAX = (2^32)/2 - 1 = 2.147.483.647 (32 bits used - signed int, from limits.h)
