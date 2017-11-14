@@ -53,5 +53,12 @@ int main ()
     for(char c : s8){
         cout << c << " ";
     }
+
+    // Substring:
+    std::string str="We think in generalities, but we live in details.";
+    //std::string str2 = str.substr (3,5);     // "think" (start, size)
+    //std::size_t pos = str.find("live");      // position of "live" in str
+    //std::string str3 = str.substr (pos);     // get from "live" to the end
+
     return 0;
 }

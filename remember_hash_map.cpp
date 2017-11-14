@@ -63,6 +63,8 @@ int main() {
     }
     */
 
+
+    // Constains of hash_map in C++
     // Find a key (contains) -> syntax
     /*
     std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
