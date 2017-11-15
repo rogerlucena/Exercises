@@ -41,6 +41,7 @@ int main ()
     string s7 (s3.begin(),s3.end()-5);
     cout << "s7  is: " << s7 << endl;
 
+
     // you can instantiate string with assignment
     string s8 = "Anatoliy";
     cout << "s8  is: " << s8 << endl;

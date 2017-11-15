@@ -1,0 +1,23 @@
+
+--- Some of my notes, useful links and observations ---
+
+
+-- Tree traversals (Inorder, Preorder and Posorder)
+http://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
+
+E.g.: Inorder:
+1) left child
+2) this.data
+3) right child
+(The other traversals just change the position of this.data)
+
+Obs: Preorder to copy the tree (polish_notation too), Posorder to delete, Inorder to get int numbers in ascending order from a BST
+
+- Construct Tree from given Inorder and Preorder traversals:
+http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
+
+- Construct a Binary Search Tree from given postorder
+http://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder/
+
+
+--

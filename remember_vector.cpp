@@ -1,37 +1,23 @@
+// constructing vectors
 #include <iostream>
 #include <vector>
-using namespace std;
 
-// Code to return the number of ones in the bit representation of every number in a vector
-
-int nOf1s(int64_t n){ // int8_t
-    int count = 0;
-    while(n!=0){
-        if(n&1)
-            ++count;
-        n >>= 1;
-    }
-
-    return count;
-}
-
-int main()
+int main ()
 {
-    vector<int64_t> numbers = {3, 6, 32, 22};
-    vector<int> solution;
+    // constructors used in the same order as described above:
+    std::vector<int> first;                                // empty vector of ints
+    std::vector<int> second (4,100);                       // four ints with value 100
+    std::vector<int> third (second.begin(),second.end());  // iterating through second
+    std::vector<int> fourth (third);                       // a copy of third
 
-    for(int64_t i : numbers){
-        solution.push_back(nOf1s(i));
-    }
+    // the iterator constructor can also be used to construct from arrays:
+    int myints[] = {16,2,77,29};
+    std::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
 
-    for (auto i = 0; i < solution.size(); ++i) {
-        cout << solution.at(i) << " " ;
-    }
+    std::cout << "The contents of fifth are:";
+    for (std::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
+        std::cout << ' ' << *it;
+    std::cout << '\n';
 
     return 0;
 }
-
-// Observations
-// int64_t = signed with exactly 64 bits
-// long = signed with at least 32 bits
-// Integer limits: https://msdn.microsoft.com/en-us/library/296az74e.aspx
