@@ -12,17 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c59fc1c8-7cee-4c4f-a09c-c3c0b06d77c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/My Notes.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/arrays_generating_BST.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/bst_to_sorted_array.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/merge_sorted_vectors.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/number_of_ones.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/pair_summing_target.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/remember_pair.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Problems/topological_sorting.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/remember_priority_queue.cpp" afterPath="$PROJECT_DIR$/remember_priority_queue.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/remember_strings.cpp" afterPath="$PROJECT_DIR$/remember_strings.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/remember_vector.cpp" afterPath="$PROJECT_DIR$/remember_vector.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,8 +38,8 @@
       <file leaf-file-name="main_2.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_2.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="45">
+              <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -108,9 +99,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="416" />
-    <option name="width" value="951" />
+  <component name="ProjectFrameBounds" extendedState="5">
+    <option name="x" value="591" />
+    <option name="width" value="776" />
     <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -195,18 +186,18 @@
       <workItem from="1510684842524" duration="6493000" />
       <workItem from="1510701201686" duration="953000" />
       <workItem from="1510755979177" duration="1624000" />
-      <workItem from="1510768538202" duration="15557000" />
+      <workItem from="1510768538202" duration="16852000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35202000" />
+    <option name="totallyTimeSpent" value="36497000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="416" y="0" width="951" height="741" extended-state="4" />
+    <frame x="591" y="0" width="776" height="741" extended-state="5" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19283456" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2364341" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.225" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -412,18 +403,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_2.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Problems/arrays_generating_BST.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Problems/topological_sorting.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_2.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="8" lean-forward="false" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
           <folding />
         </state>
       </provider>
