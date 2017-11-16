@@ -14,7 +14,7 @@ class myPair{
         myPair(T1 t1, T2 t2): t1_(t1), t2_(t2) {};
 };
 
-int main() {
+int main2() {
     unordered_map <string, int> m;
 
     //m["foo"] = 42;
