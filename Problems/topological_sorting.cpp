@@ -7,7 +7,7 @@ using namespace std;
 /*
 
  Topological sorting implementation for the
- question 4.7 of Cracking the COding Interview (6th Edition)
+ question 4.7 of Cracking the COding Interview (6th Edition) - only a tool for the solution here
 
  -- It is a sorting in which, for every edge, the sender appears
     before the receiver (respecting the local order)
