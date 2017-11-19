@@ -33,6 +33,9 @@ using namespace std;
  The input is a suffle of the vector of QueuedPerson above
  Right output shall be: 4 6 3 5
 
+
+ // My first solution (below) is O(nlogn + n²) = O(n²), maybe it can be improved
+
 */
 
 class QueuedPerson {
