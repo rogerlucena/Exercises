@@ -28,6 +28,26 @@ int main2() {
             {"bro",5.9} };
     */
 
+
+    std::unordered_map<std::string,double> mymap = {
+        {"mom",5.4},
+        {"dad",6.1},
+        {"bro",5.9} };
+
+    std::string input = "Roger";
+    std::cout << "who? --> input = Roger";
+
+    std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
+
+    if ( got == mymap.end() )
+        std::cout << "not found";
+    else
+        std::cout << got->first << " is " << got->second;
+
+    std::cout << std::endl;
+
+
+
     // Training:
     int n;
     cin >> n;
