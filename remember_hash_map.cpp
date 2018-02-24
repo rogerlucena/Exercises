@@ -38,6 +38,7 @@ int main2() {
     std::cout << "who? --> input = Roger";
 
     std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
+    //unordered_map<string, double>::iterator it;
 
     if ( got == mymap.end() )
         std::cout << "not found";

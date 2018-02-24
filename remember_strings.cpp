@@ -11,6 +11,12 @@ using namespace std;
 
 */
 
+// Substring:
+// std::string str="We think in generalities, but we live in details.";
+// std::string str2 = str.substr (3,5);     // "think" (start, size)
+// std::size_t pos = str.find("live");      // position of "live" in str
+// std::string str3 = str.substr (pos);     // get from "live" to the end
+
 int main ()
 {
     // push_back() and pop_back() -> only for chars
@@ -28,7 +34,7 @@ int main ()
     string s2 (s1);
     cout << "s2  is: " << s2 << endl;
 
-    // one argumen
+    // one argument, array of chars
     string s3 (line);
     cout << "s3  is: " << s3 << endl;
 
@@ -71,12 +77,6 @@ int main ()
 
     // -------------------------------------
     // Playing with the insert method below:
-
-    // Substring:
-    std::string str="We think in generalities, but we live in details.";
-    //std::string str2 = str.substr (3,5);     // "think" (start, size)
-    //std::size_t pos = str.find("live");      // position of "live" in str
-    //std::string str3 = str.substr (pos);     // get from "live" to the end
 
     std::string str="to be question";
     std::string str2="the ";

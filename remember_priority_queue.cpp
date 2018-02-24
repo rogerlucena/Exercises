@@ -37,6 +37,10 @@ int main() {
 
     print_queue(q3);
 
+    int arr[] = {1, 3, 2, 6, 6, 5};
+    priority_queue<int> mypq(arr, arr+6); // only int, default underlying container is vector<int>, created from int array pointers
+    print_queue(mypq);
+
 }
 
 /*
