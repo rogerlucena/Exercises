@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-    // Syntax of ostringstream
+    // Syntax of ostringstream, use to have a number as string for example
     int a=55;
     std::ostringstream aux;
     aux << a;
@@ -13,6 +13,12 @@ using namespace std;
 
 int main ()
 {
+    // string s = "eu sou o roger lindao";
+    // int pos = s.find("roger");
+    // cout << "size_t pos is: " << pos << endl;
+    // string new_s = s.substr(9); // "roger lindao"
+    // cout << "new_s: " << new_s << endl;
+
     // push_back() and pop_back() -> only for chars
     // append(string a) -> only to append strings
     // str.append("dots are cool",5);          // "dots "
@@ -75,6 +81,8 @@ int main ()
     std::size_t pos = str.find("live");      // position of "live" in str
     std::string str3 = str.substr (pos);     // get from "live" to the end
     std::cout << str2 << ' ' << str3 << '\n';
+
+
 
     // -------------------------------------
     // Playing with the insert method below:

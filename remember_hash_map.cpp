@@ -4,7 +4,12 @@
 #include <string>
 
 using namespace std;
-//using namespace __gnu_cxx;
+
+// mymap.clear() - delete everything
+// mymap.erase("key_value"); mymap.erase(mymap.begin(()); mymap.erase(mymap.begin(), mymap.end()) - ways to erase
+// mymap.find("key_value") - it is mymap.end() if not found
+// for (auto &p : mymap) cout << p.first << " " << p.second << endl;
+// mymap["newkey_value"] = "newobj_value";
 
 template <class T1, class T2>
 class myPair{
@@ -48,57 +53,32 @@ int main2() {
     std::cout << std::endl;
 
 
-
-    // Training:
-    int n;
-    cin >> n;
-    string curr;
-    for(int i=1; i<=n; ++i){
-        cin >> curr;
-        int initialLenght = curr.length();
-        char last = curr.at(initialLenght-1);
-        int j = 1;
-        while(m.find(curr) != m.end()){
-            string aux = to_string(j);
-            int currLength = curr.length();
-            if(currLength != initialLenght)
-                curr = curr.substr(0, currLength-1);
-            curr.append(aux);
-            ++j;
-        }
-        if(curr.at(curr.length()-1) == last) {
-            m[curr] = 1;
-            cout << "OK" << endl;
-        }
-        else {
-            m[curr] = 2;
-            cout << curr << endl;
-        }
-    }
-
     // Iteration over the unordered_map:
-    /*
-    for(auto it = m.begin(); it != m.end(); ++it){
-        if()
-        cout << it->first << endl; // key
+    unordered_map<string, int> mymap = {
+      {"roger", 1995},
+      {"renner", 1997}
+    };
+
+    mymap["neuma"] = 1968;
+
+    for (auto p : mymap) { // a c++ pair<string, int>
+        cout << p.first << " was born in " << p.second << endl;
     }
-    */
+
+    // Another way of iterating
+    for (unordered_map<string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it) {
+        cout << it->first << " " << it->second << endl;
+    }
 
 
     // Constains of hash_map in C++
     // Find a key (contains) -> syntax
-    /*
     std::unordered_map<std::string,double>::const_iterator got = mymap.find (input);
 
-    if ( got == mymap.end() )
-        std::cout << "not found";
-     else
-        std::cout << got->first << " is " << got->second;
-    */
+    if (got == mymap.end()) std::cout << "not found";
+    else std::cout << got->first << " is " << got->second;
 
-    /*
     cout << "Testing my template class of Pairs:" << endl;
     myPair<string, int> p("oi", 37);
     cout << "My pair: (" << p.t1_<< ", " << p.t2_ << ")"<< endl;
-    */
 }

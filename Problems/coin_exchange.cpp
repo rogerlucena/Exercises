@@ -23,7 +23,7 @@ Follow up: give an example where a greedy approach works and another where it do
 
 // Solution: using Dynamic Programming (recursive solution, with memoization)
 
-int minNumber(vector<int> coins, int target, int ncoins, unordered_map<int, int> &tableValueMinimun){
+int minNumber(vector<int> coins, int target, int ncoins, unordered_map<int, int> &tableValueMinimun) {
     if(target<0)
         return INT_MAX;
     if(target == 0) {

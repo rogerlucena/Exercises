@@ -2,6 +2,11 @@
 #include <iostream>
 #include <vector>
 
+// has push_back and pop_back
+// to take a subvector only creating a new vector and using pointers to the wanted positions
+// vector<int> new_v (old_vector.begin()+10, old_vector.end()-5)
+
+
 int main ()
 {
     // constructors used in the same order as described above:
@@ -18,6 +23,15 @@ int main ()
     for (std::vector<int>::iterator it = fifth.begin(); it != fifth.end(); ++it)
         std::cout << ' ' << *it;
     std::cout << '\n';
+
+    // Inserting:
+    std::vector<int> myvector (3,100);
+    std::vector<int>::iterator it;
+    it = myvector.begin();
+    it = myvector.insert ( it , 200 );
+    myvector.insert (it,2,300); // 300, 300, 200, 100, 100, 100
+
+    for(int i: myvector) cout << i << endl;
 
     return 0;
 }
