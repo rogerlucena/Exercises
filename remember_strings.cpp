@@ -11,12 +11,6 @@ using namespace std;
 
 */
 
-// Substring:
-// std::string str="We think in generalities, but we live in details.";
-// std::string str2 = str.substr (3,5);     // "think" (start, size)
-// std::size_t pos = str.find("live");      // position of "live" in str
-// std::string str3 = str.substr (pos);     // get from "live" to the end
-
 int main ()
 {
     // push_back() and pop_back() -> only for chars
@@ -74,6 +68,13 @@ int main ()
         cout << c << " ";
     }
 
+
+    // Substring:
+    std::string str="We think in generalities, but we live in details."; // (quoting Alfred N. Whitehead)
+    std::string str2 = str.substr (3,5);     // "think"
+    std::size_t pos = str.find("live");      // position of "live" in str
+    std::string str3 = str.substr (pos);     // get from "live" to the end
+    std::cout << str2 << ' ' << str3 << '\n';
 
     // -------------------------------------
     // Playing with the insert method below:

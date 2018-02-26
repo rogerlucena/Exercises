@@ -24,4 +24,20 @@ http://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder
 https://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
 
 
--- 
+-- Sorting:
+
+- Stable means that i < j, A[i] == A[j], than pi(i) < pi(j), where "pi" is the map for the new positions (after sorting).
+- Merge sort is stable, quick and heap are not:
+https://www.geeksforgeeks.org/stability-in-sorting-algorithms/
+
+- Quick Sort (chache friendly, not stable, in place, worst case is O(n²), but avoided if we choose a good pivot (near the median) - random):
+https://www.geeksforgeeks.org/quick-sort/
+
+- Merge Sort (stable, additional O(n) in space but better for big data in different databases. For linked lists, where insertion is O(1), no need of additional space):
+https://www.geeksforgeeks.org/merge-sort/
+
+- Counting Sort (auxiliar array - 0 to 100 ages, O(n) time) and Radix Sort (O(kn) where k = log(max_el))
+They are better exaplined on the Cracking the Coding Interview
+
+
+--
