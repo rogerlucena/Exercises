@@ -5,6 +5,9 @@
 
 bool myfunction (int i,int j) { return (i<j); }
 
+// Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
+// auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
+
 int main () {
     int myints[] = {1,2,3,4,5,4,3,2,1};
     std::vector<int> v(myints,myints+9);                         // 1 2 3 4 5 4 3 2 1
