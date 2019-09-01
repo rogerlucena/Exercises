@@ -1,6 +1,8 @@
 
 --- Some of my notes, useful links and observations ---
 
+-- To compile (command line)
+g++ -std=c++17 main.cpp -o main
 
 -- Tree traversals (Inorder, Preorder and Posorder)
 http://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
