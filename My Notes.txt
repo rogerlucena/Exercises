@@ -49,6 +49,14 @@ n^x < c^n where c is a constant (polynomials will eventually grow slower than ex
 log(n) < n
 c^n < n! < n^n where c is a constant
 
+-- For complexity with recursions, see "Master method":
+https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/
+
+-- Quick-Sort with Tail-Recursive Optimization (TRO or TCO)
+http://mypathtothe4.blogspot.com/2013/02/lesson-2-variations-on-quicksort-tail.html ("How this works is that instead of 'rigid' branches as in the original Quicksort, the new branches can swing into different positions to cover every path")
+Support: https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/ 
+(for this last link: taking the side with less elements first we guarantee it has maximun n/2 elements, then the recursion tree has a maximun logn in height - additional space in the stack =D)
+
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
 - Linked Lists (705 das questões dela, faz 3 do leetcode)
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
