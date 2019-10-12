@@ -1,5 +1,5 @@
 # Exercises
-Some exercises - practicing for programming interviews
+Some exercises - practicing algorithms problems
 
 Access the exercises and their solutions inside the folder "Problems".
 
