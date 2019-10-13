@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_set>
 
+// myset.find (input) != myset.end(); myset.insert(el);
+
 int main ()
 {
     std::unordered_set<std::string> myset = { "red","green","blue" };
