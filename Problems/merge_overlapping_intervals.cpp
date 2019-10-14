@@ -1,90 +1,74 @@
 #include <iostream>
 #include <vector>
-#include <stack>
 #include <algorithm>
+
+#include "tools.cpp"
 
 using namespace std;
 
-/*
-  Merge the overlapping intervals.
+// https://www.interviewbit.com/problems/merge-overlapping-intervals/
 
-  https://leetcode.com/problems/merge-intervals/description/
-*/
+// Given a collection of intervals, merge all overlapping intervals.
+// For example:
+// Given [1,3],[2,6],[8,10],[15,18],
+// return [1,6],[8,10],[15,18].
+// Make sure the returned intervals are sorted.
 
-// The good idea is to sort the intervals by the start point at the beginning, and then use a stack!
+// The following solution is O(n log n) in time, n = number of intervals in A
 
 // Definition for an interval.
 struct Interval {
-    int start;
-    int end;
-    Interval() : start(0), end(0) {}
-    Interval(int s, int e) : start(s), end(e) {}
-    void print() {
-      cout << "[" << start << ", " << end << "]" << endl;
-    }
+	int start;
+	int end;
+	Interval() : start(0), end(0) {}
+	Interval(int s, int e) : start(s), end(e) {}
 };
 
-class Solution {
- public:
+void addInterval(int s, int e, vector<Interval> &ans) {
+	Interval it (s, e);
+	ans.push_back(it);
+}
 
-  bool areOverlapping(Interval &i1, Interval &i2) {
-    return i1.end >= i2.start;
-  }
+vector<Interval> merge(vector<Interval> &A) {
+	vector<Interval> intervals = vector<Interval>(A);
+	if(intervals.size() <= 1) {
+		return intervals;
+	}
+    
+	vector<Interval> ans = {};
+	auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
+	sort(intervals.begin(), intervals.end(), cmp);
 
-  Interval merge2(Interval &i1, Interval &i2) {
-    int end = i2.end;
-    if(i1.end > i2.end) end = i1.end;
-    Interval ans(i1.start, end);
-    return ans;
-  }
+	int currStart = intervals[0].start;
+	int currEnd = intervals[0].end;
+	for(int i = 1; i < intervals.size(); i++) {
+		if(currEnd >= intervals[i].start) {
+			currEnd = intervals[i].end > currEnd ? intervals[i].end : currEnd;
+			continue;
+		}
+		addInterval(currStart, currEnd, ans);
+		currStart = intervals[i].start;
+		currEnd = intervals[i].end;
+	}
+	addInterval(currStart, currEnd, ans);
 
-  vector<Interval> merge(vector<Interval>& intervals) {
-    if(intervals.size() <= 1) return intervals;
-
-    // Lambda function as my comparison:
-    auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
-    sort(intervals.begin(), intervals.end(), cmp);
-
-    stack<Interval> s;
-    s.push(intervals[0]);
-    for (int i=1; i < intervals.size(); ++i) {
-      if (areOverlapping(s.top(), intervals[i])) {
-        Interval merged = merge2(s.top(), intervals[i]);
-        s.pop();
-        s.push(merged);
-      } else {
-        s.push(intervals[i]);
-      }
-    }
-
-    vector<Interval> ans;
-    while (!s.empty()) {
-      ans.push_back(s.top());
-      s.pop();
-    }
-    sort(ans.begin(), ans.end(), cmp);
-    return ans;
-  }
-};
+	return ans;
+}
 
 int main() {
-  vector<Interval> intervals;
-  Interval i1(1, 3);
-  Interval i2(2, 6);
-  Interval i3(8, 10);
-  Interval i4(15, 18);
+	// Given [1,3],[2,6],[8,10],[15,18]
+	// return [1,6],[8,10],[15,18]
+	Interval i1 = {1, 3};
+	Interval i2 = {2, 6};
+	Interval i3 = {8, 10};
+	Interval i4 = {15, 18};
 
-  intervals.push_back(i1);
-  intervals.push_back(i3);
-  intervals.push_back(i4);
-  intervals.push_back(i2);
+	vector<Interval> A = {i1, i2, i3, i4};
+	vector<Interval> ans = merge(A);
 
-  cout << "Original intervals:" << endl;
-  for (auto i : intervals) i.print();
-  cout << "New intervals:" << endl;
-  Solution sol;
-  auto ans = sol.merge(intervals);
-  for (auto i: ans) i.print();
+	cout << "Answers:" << endl;
+	auto printEl = [](const Interval &i) -> void {cout << "[" << i.start << "," << i.end << "]";};
+	printVector(ans, (function<void(const Interval&)>) printEl);
 
-  return 0;
+	return 0;
 }

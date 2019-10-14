@@ -3,14 +3,16 @@
 #include <algorithm>    // std::binary_search, std::sort
 #include <vector>       // std::vector
 
-bool myfunction (int i,int j) { return (i<j); }
+#include "tools.cpp"
+
+bool myfunction (int i,int j) { return (i>j); } // the numbers satisfying this come first after the sort (default is <)
 
 // Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
 
 int main () {
     int myints[] = {1,2,3,4,5,4,3,2,1};
-    std::vector<int> v(myints,myints+9);                         // 1 2 3 4 5 4 3 2 1
+    std::vector<int> v(myints,myints+9);  // 1 2 3 4 5 4 3 2 1
 
     // using default comparison:
     std::sort (v.begin(), v.end());
@@ -21,6 +23,9 @@ int main () {
 
     // using myfunction as comp:
     std::sort (v.begin(), v.end(), myfunction);
+
+    cout << "Vector \"v\" sorted using myfunction: " << endl;
+    printVector(v);  // 5, 4, 4, 3, 3, 2, 2, 1, 1
 
     std::cout << "looking for a 6... ";
     if (std::binary_search (v.begin(), v.end(), 6, myfunction))

@@ -57,6 +57,10 @@ http://mypathtothe4.blogspot.com/2013/02/lesson-2-variations-on-quicksort-tail.h
 Support: https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/ 
 (for this last link: taking the side with less elements first we guarantee it has maximun n/2 elements, then the recursion tree has a maximun logn in height - additional space in the stack =D)
 
+-- Topological Sorting for DAGs:
+to verify if it is a DAG (question at VTEX): https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
+given it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
+
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
 - Linked Lists (705 das questões dela, faz 3 do leetcode)
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)

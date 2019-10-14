@@ -4,6 +4,9 @@
 #include <stack>
 using namespace std;
 
+// Very good implementation as well: https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
+// (this one above also verifies if the given graph is indeed a DAG)
+
 /*
 
  Topological sorting implementation for the
