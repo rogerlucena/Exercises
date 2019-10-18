@@ -10,6 +10,7 @@
         "unordered_set": "cpp",
         "vector": "cpp",
         "ostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "__tree": "cpp"
     }
 }
