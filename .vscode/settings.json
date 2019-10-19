@@ -11,6 +11,8 @@
         "vector": "cpp",
         "ostream": "cpp",
         "random": "cpp",
-        "__tree": "cpp"
+        "__tree": "cpp",
+        "functional": "cpp",
+        "utility": "cpp"
     }
 }

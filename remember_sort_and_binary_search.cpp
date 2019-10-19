@@ -23,6 +23,9 @@ int main () {
 
     // using myfunction as comp:
     std::sort (v.begin(), v.end(), myfunction);
+    // For pairs, if not specifying "smallerPair" it is going to take the .first and use the standard <
+    // (for "Interval" or any other customized class you defined, you must provide the comparator function!)
+    auto smallerPair = [](const pair<int, int> &p1, const pair<int, int> &p2) -> bool{return p1.first < p2.first;};
 
     cout << "Vector \"v\" sorted using myfunction: " << endl;
     printVector(v);  // 5, 4, 4, 3, 3, 2, 2, 1, 1

@@ -15,6 +15,10 @@ int main ()
     std::vector<int> third (second.begin(),second.end());  // iterating through second
     std::vector<int> fourth (third);                       // a copy of third
 
+    // reserve
+    std::vector<int> newSecond; 
+	newSecond.reserve(second.size());
+
     // the iterator constructor can also be used to construct from arrays:
     int myints[] = {16,2,77,29};
     std::vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
