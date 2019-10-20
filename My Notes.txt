@@ -41,6 +41,8 @@ https://www.geeksforgeeks.org/merge-sort/
 - Counting Sort (auxiliar array - 0 to 100 ages, O(n) time) and Radix Sort (O(kn) where k = log(max_el))
 They are better exaplined on the Cracking the Coding Interview
 
+-- Interesting way of calculating binomial coeffs:
+https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
 
 -- Complexity:
 n < nlog(n)

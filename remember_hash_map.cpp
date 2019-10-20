@@ -69,6 +69,7 @@ int main2() {
         cout << it->first << " " << it->second << endl;
         if(false) {
             mymap.erase(it); // how to erase, remember that after erasing curr it -> it will receive it+1 (C++11 or newer) - problem with the ++it of the "for" 
+            // you should then transform the for into a while and do mymap.erase(it++) (uincrement and then return the old)
         }
     }
 
