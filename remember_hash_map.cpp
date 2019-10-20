@@ -1,5 +1,4 @@
 #include <unordered_map>
-//#include <hash_map>
 #include <iostream>
 #include <string>
 
@@ -66,10 +65,12 @@ int main2() {
     }
 
     // Another way of iterating
-    for (unordered_map<string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it) {
+    for (unordered_map<string, double>::iterator it = mymap.begin(); it != mymap.end(); ++it) {
         cout << it->first << " " << it->second << endl;
+        if(false) {
+            mymap.erase(it); // how to erase, remember that after erasing curr it -> it will receive it+1 (C++11 or newer) - problem with the ++it of the "for" 
+        }
     }
-
 
     // Constains of hash_map in C++
     // Find a key (contains) -> syntax
