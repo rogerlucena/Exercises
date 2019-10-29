@@ -59,6 +59,10 @@ http://mypathtothe4.blogspot.com/2013/02/lesson-2-variations-on-quicksort-tail.h
 Support: https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/ 
 (for this last link: taking the side with less elements first we guarantee it has maximun n/2 elements, then the recursion tree has a maximun logn in height - additional space in the stack =D)
 
+-- Two pointers idea (very common, tricks):
+Start with the brute force and then analyze if you can optimize it - discard some iterations that will not improve the result
+https://www.interviewbit.com/tutorial/two-pointers/
+
 -- Topological Sorting for DAGs:
 to verify if it is a DAG (question at VTEX): https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
 given it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
