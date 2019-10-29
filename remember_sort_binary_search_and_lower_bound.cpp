@@ -10,6 +10,15 @@ bool myfunction (int i,int j) { return (i>j); } // the numbers satisfying this c
 // Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
 
+// Lower bound remember (in <algorithm>) - http://www.cplusplus.com/reference/algorithm/lower_bound/:
+// Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val (>= val then).
+// Unlike upper_bound, the value pointed by the iterator returned by this function may also be equivalent to val, 
+// and not only greater.
+// (useful when wanting the position of binary_search)
+// Note: the array must be sorted with comp, default is "<"
+// template <class ForwardIterator, class T, class Compare>
+//   ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
+
 int main () {
     int myints[] = {1,2,3,4,5,4,3,2,1};
     std::vector<int> v(myints,myints+9);  // 1 2 3 4 5 4 3 2 1
