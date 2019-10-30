@@ -19,9 +19,9 @@ int main ()
     // string new_s = s.substr(9); // "roger lindao"
     // cout << "new_s: " << new_s << endl;
 
-    // push_back() and pop_back() -> only for chars
-    // append(string a) -> only to append strings, linear complexity on the size of the new string (bad)
-    // str.append("dots are cool",5);          // "dots "
+    // .push_back() and .pop_back() -> only for chars              --- O(1), constant amortized time (good)
+    // .append(string a) ; or " += " -> only to append strings,    --- O(n), linear complexity on the size of the new string (bad)
+    // str.append("dots are cool", 5); // "dots "
 
     char line[] = "short line for testing";
 
