@@ -3,12 +3,19 @@
 using namespace std;
 
 /*
-    // Syntax of ostringstream, use to have a number as string for example
+    // To understand a number as string (int -> string)
+    use std::to_string(number);
+
+    // Syntax of ostringstream (previous way of doing int -> string)
     int a=55;
     std::ostringstream aux;
     aux << a;
     cout << "char aux is: " << aux.str() << endl;
 
+    Notes:
+
+    char c = int('a' + 1); // 'b'
+	char c = char('9' - 1); // '8'
 */
 
 int main ()
