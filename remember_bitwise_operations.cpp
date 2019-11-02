@@ -21,6 +21,7 @@ int main() {
 	x = x ^ 1; // change the least siginificant bit
 	x = x & (x-1); // will clear the lowest set bit of x
 	x = x | (x + 1); // x with the lowest cleared bit set.
+	cout << ((x >> 2) & 1); // shows the bit at the 3rd position of "x"
 	cout << (29 << 2) << endl;
 
 	// Other tricks:

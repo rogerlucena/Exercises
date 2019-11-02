@@ -4,8 +4,8 @@
 using namespace std;
 
 // Complete list here: https://www.geeksforgeeks.org/c-data-types/
-// int: 4 bytes, -2*10^9 to 2*10^9 
-// long: 8 bytes, -10^19 to 10^19
+// int: 4 bytes, -2*10^9 to 2*10^9 (max is a bit more) 
+// long: 8 bytes, -9*10^18 to 9*10^18 (max is a bit more)
 // long long is at list as large as long, here we see that it is the same as long
 
 int main()
@@ -24,7 +24,9 @@ int main()
 // CHAR_MAX = 127
 
 // int -> 4 bytes
-// INT_MAX = 2.147.483.647
+// INT_MAX =  2.147.483.647 (2^31-1)
+// INT_MIN = -2.147.483.648 (-2^31)
 
 // long -> 8 bytes
-// LONG_MAX = 9.223.372.036.854.775.807
+// LONG_MAX =  9.223.372.036.854.775.807 (2^63-1)
+// LONG_MIN = -9.223.372.036.854.775.808 (-2^63)
