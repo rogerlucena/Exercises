@@ -23,7 +23,7 @@ int main() {
 	cout << (x & ~(x-1)) << endl; // extracts the lowest set bit of x (all others are clear)
 	x = x | (x + 1); // x with the lowest cleared bit set.
 	cout << ((x >> 2) & 1); // shows the bit at the 3rd position of "x"
-	cout << (29 << 2) << endl;
+	cout << (29 << 2) << endl << endl;
 
 	// Other tricks:
 	// x & ~(x-1) extracts the lowest set bit of x (all others are clear). Pretty patterns when applied to a linear sequence.
@@ -32,6 +32,18 @@ int main() {
 	// x | ~(x + 1) = extracts the lowest cleared bit of x (all others are set).
 	// x | (x - (1 << n)) = x, with the run of cleared bits (possibly length 0) starting at bit n set.
 	// x | ~(x - (1 << n)) = the lowest run of cleared bits (possibly length 0) in x, starting at bit n are the only clear bits.
+
+
+	// Bits manipulation:
+	cout << "Bits manipulation - how to represent:" << endl;
+	string binary = bitset<8>(64 + 5).to_string(); // to a 8-char string representing the binary form of the number
+    cout << binary << endl;
+
+    unsigned long ulongDecimal = std::bitset<8>(binary).to_ulong();
+    cout << "ulong decimal: " << ulongDecimal << endl;
+	
+	int decimal = stoi(binary, nullptr, 2);
+	cout << "int decimal: " << decimal << endl;
 
 	return 0;
 }

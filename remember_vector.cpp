@@ -6,6 +6,7 @@
 // to take a subvector only creating a new vector and using pointers to the wanted positions
 // vector<int> new_v (old_vector.begin()+10, old_vector.end()-5)
 
+// v.clear() -> makes the vector an empty vector again (do not confuse with setting all the values to zero)
 
 int main ()
 {
