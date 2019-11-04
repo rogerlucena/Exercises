@@ -6,6 +6,9 @@
 // stack: push, top, pop
 // queue: push, front, pop
 
+// .empty() -> see if it is empty
+// .size()
+
 int main ()
 {
     // Stack
