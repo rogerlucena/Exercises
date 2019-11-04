@@ -5,6 +5,11 @@
 
 // top, push, pop
 // Complexity of logn (worst case) to remove(fst) and to add (newElement)
+// with Floyd's algorithm to construct a heap from another container: O(n) - very good; 
+        // Floyd builds the tree from the bottom up (n/2 elements are leaves, n/4 have 
+        // height 1 and so on, final complexity: n(1/2 + 1/4 + ...) = n) 
+// (but to do the same, adding one element at a time -> O(n logn n))
+
 // defaut comparator is smaller (as smaller -> as weak then, less priority), pop will give the greatest number
 
 template<typename T> void print_queue(T& q) {
@@ -17,6 +22,7 @@ template<typename T> void print_queue(T& q) {
 
 int main() {
     std::priority_queue<int> q;
+    // priority_queue<int> pq (A.begin(), A.end()); // Initilize O(n) taking a container as input
 
     for(int n : {1,8,5,6,3,4,0,9,7,2})
         q.push(n);
