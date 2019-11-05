@@ -9,6 +9,9 @@
 // .empty() -> see if it is empty
 // .size()
 
+// Deque (in #include <queue>)
+// front(), back(), at() (reference to the element there), push_back(), push_front(), void pop_back(), void pop_front()
+
 int main ()
 {
     // Stack
