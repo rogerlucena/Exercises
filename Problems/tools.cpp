@@ -29,3 +29,35 @@ void printMatrix(const vector<vector<int>> &m) {
 		printVector(m[i]);
 	}
 }
+
+// Definition for singly-linked list (from InterviewBit)
+struct ListNode {
+	int val;
+	ListNode *next;
+	ListNode(int x = 0) : val(x), next(NULL) {}
+};
+
+ListNode* generateList(const vector<int> &v) {
+	ListNode* h = new ListNode();
+
+	ListNode *aux = h;
+	for(int i = 0; i < v.size(); ++i) {
+		aux->val = v[i];
+		if(i != v.size() - 1) {
+			aux->next = new ListNode();
+			aux = aux->next;
+		}
+	}
+
+	return h;
+}
+
+/* Utility function to print a singly linked list */
+void printList(ListNode* head) {
+    ListNode* temp = head;
+    while (temp != NULL) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
