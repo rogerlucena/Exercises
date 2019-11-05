@@ -72,7 +72,8 @@ given it is a DAG: https://www.geeksforgeeks.org/topological-sorting/
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
-- coisas implementação by heart: binary search, inverter uma linked list, quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
+- coisas implementação by heart: binary search, inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
+         quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
 - perguntas: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -17,6 +18,25 @@ struct Node {
   Node(int d = 0, Node *n = NULL): data(d), next(n) {};
 };
 
+// Reverse in-place a linked list
+// https://www.geeksforgeeks.org/reverse-a-linked-list/
+Node* reverseList(Node* h) {
+	Node* prev = nullptr;
+	Node* curr = h;
+	Node* next = curr;
+
+	while(curr != nullptr) {
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}	
+	h = prev;
+
+	return h;
+}
+
+// Another way
 Node* inverse(Node *root) {
     Node* res = new Node(); // good strategy, "cabeça" node, not necessary here, but good
     while (root != NULL) {
@@ -73,6 +93,21 @@ void merge(struct Node *p, struct Node **q) {
     *q = q_curr; // Update head pointer of second list
 }
 
+Node* generateList(const vector<int> &v) {
+	Node* h = new Node();
+
+	Node *aux = h;
+	for(int i = 0; i < v.size(); ++i) {
+		aux->data = v[i];
+		if(i != v.size() - 1) {
+			aux->next = new Node();
+			aux = aux->next;
+		}
+	}
+
+	return h;
+}
+
 // Driver program to test above functions
 int main() {
     struct Node *p = NULL, *q = NULL;
@@ -101,10 +136,13 @@ int main() {
     // Testing inverse method:
     cout << endl << "Testing inverse method" << endl;
     cout << "Original list:" << endl;
-    printList(p);
-    cout << "Inversed list:" << endl;
-    printList(inverse(p));
+    vector<int> v = {1, 2, 3, 4, 5};
+	Node* h = generateList(v);
+    printList(h);
 
-    getchar();
+    cout << "Inversed list:" << endl;
+    h = reverseList(h);
+    printList(h);
+
     return 0;
 }
