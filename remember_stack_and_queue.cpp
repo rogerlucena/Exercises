@@ -11,6 +11,12 @@
 
 // Deque (in #include <queue>)
 // front(), back(), at() (reference to the element there), push_back(), push_front(), void pop_back(), void pop_front()
+// iterator insert (iterator position, const value_type& val);
+// void insert     (iterator position, size_type n, const value_type& val) // n repetitions of val
+// void insert     (iterator position, InputIterator first, InputIterator last)
+// add just before "position" and return an "it" to the first of the newly added elements (first case)
+// (same thing with std::list)
+
 
 int main ()
 {

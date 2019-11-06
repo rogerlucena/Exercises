@@ -35,7 +35,7 @@ ListNode* removeNthFromEnd(ListNode* A, int B) {
 	ListNode* tmp = aux->next;
 	aux->next = tmp->next;
 	tmp->next = nullptr;
-	delete(tmp);
+	delete tmp;
 
 	return A;
 }
