@@ -34,7 +34,7 @@ void printMatrix(const vector<vector<int>> &m) {
 struct ListNode {
 	int val;
 	ListNode *next;
-	ListNode(int x = 0) : val(x), next(NULL) {}
+	ListNode(int x = 0) : val(x), next(NULL) {} // on the website there is no default to 0
 };
 
 ListNode* generateList(const vector<int> &v) {
