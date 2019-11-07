@@ -78,7 +78,8 @@ Syntax: delete ptr; free(ptr);
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
-- coisas implementação by heart: binary search, inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
+- coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
+         binary search, merge two sorted linked lists (in remember_liked_lists.cpp),
          quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP

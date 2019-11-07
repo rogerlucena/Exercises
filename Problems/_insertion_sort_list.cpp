@@ -111,6 +111,8 @@ ListNode* oldInsertionSortList(ListNode* A) {
 
 		if(i == size-1) {
 			A = prev->next;
+			prev->next = nullptr;
+			delete prev;
 		}
 	}
 
