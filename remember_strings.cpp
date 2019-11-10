@@ -13,6 +13,9 @@ using namespace std;
     aux << a;
     cout << "char aux is: " << aux.str() << endl;
 
+    // use stoi (string to int) to do the opporsite, precising the base (2, 10, ...)
+    // int i_bin = std::stoi (str_bin,nullptr,2);
+
     Notes:
 
     char c = int('a' + 1); // 'b'
