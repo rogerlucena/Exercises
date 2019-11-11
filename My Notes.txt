@@ -68,8 +68,8 @@ to verify if it is a DAG (question at VTEX): https://www.geeksforgeeks.org/topol
 given it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
 
 -- Trees (attention here):
-Depth: distance from root (d(root) = 0)
-Height: largest distance to a leaf (h(every leaf) = 0)
+Depth: distance (#edges) from root (d(root) = 0)
+Height: largest distance (#edges) to a leaf (h(every leaf) = 0)
 Height of the tree: h(root)
 
 -- Difference between Delete and Free:
