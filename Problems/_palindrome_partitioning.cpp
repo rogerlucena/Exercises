@@ -37,6 +37,7 @@ bool isPalindrome(string &str, int s, int e) {
 }
 
 // Website solution
+// To find all the possible palindrome partitioning (and not only its count) - we gotta do a brute-force approach 
 void partitionHelper(int i, vector<string> &current, string &s, vector<vector<string>> &ans) {
 	if (i == s.length()) {
 		// We reached the end of the string.
