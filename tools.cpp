@@ -68,3 +68,15 @@ struct TreeNode {
     TreeNode *right;
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
+
+void printInorder(TreeNode* t) {
+	if(t == nullptr) {
+		cout << "#";
+		return;
+	}
+
+	printInorder(t->left);
+	cout << " " << t->val << " ";
+	printInorder(t->right);
+}
+
