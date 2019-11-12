@@ -79,7 +79,7 @@ memory set with malloc in C. Free() uses C run time heap whereas Delete may be o
 Syntax: delete ptr; free(ptr);
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
-- Linked Lists (705 das questões dela, faz 3 do leetcode)
+- Linked Lists (70% das questões dela)
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
