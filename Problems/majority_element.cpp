@@ -15,17 +15,17 @@ using namespace std;
 // Return: 2 which occurs 2 times which is greater than 3/2. 
 
 // Website solution (more space efficient):
-int majorityElement(vector<int> &num) {
+int majorityElement(vector<int> &A) {
 	int majorityIndex = 0;
-	for (int count = 1, i = 1; i < num.size(); ++i) {
-		num[majorityIndex] == num[i] ? ++count : --count;
+	for (int count = 1, i = 1; i < A.size(); ++i) {
+		A[majorityIndex] == A[i] ? ++count : --count;
 		if (count == 0) {
 			majorityIndex = i;
 			count = 1;
 		}
 	}
 
-	return num[majorityIndex];
+	return A[majorityIndex];
 }
 
 // Old solution below:

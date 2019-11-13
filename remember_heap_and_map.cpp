@@ -6,6 +6,7 @@ using namespace std;
 
 // heap is "set", map is "map"
 
+// remember about std::lower_bound() and upper_bound() in <algorithms> too
 // The advantage here, compared to priority_queue for example,
 // is that you can go through the sorted list in linear time,
 // also, you can use "upper_bound" and "lower_bound" functions in logarithmic time (useful in some cases)

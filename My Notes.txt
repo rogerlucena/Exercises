@@ -75,6 +75,8 @@ Height of the tree: h(root)
 -- Idea to prove Greedy:
 https://www.interviewbit.com/tutorial/activity-selection-problem/
 If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1}" would also be a solution 
+(remember the example of choosing tasks, take the ones with smaller finish time first)
+(or the _assign_mice_to_holes problem - sort both and remember: max(|i1 - j1|, |i2 - j2|) <= max(|i1 - j2|, |i2 - j1|))
 
 -- Difference between Delete and Free:
 Delete is an operator while Free is a function. Delete frees the allocated memory and also calls 
