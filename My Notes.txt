@@ -15,6 +15,10 @@ E.g.: Inorder:
 
 Obs: Preorder to copy the tree (polish_notation too), Posorder to delete, Inorder to get int numbers in ascending order from a BST
 
+- Notation for titles inside ./Problems folder:
+"__" stands for good problems with interesting / key ideas to remember
+"_" stands for more interesting / difficult problems, compared to the usual (but not necessarily with key ideas to remember)
+
 - Construct Tree from given Inorder and Preorder traversals:
 http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
 
