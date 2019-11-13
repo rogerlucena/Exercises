@@ -8,6 +8,9 @@
 
 // v.clear() -> makes the vector an empty vector again (do not confuse with setting all the values to zero)
 
+// Initialize a matrix (with -1 everywhere):
+// vector<vector<int>> m (len1, vector<int>(len2, -1));
+
 int main ()
 {
     // constructors used in the same order as described above:
