@@ -25,7 +25,6 @@ http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-trav
 - Construct a Binary Search Tree from given postorder
 http://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder/
 
-
 -- STL Containers Complexities:
 https://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
 
@@ -81,6 +80,10 @@ https://www.interviewbit.com/tutorial/activity-selection-problem/
 If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1}" would also be a solution 
 (remember the example of choosing tasks, take the ones with smaller finish time first)
 (or the _assign_mice_to_holes problem - sort both and remember: max(|i1 - j1|, |i2 - j2|) <= max(|i1 - j2|, |i2 - j1|))
+
+-- Dynamic Programming
+1) Try to divide into smaller recursive problems, if overlaps -> memoization
+2) See space and time, try to optmize
 
 -- Difference between Delete and Free:
 Delete is an operator while Free is a function. Delete frees the allocated memory and also calls 
