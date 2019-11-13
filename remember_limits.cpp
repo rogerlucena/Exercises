@@ -8,8 +8,7 @@ using namespace std;
 // long: 8 bytes, -9*10^18 to 9*10^18 (max is a bit more)
 // long long is at list as large as long, here we see that it is the same as long
 
-int main()
-{
+int main() {
     cout << "Hello, World!" << endl;
     cout << "INT_MAX: " << INT_MAX << endl;
     cout << "CHAR_MAX: " << CHAR_MAX << endl;

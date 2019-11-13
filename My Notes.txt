@@ -72,6 +72,10 @@ Depth: distance (#edges) from root (d(root) = 0)
 Height: largest distance (#edges) to a leaf (h(every leaf) = 0)
 Height of the tree: h(root)
 
+-- Idea to prove Greedy:
+https://www.interviewbit.com/tutorial/activity-selection-problem/
+If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1}" would also be a solution 
+
 -- Difference between Delete and Free:
 Delete is an operator while Free is a function. Delete frees the allocated memory and also calls 
 the destructor of the class in c++ while free() does not calls any destructor and only free the allocated 
