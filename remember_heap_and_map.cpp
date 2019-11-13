@@ -4,17 +4,23 @@
 
 using namespace std;
 
-// heap is "set", map is "map"
+// "<set>" is a heap based set,  "<map>" is a heap map
 
-// remember about std::lower_bound() and upper_bound() in <algorithms> too
+// remember, we have std::lower_bound() and upper_bound() in <algorithms> too, like here
+
 // The advantage here, compared to priority_queue for example,
 // is that you can go through the sorted list in linear time,
 // also, you can use "upper_bound" and "lower_bound" functions in logarithmic time (useful in some cases)
+
+// Other differences: "set" does not allow duplicates, "priority_queue" allows
+// building a heap "priority_queue" is also linear on the number of items, whereas building a set 
+// is O(N log N) (unless it's being built from a sequence that's already ordered - in which case it is also linear).
+
 // remember, here we cannot do operations with the iterators such 
 // as "m.upper_bound(n) - m.begin()", or "m.begin()+1" (bidirectional iterators do not allow it), only ++ or -- 
 
-// C++ Standard Template Library provides maps and sets which are implemented > internally 
-// using balanced red black trees. We explore maps here for now, although set is very much similar. Map declaration :
+// In C++ STL - implemented internally using balanced red black trees.
+// "map" below, "set" is similar: 
 
 int main() {
     map<int, int> A; // O(1) declaration which declares an empty tree map.
