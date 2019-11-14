@@ -29,7 +29,7 @@ int longestConsecutive(const vector<int> &A) {
 		int currSize = 1;
 		++el;
 		while(m.find(el) != m.end()) {
-			m[el] = 0;
+			m[el] = 0; // key element to make it O(n) in time
 			++el;
 			++currSize;
 		}
