@@ -36,21 +36,21 @@ using namespace std;
 // Lessons: to do not deal with substrings generation, work with indexes!
 // think simply, one step at a time, and memoize repeated work
 int editDistance(string &s1, int index1, string &s2, int index2, vector<vector<int>> &m) {
-	if(index1 == s1.size() || index2 == s2.size()) {
-		return max(s1.size() - index1, s2.size() - index2);
-	}
-
 	if(m[index1][index2] != -1) {
 		return m[index1][index2];
 	}
 
-	m[index1][index2] = s1[index1] == s2[index2] 
-		? editDistance(s1, index1+1, s2, index2+1, m) 
-		: min({
-			1 + editDistance(s1, index1+1, s2, index2+1, m), // replace first char of s1 by the first of s2
-			1 + editDistance(s1, index1+1, s2, index2, m), // delete first char of s1
-			1 + editDistance(s1, index1, s2, index2+1, m) // insert at the beginning s1 first char of s2
-		});
+	if(index1 == s1.size() || index2 == s2.size()) {
+		m[index1][index2] = max(s1.size() - index1, s2.size() - index2);
+	} else {
+		m[index1][index2] = s1[index1] == s2[index2] 
+			? editDistance(s1, index1+1, s2, index2+1, m) 
+			: min({
+				1 + editDistance(s1, index1+1, s2, index2+1, m), // replace first char of s1 by the first of s2
+				1 + editDistance(s1, index1+1, s2, index2, m), // delete first char of s1
+				1 + editDistance(s1, index1, s2, index2+1, m) // insert at the beginning s1 first char of s2
+			});
+	}
 
 	return m[index1][index2];
 }
@@ -62,14 +62,18 @@ int minDistance(string A, string B) {
 
 	int len1 = A.size();
 	int len2 = B.size();
-	vector<vector<int>> m (len1, vector<int>(len2, -1));
+	vector<vector<int>> m (len1+1, vector<int>(len2+1, -1));
 	
+	// Understand as the min # of operations to transform "A" from "index1" till its end on "B" from "index2" till its end 
 	return editDistance(A, 0, B, 0, m);
 }
 
 int main() {
+	// Answer expected: 1 
 	// string A = "abad";
     // string B = "abac";
+
+	// Answer expected: 2 
 	string A = "Anshuman";
     string B = "Antihuman";
 
