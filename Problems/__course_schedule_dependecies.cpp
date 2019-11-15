@@ -47,11 +47,13 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 	}
 
 	int visitedCount = 0;
+	// vector<int> topoOrdering;
 	while(!q.empty()) {
 		// If that vertex has current inDegree == 0, then it can now be pushed back into 
 		// our virtual Topological Ordering without breaking any dependencies
 		++visitedCount;
 		int v = q.front();
+		// topoOrdering.push_back(v);
 		q.pop();
 
 		for(int neighbor : g[v]) {
@@ -64,7 +66,7 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 	return visitedCount == numCourses;
 }
 
-// Topological sort with DFS (work if it is a DAG, but does not verify if it is indeed a graph)
+// Topological sort with DFS below (work if it is a DAG, does not verify if it is indeed a DAG - with no cycles)
 void topologicalOrderingDFS(const vector<vector<int>> &g, int v, vector<bool> &visited, stack<int> &topoOrdering) {
 	visited[v] = true;
 	for(int neighbor : g[v]) {
@@ -76,7 +78,7 @@ void topologicalOrderingDFS(const vector<vector<int>> &g, int v, vector<bool> &v
 	topoOrdering.push(v);
 }
 
-stack<int> possibleSchedulingOrder(int numCourses, vector<vector<int>> &prerequisites) {
+vector<int> possibleSchedulingOrder(int numCourses, vector<vector<int>> &prerequisites) {
     vector<vector<int>> g (numCourses, vector<int>());
 	for(vector<int> e : prerequisites) {
 		g[e[1]].push_back(e[0]);
@@ -90,7 +92,13 @@ stack<int> possibleSchedulingOrder(int numCourses, vector<vector<int>> &prerequi
 		}
 	}
 
-	return topoOrdering;
+	vector<int> ans;
+	while(!topoOrdering.empty()) {
+		ans.push_back(topoOrdering.top());
+		topoOrdering.pop();
+	}
+	
+	return ans;
 }
 
 int main() {
