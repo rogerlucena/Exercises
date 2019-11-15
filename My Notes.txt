@@ -66,9 +66,12 @@ Support: https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing
 Start with the brute force and then analyze if you can optimize it - discard some iterations that will not improve the result
 https://www.interviewbit.com/tutorial/two-pointers/
 
--- Topological Sorting for DAGs:
-to verify if it is a DAG (question at VTEX): https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
-given it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
+-- Topological Sorting (or Ordering) for DAGs:
+- Using "inDegree" array and a queue "q" - add vertex to "q" only if its current inDegree is zero (never happens for 
+vertices in a cycle): https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
+(if "visitedCount != V" we have cycle - question at VTEX and "__course_schedule" problem)
+- Using DFS and a stack (add vertex to it only after going through all the neighbors) - only to find the TO 
+if you already know it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
 
 -- Trees (attention here):
 Depth: distance (#edges) from root (d(root) = 0)
@@ -90,6 +93,13 @@ Delete is an operator while Free is a function. Delete frees the allocated memor
 the destructor of the class in c++ while free() does not calls any destructor and only free the allocated 
 memory set with malloc in C. Free() uses C run time heap whereas Delete may be overloaded on class basis to use private heap.
 Syntax: delete ptr; free(ptr);
+
+-- When interviewing, remember step by step:
+1) Ask clarification questions to see if you really got what they want (float numbers? sorted? repeated numbers? negative? can I get two of the same index?)
+2) Always think out loud! (any time/space requirements?)
+3) Brute-force and complexities, then optimze! (no coding yet!)
+4) Code, think out loud while doing it!
+5) Test it line by line (do not skip lines)! See edge cases (if empty, only one element ...)!
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
 - Linked Lists (70% das questões dela)
