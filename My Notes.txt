@@ -106,9 +106,15 @@ Syntax: delete ptr; free(ptr);
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
+- Red flags: base case recursion, remember to use that condition too otherwise infinite loop!
+- Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
+- Problema aberto? pede a API, pensa no caso mais simple possível (squared room with discret cells), se errado ele te corrige
+- Test cases: comeca com os mais simples (empty, {1}, corner cases), maximo ate 2x2 ja dá
+
 - coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
          binary search, merge two sorted linked lists (in remember_liked_lists.cpp),
          quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
 - perguntas: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?
+             qual o bug mais interessante em que você já se encontrou? como vocês fazem deploy pra prod?

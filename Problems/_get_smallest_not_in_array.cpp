@@ -31,24 +31,23 @@ int getDifferentNumber(vector<int> &arr) {
 
 // O(N) in time and space below, we can still improve space!
 int oldGetDifferentNumber(const vector<int> &arr) {
-  // your code goes here
-  unordered_set<int> s;
-  for(int el : arr) {
-     s.insert(el);
-  }
-  
-  for(int i = 0; i < INT_MAX; ++i) {
-     if(s.find(i) == s.end()) {
-       return i;
-     }
-  }
-  
-  return -1;
+	unordered_set<int> s;
+	for(int el : arr) {
+		s.insert(el);
+	}
+
+	for(int i = 0; i < INT_MAX; ++i) {
+		if(s.find(i) == s.end()) {
+			return i;
+		}
+	}
+
+	return -1;
 }
 
 int main() {
-  vector<int> v ={0, 1, 2, 4}; // ans: 3
-  cout << "Answer: " << getDifferentNumber(v) << endl;
-  
-  return 0;
+	vector<int> v ={0, 1, 2, 4}; // ans: 3
+	cout << "Answer: " << getDifferentNumber(v) << endl;
+
+	return 0;
 }
