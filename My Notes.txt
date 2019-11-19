@@ -94,27 +94,44 @@ the destructor of the class in c++ while free() does not calls any destructor an
 memory set with malloc in C. Free() uses C run time heap whereas Delete may be overloaded on class basis to use private heap.
 Syntax: delete ptr; free(ptr);
 
--- When interviewing, remember step by step:
-1) Ask clarification questions to see if you really got what they want (float numbers? sorted? repeated numbers? negative? can I get two of the same index?)
-2) Always think out loud! (any time/space requirements?)
-3) Brute-force and complexities, then optimze! (no coding yet!)
-4) Code, think out loud while doing it!
-5) Test it line by line (do not skip lines)! See edge cases (if empty, only one element ...)!
+### impt ###
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
 - Linked Lists (70% das questões dela)
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
-- Red flags: base case recursion, remember to use that condition too otherwise infinite loop!
+- Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
+    Nao inicializar alguma variavel, DFS, BFS
 - Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
 - Problema aberto? pede a API, pensa no caso mais simple possível (squared room with discret cells), se errado ele te corrige
 - Test cases: comeca com os mais simples (empty, {1}, corner cases), maximo ate 2x2 ja dá
 
 - coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
-         binary search, merge two sorted linked lists (in remember_liked_lists.cpp),
+         binary search, merge two sorted linked lists (in remember_liked_lists.cpp), não pembe em DFS/BFS! (code imediato!),
          quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
-- perguntas: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?
-             qual o bug mais interessante em que você já se encontrou? como vocês fazem deploy pra prod?
+
+
+-- Lembrar, passo a passo:
+1) Faz um exemplo simples pra ver se realmente entendeu, se necessário
+    Ask clarification questions to see if you really got what they want (float numbers? sorted? 
+    repeated numbers? negative? can I get two of the same index? Any time/space requirements?
+    se nao tem resposta, o que retorno nesse caso? (eg: era empty no caso de {1} no pb do produto dos outros),
+    vetor ordenado? lowercase?)
+2) Always think out loud! 
+    se precisar de 1 min em silêncio, PEçA! Comunique isso!
+3) Brute-force and complexities (importante falar logo o brute-force logo! - nada bom se ele achar que nem o brute vc sabe) 
+    then optimze! (no coding yet!)
+    SE VC estah pensando em uma estrategia, mas viu um possivel problema, FALE, ele pode te dizer como
+    resolver (eg: heaps tamanhos mto diferents no pb da median de um stream), ou que nem eh possivel ter esse problema
+4) Should I optimize more or can I code? Think out loud while coding!
+    Tudo eh ok, desde que vc fale. “Normalmente essa var deveria ter nome tal .. mas for the sake of time/simplicity, let’s use ..”
+    funcão auxiliar que as vezes nem precisa codar no final! 
+5) Test it line by line (do not skip lines)! Colocando valores das variáveis ao lado como comentário
+    Comeca com os mais simples (empty, {1}, corner cases, then small ones - 2/3 elements ... já é enough pra achar bugs)!
+6) No final: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?
+             qual o bug mais interessante em que você já se encontrou? procedimento para deploy em prod?
+
+here -> remember_by_heart.cpp -> files with __

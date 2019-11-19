@@ -10,6 +10,10 @@ using namespace std;
 // sort a linked list? (merge sort)
 // quick sort?
 
+// Remember: If "v" is an empty vector -> v.size()-1: 18446744073709551615 
+// Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble! 
+// 			- treat this edge case separated (maybe along with v.size() == 1) at the beginning! 
+
 // DFS:
 void dfs(v, visited) {
 	visited[v] = true;
@@ -55,6 +59,24 @@ void bfs_with_depth(int source) {
 	}
 }
 
+// Reverse in-place a linked list
+// https://www.geeksforgeeks.org/reverse-a-linked-list/
+ListNode* reverseList(ListNode* h) {
+	ListNode* prev = nullptr;
+	ListNode* curr = h;
+	ListNode* next = nullptr;
+
+	while(curr != nullptr) {
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}	
+	h = prev;
+
+	return h;
+}
+
 // Binary search
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
 int binarySearch(const vector<int> &arr, int l, int r, int x) { 
@@ -76,6 +98,30 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
     // if we reach here, then element was not present 
     return -1; 
 } 
+
+// Merge two sorted lists
+ListNode* mergeSorted(ListNode* a, ListNode* b) {
+	ListNode ans(-1);
+	ListNode* tmp = &ans;
+
+	while(a && b) {
+		if(a->val <= b->val) {
+			tmp->next = a;
+			a = a->next;
+		} else {
+			tmp->next = b;
+			b = b->next;
+		}
+		tmp = tmp->next;
+	}
+	if(a) {
+		tmp->next = a;
+	} else {
+		tmp->next = b;
+	}
+
+	return ans.next;
+}
   
 int main(void) {
     vector<int> arr = { 2, 3, 4, 10, 40 }; 
