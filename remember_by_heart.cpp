@@ -10,6 +10,17 @@ using namespace std;
 // sort a linked list? (merge sort)
 // quick sort?
 
+// DFS:
+void dfs(v, visited) {
+	visited[v] = true;
+	doSomething(v);
+	for(neigh : neighbors(b)) {
+		if(!visited(neigh)) {
+			dfs(neigh);
+		}
+	}
+}
+
 // For BFS, we keep an "enqueued" boolean structure (instead of "visited" like in the DFS)
 void bfs(int source) {
 	q.push(source);
@@ -44,17 +55,6 @@ void bfs_with_depth(int source) {
 	}
 }
 
-// DFS:
-void dfs(v, visited) {
-	visited[v] = true;
-	for(neigh : neighbors(b)) {
-		if(!visited(neigh)) {
-			dfs(neigh);
-		}
-	}
-}
-
-
 // Binary search
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
 int binarySearch(const vector<int> &arr, int l, int r, int x) { 
@@ -77,7 +77,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
     return -1; 
 } 
   
-int main(void) { 
+int main(void) {
     vector<int> arr = { 2, 3, 4, 10, 40 }; 
     int x = 10; 
     int n = arr.size(); 
