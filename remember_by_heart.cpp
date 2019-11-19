@@ -5,8 +5,7 @@
 
 using namespace std;
 
-// Reverse in place a linked list
-// merge two sorted linked lists
+// Also:
 // sort a linked list? (merge sort)
 // quick sort?
 
@@ -14,6 +13,7 @@ using namespace std;
 // Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble! 
 // 			- treat this edge case separated (maybe along with v.size() == 1) at the beginning! 
 
+/*
 // DFS:
 void dfs(v, visited) {
 	visited[v] = true;
@@ -58,6 +58,7 @@ void bfs_with_depth(int source) {
 		}
 	}
 }
+*/
 
 // Reverse in-place a linked list
 // https://www.geeksforgeeks.org/reverse-a-linked-list/
@@ -100,6 +101,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
 } 
 
 // Merge two sorted lists
+// Sentinel idea very useful, like in the swap_nodes_in_pairs problem
 ListNode* mergeSorted(ListNode* a, ListNode* b) {
 	ListNode ans(-1);
 	ListNode* tmp = &ans;
@@ -123,13 +125,56 @@ ListNode* mergeSorted(ListNode* a, ListNode* b) {
 	return ans.next;
 }
   
+// QuickSort below
+// This function takes last element as pivot, places the pivot element at its correct position in sorted  
+// array, and places all smaller (smaller than pivot) to left of pivot and all greater elements to right of pivot
+int partition (vector<int> &arr, int low, int high) {  
+    int pivot = arr[high]; // pivot, ideally a random in [low, high]
+    int i = (low - 1); // index of smaller element  
+  
+    for(int j = low; j <= high - 1; ++j) {  
+        // If current element is smaller than the pivot  
+        if (arr[j] < pivot) {  
+            i++; // increment index of smaller element  
+            swap(arr[i], arr[j]);  
+        }  
+    }
+
+    swap(arr[i + 1], arr[high]); // put pivot in its right position
+
+    return i + 1;  
+}
+  
+// The main function that implements QuickSort  
+// arr --> Array to be sorted in-place, not stable, O(n^2) in the worst case  
+// low --> Starting index,  
+// high --> Ending index
+void quickSort(vector<int> &arr, int low, int high) {  
+    if (low < high) {  
+        // pi is partitioning index, arr[p] is now at right place
+        int pi = partition(arr, low, high);  
+  
+        // Separately sort elements before partition and after partition  
+        quickSort(arr, low, pi - 1);  
+        quickSort(arr, pi + 1, high);  
+    }  
+}    
+
 int main(void) {
-    vector<int> arr = { 2, 3, 4, 10, 40 }; 
+	cout << "QuickSort:" << endl;
+    vector<int> arr = {10, 3, 40, 2, 4}; 
+	printVector(arr);
+	quickSort(arr, 0, arr.size()-1);
+	printVector(arr);
+	cout << endl;
+
+	cout << "Binary search:" << endl;
+	// arr from now on is {2, 3, 4, 10, 40}
     int x = 10; 
     int n = arr.size(); 
     int result = binarySearch(arr, 0, n - 1, x); 
-    (result == -1) ? cout << "Element is not present in array"
-                   : cout << "Element is present at index " << result; 
+    (result == -1) ? cout << "Element " << x << " is not present in array"
+                   : cout << "Element " << x << " is present at index " << result; 
 
     return 0; 
 }

@@ -101,12 +101,6 @@ Syntax: delete ptr; free(ptr);
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
 
-- Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
-    Nao inicializar alguma variavel, DFS, BFS
-- Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
-- Problema aberto? pede a API, pensa no caso mais simple possível (squared room with discret cells), se errado ele te corrige
-- Test cases: comeca com os mais simples (empty, {1}, corner cases), maximo ate 2x2 ja dá
-
 - coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
          binary search, merge two sorted linked lists (in remember_liked_lists.cpp), não pembe em DFS/BFS! (code imediato!),
          quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
@@ -122,6 +116,8 @@ Syntax: delete ptr; free(ptr);
     vetor ordenado? lowercase?)
 2) Always think out loud! 
     se precisar de 1 min em silêncio, PEçA! Comunique isso!
+    problema aberto? pede a API, pensa no caso mais simple possível (squared room with discret cells), se 
+    errado ele te corrige
 3) Brute-force and complexities (importante falar logo o brute-force logo! - nada bom se ele achar que nem o brute vc sabe) 
     then optimze! (no coding yet!)
     SE VC estah pensando em uma estrategia, mas viu um possivel problema, FALE, ele pode te dizer como
@@ -130,8 +126,12 @@ Syntax: delete ptr; free(ptr);
     Tudo eh ok, desde que vc fale. “Normalmente essa var deveria ter nome tal .. mas for the sake of time/simplicity, let’s use ..”
     funcão auxiliar que as vezes nem precisa codar no final! 
 5) Test it line by line (do not skip lines)! Colocando valores das variáveis ao lado como comentário
-    Comeca com os mais simples (empty, {1}, corner cases, then small ones - 2/3 elements ... já é enough pra achar bugs)!
+    Comeca com os mais simples (empty, {1}, corner cases, then small ones - 2/3 els, já é enough pra achar bugs)! 2x2 ja dá (robot)
 6) No final: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?
              qual o bug mais interessante em que você já se encontrou? procedimento para deploy em prod?
+
+- Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
+    Nao inicializar alguma variavel, DFS, BFS, update step for not infinity loop inside while
+- Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
 
 here -> remember_by_heart.cpp -> files with __
