@@ -92,6 +92,7 @@
         "typeindex": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "cuchar": "cpp"
+        "cuchar": "cpp",
+        "filesystem": "cpp"
     }
 }
