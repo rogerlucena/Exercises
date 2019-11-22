@@ -15,6 +15,8 @@
 // General syntax:
 // auto cmp = [](int left, int right) {return left > right;};
 // priority_queue<int, vector<int>, decltype(cmp)> q3(cmp, container);
+// or:
+// priority_queue<int, vector<int>, greater<int>> q2;
 
 template<typename T> void print_queue(T& q) {
     while(!q.empty()) {
