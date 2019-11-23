@@ -102,6 +102,9 @@ Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case
 
+-- Different between "set/multiset" and "priority queues":
+Inside "remember_set_and_map.cpp"
+
 ### impt ###
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)

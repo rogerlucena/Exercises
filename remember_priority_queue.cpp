@@ -8,7 +8,9 @@
 // with Floyd's algorithm to construct a heap from another container: O(n) - very good; 
         // Floyd builds the tree from the bottom up (n/2 elements are leaves, n/4 have 
         // height 1 and so on, final complexity: n(1/2 + 1/4 + ...) = n) 
+// // priority_queue<int> pq (A.begin(), A.end()); // Initilize O(n) taking a container as input
 // (but to do the same, adding one element at a time -> O(n logn n))
+
 
 // defaut comparator is smaller (as smaller -> as weak then, less priority), pop will give the greatest number
 

@@ -16,7 +16,7 @@ struct UndirectedGraphNode {
 	UndirectedGraphNode(int x) : label(x) {};
 };
 
-UndirectedGraphNode* cloneGraphHelper(UndirectedGraphNode* node, unordered_map<UndirectedGraphNode*, UndirectedGraphNode*> &orginalAndClone) {
+UndirectedGraphNode* cloneGraphHelper(const UndirectedGraphNode* node, unordered_map<const UndirectedGraphNode*, UndirectedGraphNode*> &orginalAndClone) {
 	if(!node) {
 		return nullptr;
 	}
@@ -36,7 +36,7 @@ UndirectedGraphNode* cloneGraphHelper(UndirectedGraphNode* node, unordered_map<U
 }
 
 UndirectedGraphNode* cloneGraph(UndirectedGraphNode* node) {
-	unordered_map<UndirectedGraphNode*, UndirectedGraphNode*> orginalAndClone;
+	unordered_map<const UndirectedGraphNode*, UndirectedGraphNode*> orginalAndClone;
 	return cloneGraphHelper(node, orginalAndClone);
 }
 

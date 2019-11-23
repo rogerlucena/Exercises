@@ -12,12 +12,16 @@ using namespace std;
 // is that you can go through the sorted list in linear time,
 // also, you can use "upper_bound" and "lower_bound" functions in logarithmic time (useful in some cases)
 
-// Other differences: "set" does not allow duplicates, "priority_queue" allows
-// building a heap "priority_queue" is also linear on the number of items, whereas building a set 
-// is O(N log N) (unless it's being built from a sequence that's already ordered - in which case it is also linear).
+// Other differences: "set" does not allow duplicates, "priority_queue" allows ("multiset" allows too)
+// building a heap "priority_queue" is also linear on the number of items (Floyd's algorithm), whereas building a set/map 
+// is O(N log N) (otherwise we would have found a faster way of sorting!)
+// (unless it's being built from a sequence that's already ordered - in which case it is also linear).
 
 // remember, here we cannot do operations with the iterators such 
 // as "m.upper_bound(n) - m.begin()", or "m.begin()+1" (bidirectional iterators do not allow it), only ++ or -- 
+
+// "set/map/multiset" are normally implemented over binary search trees (AVL or RB trees)
+// "priority_queues" are implemented over balanced heaps (!= than BSTs)
 
 // In C++ STL - implemented internally using balanced red black trees.
 // "map" below, "set" is similar: 
@@ -51,11 +55,12 @@ int main() {
         // it->first has the key, it->second has the value. 
     }
 
+    // Iterators returned below:
     // Find closest key K > x :
-    (A.upper_bound(x))->first;     // O(log n). Do need to handle the case when x is more than or equal to the max key in the map. 
+    (A.upper_bound(x))->first;     // O(log n). Returns A.end() in the case when x is more than or equal to the max key in the map. 
 
     // Find closest key K >= x :
-    (A.lower_bound(x))->first;     // O(log n). Do need to handle the case when x is more than the max key in the map.
+    (A.lower_bound(x))->first;     // O(log n). Returns A.end() in the case when x is more than the max key in the map.
 
     // Size ( number of entries in the map ) :
     A.size();
