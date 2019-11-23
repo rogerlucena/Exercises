@@ -37,6 +37,7 @@ int main() {
 
     // Lambda function in C++
 	auto printEl = [](const Interval &i) -> void {cout << "[" << i.start << "," << i.end << "]";};
+	auto x1 = [](int i) { return i; }; // without the arrow also works
 	printVector(intervals, (function<void(const Interval&)>) printEl); // passing a Lambda function as parameter
 
 

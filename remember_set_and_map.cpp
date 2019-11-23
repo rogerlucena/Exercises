@@ -27,6 +27,11 @@ using namespace std;
 // "map" below, "set" is similar: 
 
 int main() {
+    // With a personalized comparator:
+    auto comp = [](const string& a, const string& b) { return a.length() < b.length(); };
+    map<string, string, decltype(comp)> my_map(comp); // similar and set (without de 2nd parameter <>) 
+                                                      // and priority_queue (with a parameter for the underlying container I believe)
+
     map<int, int> A; // O(1) declaration which declares an empty tree map.
     int K = 3;
     int V = 7;
