@@ -94,6 +94,14 @@ the destructor of the class in c++ while free() does not calls any destructor an
 memory set with malloc in C. Free() uses C run time heap whereas Delete may be overloaded on class basis to use private heap.
 Syntax: delete ptr; free(ptr);
 
+-- Graph representations:
+Adjacency Matrix: 
+    Pros: O(1) to see if an edge
+    Cons: Consumes O(V^2) space (even if sparse), O(V^2) to add a new vertex too (if you have to copy everything into a new matrix; in this case, think about amortized to improve time efficiency)
+Asjacency list:
+    Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
+    Cons: To verify if an edge, O(V) in the worst case
+
 ### impt ###
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
