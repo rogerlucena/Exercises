@@ -13,7 +13,7 @@ using namespace std;
 // Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble! 
 // 			- treat this edge case separated (maybe along with v.size() == 1) at the beginning! 
 
-/*
+
 // DFS:
 void dfs(v, visited) {
 	visited[v] = true;
@@ -58,7 +58,6 @@ void bfs_with_depth(int source) {
 		}
 	}
 }
-*/
 
 // Reverse in-place a linked list
 // https://www.geeksforgeeks.org/reverse-a-linked-list/
