@@ -9,6 +9,7 @@ bool myfunction (int i,int j) { return (i>j); } // the numbers satisfying this c
 
 // Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
+// "-> bool" not necessary in lambda function
 
 // Lower bound remember (in <algorithm>) - http://www.cplusplus.com/reference/algorithm/lower_bound/:
 // Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val (>= val then).
@@ -34,7 +35,7 @@ int main () {
     std::sort (v.begin(), v.end(), myfunction);
     // For pairs, if not specifying "smallerPair" it is going to take the .first and use the standard <
     // (for "Interval" or any other customized class you defined, you must provide the comparator function!)
-    auto smallerPair = [](const pair<int, int> &p1, const pair<int, int> &p2) -> bool{return p1.first < p2.first;};
+    auto smallerPair = [](const pair<int, int> &p1, const pair<int, int> &p2) -> bool {return p1.first < p2.first;};
 
     cout << "Vector \"v\" sorted using myfunction: " << endl;
     printVector(v);  // 5, 4, 4, 3, 3, 2, 2, 1, 1

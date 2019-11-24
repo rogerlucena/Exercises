@@ -25,7 +25,7 @@ using namespace std;
 auto printEl = [](const pair<int, int> &p) -> void {std::cout << "(" << p.first << "," << p.second << ")";};
 
 // O(n), very useful pre-processing
-// COuld also "generate this vector on the fly inside the last loop of "maximumGap", doing the loop backwardss
+// Could also "generate this vector on the fly inside the last loop of "maximumGap", doing the loop backwardss
 vector<int> getIndexMaxVector(const vector<pair<int, int>> &newA) {
 	vector<int> indexMax(newA.size());
 	int currIndexMax = INT_MIN;

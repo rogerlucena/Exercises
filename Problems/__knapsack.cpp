@@ -17,6 +17,7 @@ int knapSack(int capacity, vector<int> &weights, vector<int> &val) {
 		return 0;
 	}
 
+	// memo[i][j] = the max value possible using from position "i" on and current "weight" filled is j
 	vector<vector<int>> memo(weights.size()+1, vector<int>(capacity +1 , -1));
 
 	for(int i = weights.size(); i >= 0; --i) {
@@ -24,9 +25,9 @@ int knapSack(int capacity, vector<int> &weights, vector<int> &val) {
 			if(i == weights.size() || j == capacity) {
 				memo[i][j] = 0;
 			} else {
-				memo[i][j] = memo[i+1][j];
+				memo[i][j] = memo[i+1][j]; // skip val[i]
 				if(j + weights[i] <= capacity) {
-					memo[i][j] = max(memo[i][j], val[i] + memo[i+1][j+weights[i]]);
+					memo[i][j] = max(memo[i][j], val[i] + memo[i+1][j+weights[i]]); // uses val[i]
 				}
 			}
 		}

@@ -7,7 +7,7 @@ using namespace std;
 
 // Find the max area of a container. 
 
-// Good example fo two index approach:
+// Good example fo two index approach (can happen even in non-sorted arrays!):
 // Start with the brute force and then analyze if you can optimize it - discard some iterations that will not improve the result
 
 // Example:

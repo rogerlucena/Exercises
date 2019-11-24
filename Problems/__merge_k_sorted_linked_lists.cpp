@@ -7,6 +7,7 @@
 using namespace std;
 
 // https://www.interviewbit.com/problems/merge-k-sorted-lists/
+// min heap with custom cmp to store the smaller, sentinel idea again
 
 // Merge k sorted linked lists and return it as one sorted list.
 
@@ -21,7 +22,7 @@ ListNode* mergeKLists(vector<ListNode*> &A) {
 	auto cmp = [](const ListNode* a, const ListNode* b) -> bool {return a->val > b->val;};
 	priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> q(cmp, A);
 	
-	ListNode ans(-1);
+	ListNode ans(-1); // The destructor could delete ans.next? Yes (end of scope) We do not want that, works here because no destructor
 	ListNode* tmp = &ans;
 
 	while(!q.empty()) {

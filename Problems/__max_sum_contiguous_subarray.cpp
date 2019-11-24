@@ -6,7 +6,7 @@ using namespace std;
 
 // https://www.interviewbit.com/problems/max-sum-contiguous-subarray/
 
-// Find the contiguous subarray within an array, A of length N which has the largest sum.
+// Find the contiguous subarray within an array A, of length N, which has the largest sum.
 // Constraints:
 // 1 <= N <= 1e6
 // -1000 <= A[i] <= 1000

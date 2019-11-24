@@ -37,7 +37,7 @@ ListNode* insertionSortList(ListNode* A) {
 				ListNode* prev = s;
 				s = s->next;
 				if(prev->next == nullptr || prev->next->val > curr->val) { // add "curr" after "prev" in "sorted"
-					curr->next = s;
+					curr->next = prev->next;
 					prev->next = curr;
 					break;
 				}

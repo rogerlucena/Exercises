@@ -105,6 +105,8 @@ Asjacency list:
 -- Different between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
 
+
+
 ### impt ###
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
@@ -136,6 +138,10 @@ Inside "remember_set_and_map.cpp"
 4) Should I optimize more or can I code? Think out loud while coding!
     Tudo eh ok, desde que vc fale. “Normalmente essa var deveria ter nome tal .. mas for the sake of time/simplicity, let’s use ..”
     funcão auxiliar que as vezes nem precisa codar no final! 
+    remember, if repeated code, try to simplify with auxiliar vector and "for"! Exemplo below (frog and river problem):
+        vector<int> new_speeds = {speed - 1, speed, speed + 1};
+        for (int new_speed : new_speeds) {
+	            int new_pos = pos + new_speed; ...
 5) Test it line by line (do not skip lines)! Colocando valores das variáveis ao lado como comentário
     Comeca com os mais simples (empty, {1}, corner cases, then small ones - 2/3 els, já é enough pra achar bugs)! 2x2 ja dá (robot)
 6) No final: projeto favorito? parte mais desafiadora lá? melhor parte comparado com as outras antes?

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 // has push_back and pop_back
 // to take a subvector only creating a new vector and using pointers to the wanted positions
 // vector<int> new_v (old_vector.begin()+10, old_vector.end()-5)
@@ -11,8 +13,21 @@
 // Initialize a matrix (with -1 everywhere):
 // vector<vector<int>> m (len1, vector<int>(len2, -1));
 
+// The line below is really making a copy of vec1 into vec2 !! 
+// vector<int> vect2; vec2 = vec1;
 int main ()
 {
+    // Initializing vector with values 
+    vector<int> vect1{1, 2, 3, 4}; 
+  
+    // Declaring new vector 
+    vector<int> vect2; 
+  
+    // Using assignment operator to copy one 
+    // vector to other 
+    vect2 = vect1; 
+
+
     // constructors used in the same order as described above:
     std::vector<int> first;                                // empty vector of ints
     std::vector<int> second (4,100);                       // four ints with value 100

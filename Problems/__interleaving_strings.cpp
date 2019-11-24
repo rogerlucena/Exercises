@@ -6,6 +6,8 @@ using namespace std;
 // https://www.interviewbit.com/problems/interleaving-strings/
 // DP. This problem is interesting to visualize that it can have duplicate subproblems too! (not evident at first glance)
 // For example, if we consider A = “XXX”, B = “XXX” and C = “XXXXXX” (imagine the 2D vector "m" and the recursion tree)
+// obs: for the recursion in fact there was no need for "ic", we analyze here if "A" starting in "ia" and "B" starting 
+// in "ib" can interleave generating "C" starting in "ia+ib" (which is the same as "ic", redundant)
 
 // Given A, B, C, find whether C is formed by the interleaving of A and B.
 

@@ -14,23 +14,17 @@ using namespace std;
 // Inspiration: https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/
 
 // Inspired in quick-sort (making changes in-place here)
-// Worst case O(b^2), but normally O(n)
+// Quick sort: Worst case O(n^2), but normally O(n log n)
 // (to improve the worst case use a median of medians to choose the pivot - divide it in ceil(n/5) gropus of five and sort each one to take the median)
-void swapInts(int &a, int &b) {
-	int tmp = a;
-	a = b;
-	b = tmp;
-}
-
 int partition(vector<int> &A, int l, int r) { // [l, r) -> "r" not inlcuded
 	int i = l;
 	int x = A[r-1];
 	for(int j = l; j < r-1; ++j) {
 		if(A[j] <= x) {
-			swapInts(A[i++], A[j]);
+			swap(A[i++], A[j]);
 		}
 	}
-	swapInts(A[i], A[r-1]);
+	swap(A[i], A[r-1]);
 	return i;
 }
 
