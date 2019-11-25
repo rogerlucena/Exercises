@@ -152,3 +152,21 @@ Inside "remember_set_and_map.cpp"
 - Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
 
 here -> remember_by_heart.cpp -> files with __
+
+Ideia geral para DP:
+    if (caso base)
+        return resposta
+    if (nao tah no cache)
+        calcula e bota no cache
+    return valor do cache
+
+Ideia geral para implementar iterators:
+    constructor
+        state = algo (inicializacao)
+        update
+    next
+        ans = elements[state]
+        update
+        return ans
+    has_next
+        verificar state 

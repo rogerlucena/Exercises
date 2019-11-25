@@ -19,8 +19,8 @@ using namespace std;
 // Now, to find longest repeating subsequence, lets try finding the longest common subsequence between 
 // the string A and itself (LCS(A, A)).
 // The only restriction we want to impose is that you cannot match a character with its replica in the other string.
-// In other words, if S1 and S2 are the replicas of the string for which we want to 
-// find LCS, S1[i] != S2[i] for all index i.
+// In other words, if A and A are the replicas of the string for which we want to 
+// find LCS, A[i1] == A[i2] and i1!=i2 for all i1 and i2 in the answer.
 
 // The longest common subsequence with ia != ib for every char A[ia] == B[ib] in the subsequence
 int LCS(string &A, int ia, string &B, int ib, vector<vector<int>> &m) {

@@ -49,6 +49,7 @@ bool isOneStepAway(const string &s1, const string &s2) {
 	return diff == 1;
 }
 
+// O(N^2) time (build the graph) and worst case O(N^2) space as well (fully connected)
 int solve(string A, string B, vector<string> &C) {
 	unordered_map<string, vector<string>> g;
 	// C.push_back(A);
