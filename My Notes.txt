@@ -153,6 +153,8 @@ Inside "remember_set_and_map.cpp"
 
 here -> remember_by_heart.cpp -> files with __
 
+Think about inverting, calculating, and then iverting again:
+    invert_words Pramp problem (reverse_the_string problem in ./Problems) ...
 Ideia geral para DP:
     if (caso base)
         return resposta
