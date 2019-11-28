@@ -30,7 +30,7 @@ template<typename T> void print_queue(T& q) {
 
 int main() {
     std::priority_queue<int> q1;
-    // priority_queue<int> pq (A.begin(), A.end()); // Initilize O(n) taking a container as input
+    // priority_queue<int> pq(A.begin(), A.end()); // Initilize O(n) taking a container as input
 
     for(int n : {1,8,5,6,3,4,0,9,7,2})
         q1.push(n);
@@ -38,7 +38,7 @@ int main() {
     std::cout << "q1: ";
     print_queue(q1); // defaut is "smaller" comparator, great numbers have better priority then
 
-    std::priority_queue<int, std::vector<int>, std::greater<int> > q2;
+    std::priority_queue<int, std::vector<int>, std::greater<int>> q2;
 
     for(int n : {1,8,5,6,3,4,0,9,7,2})
         q2.push(n);

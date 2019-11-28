@@ -6,7 +6,8 @@ using namespace std;
 
 // "<set>" is a heap based set,  "<map>" is a heap map
 
-// remember, we have std::lower_bound() and upper_bound() in <algorithms> too, like here
+// remember: the default cmp here is smaller too, .begin() -> .end() will be sorted then (the "priority" idea is only for pq! not here)
+// remember: we have std::lower_bound() and upper_bound() in <algorithms> too, like here
 
 // The advantage here, compared to priority_queue for example,
 // is that you can go through the sorted list in linear time,
