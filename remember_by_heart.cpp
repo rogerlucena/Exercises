@@ -101,6 +101,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
 
 // Merge two sorted lists
 // Sentinel idea very useful, like in the swap_nodes_in_pairs problem
+// Can use "ans" as local stack variable here (no destructor defined to delete nexts and so on) 
 ListNode* mergeSorted(ListNode* a, ListNode* b) {
 	ListNode ans(-1);
 	ListNode* tmp = &ans;
