@@ -16,8 +16,8 @@ using namespace std;
 
 // DFS:
 void dfs(v, visited) {
-	visited[v] = true;
 	doSomething(v);
+	visited[v] = true;
 	for(neigh : neighbors(b)) {
 		if(!visited(neigh)) {
 			dfs(neigh);
@@ -52,7 +52,7 @@ void bfs_with_depth(int source) {
 		doSomething(v, depth);
 		for(neigh : neighbors(v)) {
 			if(!enqueued[neigh]) {
-				q.push((neigh,  depth + 1));
+				q.push({neigh,  depth + 1});
 				enqueued[neigh] = true;
 			}
 		}
