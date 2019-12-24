@@ -97,7 +97,8 @@ Syntax: delete ptr; free(ptr);
 -- Graph representations:
 Adjacency Matrix: 
     Pros: O(1) to see if an edge
-    Cons: Consumes O(V^2) space (even if sparse), O(V^2) to add a new vertex too (if you have to copy everything into a new matrix; in this case, think about amortized to improve time efficiency)
+    Cons: Consumes O(V^2) space (even if sparse), O(V^2) to add a new vertex too (if you have to 
+          copy everything into a new matrix; in this case, think about amortized to improve time efficiency)
 Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case
@@ -131,7 +132,7 @@ Inside "remember_set_and_map.cpp"
     se precisar de 1 min em silêncio, PEçA! Comunique isso!
     problema aberto? pede a API, pensa no caso mais simple possível (squared room with discret cells), se 
     errado ele te corrige
-3) Brute-force and complexities (importante falar logo o brute-force logo! - nada bom se ele achar que nem o brute vc sabe) 
+3) Brute-force and complexities (importante falar o brute-force logo! - nada bom se ele achar que nem o brute vc sabe) 
     then optimze! (no coding yet!)
     SE VC estah pensando em uma estrategia, mas viu um possivel problema, FALE, ele pode te dizer como
     resolver (eg: heaps tamanhos mto diferents no pb da median de um stream), ou que nem eh possivel ter esse problema
@@ -158,6 +159,7 @@ here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (te
 
 Think about inverting, calculating, and then iverting again:
     invert_words Pramp problem (reverse_the_string problem in ./Problems) ...
+    
 Ideia geral para DP:
     if (caso base)
         return resposta

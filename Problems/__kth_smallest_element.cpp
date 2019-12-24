@@ -10,6 +10,7 @@ using namespace std;
 // https://www.interviewbit.com/problems/kth-smallest-element-in-the-array/
 
 // Find the kth smallest element in an unsorted array of non-negative integers.
+// (best time complexity possible)
 
 // Inspiration: https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/
 

@@ -2,6 +2,9 @@
 #include <queue>
 #include <vector>
 #include <iostream>
+#include <set>
+
+using namespace std;
 
 // top, push, pop
 // Complexity of logn (worst case) to remove(fst) and to add (newElement)
@@ -79,3 +82,34 @@ http://en.cppreference.com/w/cpp/container/priority_queue
         pq.pop();
     }
 */
+
+// Code testing syntax:
+// Set and Priority Queue
+int main2() {
+	auto cmp = [](const string &a, const string &b) { return a.size() < b.size(); };
+    set<string, decltype(cmp)> s(cmp);
+
+	s.insert("a");
+	s.insert("abc");
+	s.insert("ab");
+
+	cout << "C++ set:" << endl;
+	for(string st : s) {
+		cout << st << endl;
+	}
+	// a
+	// ab
+	// abc
+	cout << endl;
+
+	cout << "Priority queue:" << endl;
+	priority_queue<string, vector<string>, decltype(cmp)> pq(cmp, {"a", "abc", "ab"});
+	for(; !pq.empty(); pq.pop()) {
+		cout << pq.top() <<  endl;
+	}
+	// abc
+	// ab
+	// a
+
+	return 0;
+}

@@ -142,7 +142,7 @@ int partition (vector<int> &arr, int low, int high) {
 
     swap(arr[i + 1], arr[high]); // put pivot in its right position
 
-    return i + 1;  
+    return i + 1; // final position of the pivot
 }
   
 // The main function that implements QuickSort  

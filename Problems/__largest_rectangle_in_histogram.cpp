@@ -7,7 +7,7 @@ using namespace std;
 // https://www.interviewbit.com/problems/largest-rectangle-in-histogram/
 
 // Given an array of integers A of size N. A represents a histogram i.e A[i] denotes height of
-// the ith histogram’s bar. Width of each bar is 1.
+// the ith histogram’s bar. Width of each bar is 1. Hiw big is the largest rectangle?
 
 // Example:
 // Input:
