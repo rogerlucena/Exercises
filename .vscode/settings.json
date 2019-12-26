@@ -93,6 +93,7 @@
         "valarray": "cpp",
         "variant": "cpp",
         "cuchar": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "__functional_03": "cpp"
     }
 }
