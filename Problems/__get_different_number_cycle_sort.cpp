@@ -2,6 +2,8 @@
 #include <vector>
 #include <unordered_set>
 
+#include "tools.cpp"
+
 using namespace std;
 
 // https://www.pramp.com/challenge/aK6V5GVZ9MSPqvG1vwQp
@@ -13,9 +15,9 @@ using namespace std;
 // in-place solution, cycle-sort
 int getDifferentNumber(vector<int> &arr) {
 	for(int i = 0; i < arr.size(); ++i) {
-		int tmp = arr[i];
-		while(tmp < arr.size() && arr[tmp] != tmp) {
-			swap(tmp, arr[tmp]);
+		// int tmp = arr[i];
+		while(arr[i] < arr.size() && arr[i] != i) {
+			swap(arr[i], arr[arr[i]]);
 		}
 	}
 
@@ -45,8 +47,9 @@ int getDifferentNumberNotInplace(const vector<int> &arr) {
 }
 
 int main() {
-  vector<int> v ={0, 1, 2, 3}; // ans: 4
+  vector<int> v ={0, 2, 3, 4, 1}; // ans: 5
   cout << "Answer: " << getDifferentNumber(v) << endl;
+  printVector(v);
   
   return 0;
 }

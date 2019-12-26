@@ -66,6 +66,7 @@ int maximumGap(const vector<int> &A) {
 	return ans;
 }
 
+// Best solution, in-place:
 int maximumGapImproved(const vector<int> &A) {
 	if(A.size() == 0) {
 		return -1;
@@ -86,7 +87,7 @@ int maximumGapImproved(const vector<int> &A) {
 	for(int i = newA.size()-2; i >= 0; --i) { 
 		pair<int, int> p = newA[i];
 		ans = max(ans, currIndexMax - p.second);
-		currIndexMax = max(currIndexMax, p.second);
+		currIndexMax = max(currIndexMax, p.second); // generating vector "indexMax" on the fly
 	}
 
 	return ans;

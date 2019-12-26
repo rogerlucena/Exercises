@@ -11,7 +11,8 @@ using namespace std;
 // Use Djikstra only if weighted edges (and no negative edges!)
 // Otherwise, a simple BFS will do the work :)
 
-// Given two words A and B, and a dictionary, C, find the length of shortest transformation sequence from A to B, such that:
+// Given two words A and B, and a dictionary, C, find the length of shortest transformation sequence 
+// from A to B, such that:
 
 // You must change exactly one character in every transformation.
 // Each intermediate word must exist in the dictionary.

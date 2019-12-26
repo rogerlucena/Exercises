@@ -18,7 +18,7 @@ using namespace std;
 // is O(N log N) (otherwise we would have found a faster way of sorting!)
 // (unless it's being built from a sequence that's already ordered - in which case it is also linear).
 
-// remember, here we cannot do operations with the iterators such 
+// remember, for maps and sets we cannot do operations with the iterators such 
 // as "m.upper_bound(n) - m.begin()", or "m.begin()+1" (bidirectional iterators do not allow it), only ++ or -- 
 
 // "set/map/multiset" are normally implemented over binary search trees (AVL or RB trees)
@@ -30,7 +30,7 @@ using namespace std;
 int main() {
     // With a personalized comparator:
     auto cmp = [](const string &a, const string &b) { return a.size() < b.size(); };
-    map<string, string, decltype(cmp)> s(cmp); // similar and set (without de 2nd parameter <>) 
+    map<string, string, decltype(cmp)> m(cmp); // similar and set (without de 2nd parameter <>) 
                                                       // and priority_queue (with a parameter for the underlying container I believe)
 
     map<int, int> A; // O(1) declaration which declares an empty tree map.

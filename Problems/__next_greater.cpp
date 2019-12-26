@@ -7,6 +7,7 @@
 using namespace std;
 
 // https://www.interviewbit.com/problems/nextgreater/
+// Idea: use stack to do it in-place
 
 // Given an array, find the next greater element G[i] for every element A[i] in the array. The Next greater Element for an 
 // element A[i] is the first greater element on the right side of A[i] in array.
