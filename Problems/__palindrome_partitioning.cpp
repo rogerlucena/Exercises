@@ -7,6 +7,8 @@
 using namespace std;
 
 // https://www.interviewbit.com/problems/palindrome-partitioning/
+// good example of how to build an elegant recursion
+// current.push_back() and current.pop_back()
 
 // Given a string s, partition s such that every string of the partition is a palindrome.
 // Return all possible palindrome partitioning of s.

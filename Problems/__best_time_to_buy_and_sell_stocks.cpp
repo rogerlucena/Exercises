@@ -32,7 +32,8 @@ using namespace std;
 // Explanation:
 //     Buy the stock on day 0, and sell it on day 2.
 
-// Just process from the end to the beginning, always having a variable for the max element to the right, and for the max diff 
+// Just process from the end to the beginning, always having a variable for the max element to 
+// the right, and for the max diff 
 int maxProfit(const vector<int> &A) {
 	int size = A.size();
 	if(size < 2) {

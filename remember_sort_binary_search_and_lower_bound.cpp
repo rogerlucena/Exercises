@@ -5,7 +5,8 @@
 
 #include "tools.cpp"
 
-bool myfunction (int i,int j) { return (i>j); } // the numbers satisfying this come first after the sort (default is <)
+// bool myfunction (int i,int j) { return (i>j); } // the numbers satisfying this come first after the sort (default is <), works declaring myfunction this way
+auto myfunction = [](int i,int j) { return (i>j); };
 
 // Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};

@@ -25,6 +25,7 @@ using namespace std;
 // [2, 2]
 // ]
 
+// principle: every element can occupy the current first position, call recursion from each case on
 void auxSubsetsWithDup(vector<int> &A, vector<int> &currVector, int index, vector<vector<int>> &ans) {
 	ans.push_back(currVector);
 

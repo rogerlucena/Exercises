@@ -20,7 +20,7 @@ using namespace std;
 
 ListNode* mergeKLists(vector<ListNode*> &A) {
 	auto cmp = [](const ListNode* a, const ListNode* b) -> bool {return a->val > b->val;};
-	priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> q(cmp, A);
+	priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> q(cmp, A); // O(k) in time, Floyd's algorithm
 	
 	ListNode ans(-1); // The destructor could delete ans.next? Yes (end of scope) We do not want that, works here because no destructor
 	ListNode* tmp = &ans;
@@ -32,7 +32,7 @@ ListNode* mergeKLists(vector<ListNode*> &A) {
 		tmp->next = next;
 		next = next->next;
 		if(next) {
-			q.push(next);
+			q.push(next); // O(log k) in time
 		}
 		tmp = tmp->next;
 	}

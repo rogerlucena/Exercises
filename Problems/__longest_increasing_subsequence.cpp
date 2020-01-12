@@ -26,7 +26,8 @@ using namespace std;
 //     The sequence : [1, 2, 5]
 
 // DP: try to divide into smaller recursive problems, if overlaps -> memoization
-
+// go from right to left, iterate through the elements to the right bigger than "curr" using "memo", 
+// save the max size increasing for every element
 int lis(const vector<int> &A) {
 	unordered_map<int, int> m;
 
