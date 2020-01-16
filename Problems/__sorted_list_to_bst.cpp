@@ -7,6 +7,7 @@ using namespace std;
 
 // https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
 // key interest here: see the space complexity being defined only by the recursion stack max size
+// 		do not forget the size of the rec stack on an interview!! if possible, say tail recursive
 
 // Convert Sorted List to Binary Search Tree
 // Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.

@@ -6,43 +6,52 @@
 
 using namespace std;
 
-// https://www.interviewbit.com/problems/word-ladder-i/
-// Think in graphs here!
-// Use Djikstra only if weighted edges (and no negative edges!)
-// Otherwise, a simple BFS will do the work :)
+// https://www.pramp.com/challenge/MW75pP53wAtzNPVLPG0d
+// 	(Similar to https://www.interviewbit.com/problems/word-ladder-i/)
+// 	Think in graphs here!
+// 	Use Djikstra only if weighted edges (and no negative edges! remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html)
+// 	Otherwise, a simple BFS will do the work :)
+//	 remember here: understand first well the problem, ask questions e nao se afobar!!
+//   target must be in "words", but not "source" (see example 2), Attention!!
+//   complexity: do not forget to consider the complexity "k" of "isOneStepAway"!
 
-// Given two words A and B, and a dictionary, C, find the length of shortest transformation sequence 
-// from A to B, such that:
+// Shortest Word Edit Path
+// Given two words source and target, and a list of words words, find the length of the
+// shortest series of edits that transforms source to target.
 
-// You must change exactly one character in every transformation.
-// Each intermediate word must exist in the dictionary.
-// Note:
+// Each edit must change exactly one letter at a time, and each intermediate word
+// (and the final target word) must exist in words.
 
-// Return 0 if there is no such transformation sequence.
-// All words have the same length.
-// All words contain only lowercase alphabetic characters.
+// If the task is impossible, return -1.
 
-// Constraints:
-// 1 <= length(A), length(B), length(C[i]) <= 25
-// 1 <= length(C) <= 5e3
+// Examples:
 
-// Example :
-// Input:
-//     A = "hit"
-//     B = "cog"
-//     C = ["hot", "dot", "dog", "lot", "log"]
-// Output:
-//     5
-// Explanation:
-//     "hit" -> "hot" -> "dot" -> "dog" -> "cog"
+// source = "bit", target = "dog"
+// words = ["but", "put", "big", "pot", "pog", "dog", "lot"]
+// output: 5
+// explanation: bit -> but -> put -> pot -> pog -> dog has 5 transitions.
 
-bool isOneStepAway(const string &s1, const string &s2) {
+// source = "no", target = "go"
+// words = ["to"]
+// output: -1
+
+bool isOneStepAway(const string &s1, const string &s2)
+{
+	if (s1.size() != s2.size())
+	{
+		return false;
+	}
+
 	int diff = 0;
-	for(int i = 0; i < s1.size(); ++i) {
-		if(s1[i] != s2[i]) {
+	for (int i = 0; i < s1.size(); ++i)
+	{
+		if (s1[i] != s2[i])
+		{
 			++diff;
 		}
-		if(diff > 1) {
+
+		if (diff > 1)
+		{
 			return false;
 		}
 	}
@@ -50,57 +59,68 @@ bool isOneStepAway(const string &s1, const string &s2) {
 	return diff == 1;
 }
 
-// O(N^2) time (build the graph) and worst case O(N^2) space as well (fully connected)
-int solve(string A, string B, vector<string> &C) {
-	unordered_map<string, vector<string>> g;
-	// C.push_back(A);
-	// C.push_back(B);
+// O(N^2 * k) time (build the graph, k is the max size of a word, remember it!)
+// and space O(N^2) worst case (fully connected)
+int shortestWordEditPath(const string &source,
+						 const string &target,
+						 const vector<string> &words)
+{
+	unordered_map<string, unordered_set<string>> g;
 
-	for(int i = 0; i < C.size(); ++i) {
-		if(g.find(C[i]) == g.end()) {
-			g[C[i]] = {};
-		}
-		for(int j = i+1; j < C.size(); ++j) {
-			if(isOneStepAway(C[i], C[j])) {
-				g[C[i]].push_back(C[j]);
-				if(g.find(C[j]) == g.end()) {
-					g[C[j]] = {};
-				}
-				g[C[j]].push_back(C[i]);
+	vector<string> nodes(words);
+	nodes.push_back(source);
+
+	for (int i = 0; i < nodes.size(); ++i)
+	{
+		string from = nodes[i];
+		for (int j = i + 1; j < nodes.size(); ++j)
+		{
+			string to = nodes[j];
+			if (isOneStepAway(from, to))
+			{
+				g[from].insert(to);
+				g[to].insert(from);
 			}
 		}
 	}
 
-	queue<pair<string, int>> q; // node and level
+	queue<pair<string, int>> q;
+	q.push({source, 0});
 	unordered_set<string> enqueued;
-	q.push({A, 0});
-	enqueued.insert(A);
-	while(!q.empty()) {
+	enqueued.insert(source);
+
+	while (!q.empty())
+	{
 		pair<string, int> p = q.front();
 		q.pop();
-		string node = p.first;
-		cout << node << endl;
-		int level = p.second;
-		if(node == B) {
-			return level+1; // length of the complete path
+		int d = p.second;
+		string n = p.first;
+
+		if (n == target)
+		{
+			return d;
 		}
-		for(string neigh : g[node]) {
-			if(enqueued.find(neigh) == enqueued.end()) {
-				q.push({neigh, level+1});
+
+		for (string neigh : g[n])
+		{
+			if (enqueued.find(neigh) == enqueued.end())
+			{
+				q.push({neigh, d + 1});
 				enqueued.insert(neigh);
 			}
-		}	
+		}
 	}
 
-	return 0;
+	return -1;
 }
 
+int main()
+{
+	string A = "bit";
+	string B = "dog";
+	vector<string> C = {"but", "put", "big", "pot", "pog", "dog", "lot"}; // ans: 5
 
-int main() {
-	string A = "ymain";
-	string B = "oecij";
-    vector<string> C = {"ymann", "yycrj", "oecij", "ymcnj", "yzcrj", "yycij", "xecij", "yecij", "ymanj", "yzcnj", "ymain"};
-	cout << "Answer: " << solve(A, B, C) << endl;
+	cout << "Answer: " << shortestWordEditPath(A, B, C) << endl;
 
 	return 0;
 }

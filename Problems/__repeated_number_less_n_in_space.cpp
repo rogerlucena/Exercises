@@ -12,7 +12,7 @@ using namespace std;
 // Given a read only array of n + 1 integers between 1 and n, find one number 
 // that repeats in linear time using **less than O(n) space** and traversing the stream sequentially O(1) times.
 
-// Genius idea:
+// Genius idea (has to write, in-place):
 // traverse the list for i=0 to n-1 elements {
 //   check for sign of A[abs(A[i])] ;
 //   if positive then
@@ -20,7 +20,7 @@ using namespace std;
 //   else  // i.e., A[abs(A[i])] is negative
 //      this   element (ith element of list) is a repetition
 // }
-// Fropm: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
+// From: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/
 
 // or, for every bit, think about parity
 
@@ -52,7 +52,7 @@ int repeatedNumber(const vector<int> &A) {
 	// cout << "nBuckets: " << nBuckets << endl;
 	// cout << "m: " << m << endl;
 
-	vector<int> intervalsCount (nBuckets, 0);
+	vector<int> intervalsCount (nBuckets, 0); // O(sqrt(n)) in space
 
 	for(int el : A) {
 		++intervalsCount[(el-1)/l];
@@ -74,7 +74,7 @@ int repeatedNumber(const vector<int> &A) {
 	// cout << "vector intervalsCount: ";
 	// printVector(intervalsCount);
 
-	unordered_set<int> s = {};
+	unordered_set<int> s = {}; // O(sqrt(n)) in space
 
 	for(int el : A) {
 		if(el < intervalDown || el > intervalUp) {
