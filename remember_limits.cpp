@@ -6,7 +6,7 @@ using namespace std;
 // Complete list here: https://www.geeksforgeeks.org/c-data-types/
 // int: 4 bytes, -2*10^9 to 2*10^9 (max is a bit more) 
 // long: 8 bytes, -9*10^18 to 9*10^18 (max is a bit more)
-// long long is at list as large as long, here we see that it is the same as long
+// long long is at least as large as long, here we see that it is the same as long
 
 int main() {
     cout << "Hello, World!" << endl;

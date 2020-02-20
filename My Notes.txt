@@ -42,7 +42,7 @@ https://www.geeksforgeeks.org/quick-sort/
 https://www.geeksforgeeks.org/merge-sort/
 
 - Counting Sort (auxiliar array - 0 to 100 ages, O(n) time) and Radix Sort (O(kn) where k = log(max_el))
-They are better exaplined on the Cracking the Coding Interview
+They are better explained on the Cracking the Coding Interview
 
 -- Interesting way of calculating binomial coeffs:
 https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
@@ -86,7 +86,7 @@ If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1
 
 -- Dynamic Programming
 1) Try to divide into smaller recursive problems, if overlaps -> memoization
-2) See space and time, try to optmize
+2) See space and time, try to optimize
 
 -- Difference between Delete and Free:
 Delete is an operator while Free is a function. Delete frees the allocated memory and also calls 
@@ -123,7 +123,7 @@ Inside "remember_set_and_map.cpp"
          quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
-
+- remember classes, inheritance, abstract, virtual (geeksforgeeks)
 
 -- Lembrar, passo a passo:
 1) Faz um exemplo simples pra ver se realmente entendeu, se necessário
@@ -151,14 +151,20 @@ Inside "remember_set_and_map.cpp"
     nao pega o input do problema original se muito grande se nao muito tempo testando!
         tempo valioso para follow ups ou outros problemas! simplifica o input para menor e roda nele se quiser (lembra feedback do pramp - careca irwin)
 6) No final: projeto favorito? algo que você mudaria em seu trabalho? (perguntas fora do macaco fazem lembrar de você)
-             parte mais desafiadora lá? melhor parte comparado com as outras antes?
+             what brought you here compared to others?
              com o que você trabalha? o que você daria como conselho para alguém se formando agora em computacão?
+             o que diria pra voce mesmo com minha idade nessa mesma fase da carreira?
+             parte mais desafiadora lá? melhor parte comparado com as outras antes?
              qual o bug mais interessante em que você já se encontrou? procedimento para deploy em prod?
 
 
 - Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
     Nao inicializar alguma variavel, DFS, BFS, update step for not infinity loop inside while
 - Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
+
+se em algum momento viu um edge case:
+    pode comentar em voz alta, colocar um comentario pra lidar depois, ou se simples resolver logo
+    pode falar de edges cases em voz alta na analise do algo mesmo antes de codar tb
 
 here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (team match tips as well)
 

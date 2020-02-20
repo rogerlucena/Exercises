@@ -18,7 +18,7 @@ using namespace std;
 void dfs(v, visited) {
 	doSomething(v);
 	visited[v] = true;
-	for(neigh : neighbors(b)) {
+	for(neigh : neighbors(v)) {
 		if(!visited(neigh)) {
 			dfs(neigh);
 		}
@@ -71,7 +71,7 @@ ListNode* reverseList(ListNode* h) {
 		curr->next = prev;
 		prev = curr;
 		curr = next;
-	}	
+	}
 	h = prev;
 
 	return h;
@@ -157,8 +157,8 @@ void quickSort(vector<int> &arr, int low, int high) {
         // Separately sort elements before partition and after partition  
         quickSort(arr, low, pi - 1);  
         quickSort(arr, pi + 1, high);  
-    }  
-}    
+    }
+}
 
 int main(void) {
 	cout << "QuickSort:" << endl;
