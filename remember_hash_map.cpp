@@ -19,7 +19,7 @@ using namespace std;
 // OR mymap.erase(mymap.begin(), mymap.end()) - erase everything
 
 template <class T1, class T2>
-class myPair{
+class myPair {
     public:
     T1 t1_;
     T2 t2_;

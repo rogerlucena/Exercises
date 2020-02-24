@@ -97,7 +97,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
   
     // if we reach here, then element was not present 
     return -1; 
-} 
+}
 
 // Merge two sorted lists
 // Sentinel idea very useful, like in the swap_nodes_in_pairs problem
