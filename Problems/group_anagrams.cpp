@@ -22,6 +22,12 @@
 
 using namespace std;
 
+// Time Complexity: O(NK), where N is the length of strs, and K is the maximum length of a 
+// string in strs. Counting each string is linear in the size of the string, and we count every string.
+// (REMEMBER K!!! important to remember the non negligible dependency on the max length K!)
+
+// Space Complexity: O(NK), the total information content stored in ans.
+
 string genSignature(string s) {
     vector<int> occ(26, 0);
     string signature;
@@ -36,6 +42,7 @@ string genSignature(string s) {
             signature.append(aux.str());
         }
     }
+    // s.append(to_string(b)); // 'append' complexity is unspecified, can be linear in the new size of str, b = 25;
 
     return signature;
 }

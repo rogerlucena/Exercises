@@ -170,7 +170,8 @@ here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (te
 
 Think about inverting, calculating, and then inverting again:
     invert_words Pramp problem (reverse_the_string problem in ./Problems) ...
-    
+Remember std::to_string() method and s.append() in the place of ostringstream, for example
+
 Ideia geral para DP:
     if (caso base)
         return resposta
