@@ -111,6 +111,9 @@ Inside "remember_set_and_map.cpp"
 "set/map/multiset" are normally implemented over binary search trees (AVL or RB trees)
 "priority_queues" are implemented over balanced heaps (!= than BSTs)
 
+-- Interesting:
+- Perform a modulus operation with negative numbers -> (a % b + b) % b (eg in string_shifts problem)
+
 ### impt ###
 
 -- Dicas Carolzinha e outras (top 3 coisas pra estudar)
