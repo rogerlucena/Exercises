@@ -3,13 +3,15 @@
 
 using namespace std;
 
-void printVector(const vector<int> &arr) {
+template<class T>
+void printVector(const vector<T> &arr) {
 	for(int i = 0; i < arr.size(); i++) {
 		cout << arr[i];
 		if(i < arr.size() - 1) {
 			cout << ", ";
 		}
 	}
+	
 	cout << endl;
 }
 
@@ -24,7 +26,8 @@ void printVector(const vector<T> &v, function<void(const T&)>  printEl) {
 	cout << endl;
 }
 
-void printMatrix(const vector<vector<int>> &m) {
+template<class T>
+void printMatrix(const vector<vector<T>> &m) {
 	for(int i = 0; i < m.size(); i++) {
 		printVector(m[i]);
 	}
