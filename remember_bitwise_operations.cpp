@@ -23,6 +23,9 @@ int main() {
 	x = x & (x-1); // will clear the lowest set bit of x
 	cout << (x & ~(x-1)) << endl; // extracts the lowest set bit of x (all others are clear)
 	x = x | (x + 1); // x with the lowest cleared bit set.
+
+	x = x & (~( (1 << n) - 1)); // clear all bits from postitions 0 to n-1 (right to left)
+
 	x = x & (x + (1 << n)); // x with the run of set bits (possibly length 0) starting at bit n cleared.
 	x = x | (x - (1 << n)); // x, with the run of cleared bits (possibly length 0) starting at bit n set.
 	cout << ((x >> 2) & 1); // shows the bit at the 3rd position of "x"
