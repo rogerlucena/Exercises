@@ -71,6 +71,10 @@ public:
 };
 
 int main() {
+	unordered_map<int,int> m;
+	m[2]++; // default value seems to be 0
+	cout << "v: " << m[2] << endl; // 1
+
 	deque<int> dq = {1, 2};
 	deque<int>::iterator it = dq.begin();
 	deque<int>::iterator it2 = dq.begin()+1;
