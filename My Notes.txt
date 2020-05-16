@@ -111,6 +111,14 @@ Inside "remember_set_and_map.cpp"
 "set/map/multiset" are normally implemented over binary search trees (AVL or RB trees)
 "priority_queues" are implemented over balanced heaps (!= than BSTs)
 
+-- Different between "list" and "deque"
+"deque" uses a dynamic array, "list" is a doubly linked list
+"deque" provides random acess and has almost same interface as a vector
+"list" fast insertion and deletion in any position, "deque" only in end/beginning (middle is linear)
+"deque" with insert or delete in any position other than end/beginning invalidates all pointers/iterators/references 
+    to elements of it, differently than "list", see lru_cache problem
+https://stackoverflow.com/questions/1436020/whats-the-difference-between-deque-and-list-stl-containers
+
 -- Interesting:
 - Perform a modulus operation with negative numbers -> (a % b + b) % b (eg in string_shifts problem)
 

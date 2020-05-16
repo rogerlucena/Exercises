@@ -14,7 +14,7 @@ using namespace std;
 // - Inverse a linked list in place
 // - Merge two linked lists (alternating positions)
 
-// std::list
+// std::list -> is a doubly linked list (can operate with pointers, different than deque - see lru_cache problem)
 // .front(), .back(), .clear(), push_back, push_front, pop_back, pop_front
 //      void remove (const value_type& val); -> remove elemnts with that value
 //      iterator erase (iterator position);

@@ -6,6 +6,7 @@
 using namespace std;
 
 // https://www.interviewbit.com/problems/lru-cache/
+// old LRU with heap
 
 // Design and implement a data structure for LRU (Least Recently Used) cache. It should support the following operations: get and set.
 
