@@ -119,6 +119,16 @@ Inside "remember_set_and_map.cpp"
     to elements of it, differently than "list", see lru_cache problem
 https://stackoverflow.com/questions/1436020/whats-the-difference-between-deque-and-list-stl-containers
 
+-- SQL vs NoSQL
+SQL is for structured data not changing with time, has a wide support, vendors, mature techlogy, better for complex queries,
+    faster for joins, relations between datapoints are more relevant (table based - MySQL, PostgreSQL). Vertically scalable.
+    specialized to serve business operations, financial transactions, asset management and personal data management.  
+    SQL systems best support structured data requiring precision.  Historically designed and optimized to assure transaction consistency.
+NoSQL is open-source, relies on the community, better for big data applications, more scalable, low-level languages,
+    faster write/read 1 datapoint (graphs, documents based - MongoDB, columns based, key values - Redis). Horizontally scalable.
+    Specialized to support massively parallel and geographically distributed database systems, such as web applications.
+https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/?ref=rp
+
 -- Interesting:
 - Perform a modulus operation with negative numbers -> (a % b + b) % b (eg in string_shifts problem)
 
