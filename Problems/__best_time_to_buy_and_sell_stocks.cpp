@@ -34,7 +34,7 @@ using namespace std;
 
 // Just process from the end to the beginning, always having a variable for the max element to 
 // the right, and for the max diff 
-int maxProfit(const vector<int> &A) {
+int maxProfitSimple(const vector<int> &A) {
 	int size = A.size();
 	if(size < 2) {
 		return 0;
@@ -84,7 +84,8 @@ int maxProfit(vector<int> &prices) {
 
 int main() {
 	// vector<int> A = {1, 2}; // ans: 1
-	vector<int> A = {1, 4, 5, 2, 4}; // ans: 4
+	vector<int> A = {1, 4, 5, 2, 4}; // ans: 4 for simple, 6 for complex
+	// vector<int> A = {7, 1, 5, 3, 6, 4}; // ans: 7 for complex
 	cout << "Answer: " << maxProfit(A) << endl;
 
 	return 0;

@@ -15,12 +15,28 @@ using namespace std;
 
 
 // DFS:
-void dfs(v, visited) {
+void dfs(v, &visited) {
 	doSomething(v);
 	visited[v] = true;
 	for(neigh : neighbors(v)) {
 		if(!visited(neigh)) {
-			dfs(neigh);
+			dfs(neigh, visited);
+		}
+	}
+}
+
+// Iterative DFS (but prefer the recursive one - simpler).
+void dfs(int src) {
+	s.push(v);
+	while(!s.empty()) {
+		v = s.top();
+		s.pop();
+		do(v);
+		visited[v] = true;
+		for(neigh : neighbors[v]) {
+			if(!visited[neigh]) {
+				s.push(neigh);
+			}
 		}
 	}
 }
