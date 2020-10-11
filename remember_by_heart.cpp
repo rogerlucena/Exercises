@@ -19,13 +19,14 @@ void dfs(v, &visited) {
 	doSomething(v);
 	visited[v] = true;
 	for(neigh : neighbors(v)) {
-		if(!visited(neigh)) {
+		if(!visited[neigh]) {
 			dfs(neigh, visited);
 		}
 	}
 }
 
 // Iterative DFS (but prefer the recursive one - simpler).
+// (difference is that it goes to the rightmost child first, instead of the leftmost first as above)
 void dfs(int src) {
 	s.push(v);
 	while(!s.empty()) {
