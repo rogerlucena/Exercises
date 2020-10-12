@@ -25,27 +25,28 @@ using namespace std;
 
 // Note: The length of path between two nodes is represented by the number of edges between them.
 
+// See _diameter_of_tree.cpp solution with 2 DFSs as well.
+
 // The idea below is to go through each node and analyze is as the "most top node" of the diameter path,
 // keeping track of the maximum diameter as we go with the DFS
 // O(N) in time and O(N) is space (max size of rec stack)
-int height(TreeNode* root, int &ans) {
+int height(TreeNode* root, int &ans) { // number of edges of the longest path to a leaf
 	if(!root) {
-		return 0;
+		return -1;
 	}
 
 	int L = height(root->left, ans);
 	int R = height(root->right, ans);
 
-	ans = max(ans, L+R+1);
+	ans = max(ans, L+R+2); // test it as the "top most node"
 	return 1 + max(L, R);
-
 }
 
 int diameterOfBinaryTree(TreeNode* root) {
-	int ans = 1;
+	int ans = 0;
 	height(root, ans);
 
-	return ans-1; // the base case used here (null root) has not a number of edges (ans) of 0, the leaf node does (base case offset)
+	return ans; // remember: previously we had a base case offset here -> we returned "ans-1"
 }
 
 int main() {

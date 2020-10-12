@@ -23,14 +23,13 @@ using namespace std;
 
 int findMaxLength(vector<int> &nums) {
 	int acc = 0;
-	unordered_map<int, int> seen;
 	int maxLength = 0;
+	unordered_map<int, int> seen;
+	seen[0] = -1;
 
 	for(int i = 0; i < nums.size(); ++i) {
 		acc += (nums[i] == 0 ? -1 : 1);
-		if(acc == 0) {
-			maxLength = i+1;
-		} else if(seen.find(acc) != seen.end()) {
+		if(seen.find(acc) != seen.end()) {
 			maxLength = max(maxLength, i - seen[acc]);
 		} else {
 			seen[acc] = i;
