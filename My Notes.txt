@@ -100,6 +100,10 @@ For vectors use vector::swap (u.swap(v)) method: O(1) instead of O(n) with std:s
 (both above work even for vectors of different sizes)
 https://www.geeksforgeeks.org/difference-between-stdswap-and-stdvectorswap/
 
+-- Remember: If "v" is an empty vector -> v.size()-1: 18446744073709551615
+Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble!
+Treat this edge case separated (maybe along with v.size() == 1) at the beginning!
+
 -- Graph representations:
 Adjacency Matrix: 
     Pros: O(1) to see if an edge
@@ -109,7 +113,7 @@ Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case
 
--- Different between "set/multiset" and "priority queues":
+-- Difference between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
 
 -- For maps and sets we cannot do operations with the iterators such as:
@@ -117,7 +121,7 @@ Inside "remember_set_and_map.cpp"
 "set/map/multiset" are normally implemented over binary search trees (AVL or RB trees)
 "priority_queues" are implemented over balanced heaps (!= than BSTs)
 
--- Different between "list" and "deque"
+-- Difference between "list" and "deque"
 "deque" uses a dynamic array, "list" is a doubly linked list
 "deque" provides random acess and has almost same interface as a vector
 "list" fast insertion and deletion in any position, "deque" only in end/beginning (middle is linear)
@@ -144,6 +148,8 @@ https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/?ref=rp
 - Linked Lists (70% das questões dela)
 - Percurso em grafo, DFS/BFS (dijkstra, minimum path, red-black & AVL trees - não necessário)
 - Recursão, DP
+
+Dicas forum: graph questions and string manipulations are common.
 
 - coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
          binary search, merge two sorted linked lists (in remember_liked_lists.cpp), não pembe em DFS/BFS! (code imediato!),
