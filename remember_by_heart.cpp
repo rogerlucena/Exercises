@@ -98,7 +98,7 @@ ListNode* reverseList(ListNode* h) {
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
 int binarySearch(const vector<int> &arr, int l, int r, int x) { 
     while (l <= r) { 
-        int m = l + (r - l) / 2; 
+        int m = l + (r - l) / 2; // to avoid int overflow!
   
         // Check if x is present at mid 
         if (arr[m] == x) {
