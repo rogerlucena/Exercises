@@ -35,6 +35,34 @@ using namespace std;
 
 // Lessons: to do not deal with substrings generation, work with indexes!
 // think simply, one step at a time, and memoize repeated work
+int minDistance(string A, string B) {
+	int n = A.size();
+	int m = B.size();
+	vector<vector<int>> dp(n+1, vector<int>(m+1, 0));
+
+	for(int i = 0; i <= n; ++i) {
+		dp[i][0] = i;
+	}
+	for(int j = 0; j <= m; ++j) {
+		dp[0][j] = j;
+	}
+
+	for(int i = 1; i <= n; ++i) {
+		for(int j = 1; j <= m; ++j) {
+			if(A[i-1] == B[j-1]) {
+				dp[i][j] = dp[i-1][j-1];
+			}
+			else {
+				dp[i][j]= 1 + min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+			}
+		}
+	}
+
+	return dp[n][m]; // taking the n first chars of A and the m first chars of B.
+}
+
+// Lessons: to do not deal with substrings generation, work with indexes!
+// below we have my solution, DP memoization + recursive stack size in memory too (but sill O(n*m) in memory).
 int editDistance(string &s1, int index1, string &s2, int index2, vector<vector<int>> &m) {
 	if(m[index1][index2] != -1) {
 		return m[index1][index2];
@@ -55,7 +83,7 @@ int editDistance(string &s1, int index1, string &s2, int index2, vector<vector<i
 	return m[index1][index2];
 }
 
-int minDistance(string A, string B) {
+int myMinDistance(string A, string B) {
 	if(A.size() == 0 || B.size() == 0) {
 		return max(A.size(), B.size());
 	}

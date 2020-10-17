@@ -29,7 +29,8 @@ using namespace std;
 
 // The idea below is to go through each node and analyze is as the "most top node" of the diameter path,
 // keeping track of the maximum diameter as we go with the DFS
-// O(N) in time and O(N) is space (max size of rec stack)
+// Time Complexity: O(N)O(N). We visit every node once.
+// Space Complexity: O(N)O(N), the size of our implicit call stack during our depth-first search.
 int height(TreeNode* root, int &ans) { // number of edges of the longest path to a leaf
 	if(!root) {
 		return -1;
