@@ -94,6 +94,12 @@ the destructor of the class in c++ while free() does not calls any destructor an
 memory set with malloc in C. Free() uses C run time heap whereas Delete may be overloaded on class basis to use private heap.
 Syntax: delete ptr; free(ptr);
 
+-- There is a std::swap function:
+Use it to swap contents of vars.
+For vectors use vector::swap (u.swap(v)) method: O(1) instead of O(n) with std:swap.
+(both above work even for vectors of different sizes)
+https://www.geeksforgeeks.org/difference-between-stdswap-and-stdvectorswap/
+
 -- Graph representations:
 Adjacency Matrix: 
     Pros: O(1) to see if an edge

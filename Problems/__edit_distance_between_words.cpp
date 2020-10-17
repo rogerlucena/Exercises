@@ -51,14 +51,48 @@ int minDistance(string A, string B) {
 		for(int j = 1; j <= m; ++j) {
 			if(A[i-1] == B[j-1]) {
 				dp[i][j] = dp[i-1][j-1];
-			}
-			else {
-				dp[i][j]= 1 + min({dp[i-1][j], dp[i][j-1], dp[i-1][j-1]});
+			} else {
+				dp[i][j] = 1 + min({
+					dp[i-1][j-1], // replace the i-th char of A
+					dp[i][j-1], // insert the j-th char of B after the i-th char of A
+					dp[i-1][j], // delete the i-th char of A
+				});
 			}
 		}
 	}
 
 	return dp[n][m]; // taking the n first chars of A and the m first chars of B.
+}
+
+// Optimized to be O(A.size()) in space, still O(size1 * size2) in time
+int minDistanceOptimized(string A, string B) {
+	int r = A.size();
+	int c = B.size();
+
+	vector<int> prev(r+1, 0);
+	for(int i = 1; i <= r; ++i) {
+		prev[i] = i;
+	}
+
+	for(int j = 1; j <= c; ++j) {
+		vector<int> dp(r+1, 0);
+		dp[0] = j;
+		for(int i = 1; i <= r; ++i) {
+			if(A[i-1] == B[j-1]) {
+				dp[i] = prev[i-1];
+			} else {
+				dp[i] = 1 + min({
+					prev[i], // insert in A
+					dp[i-1], // delete from A
+					prev[i-1], // replace in A
+				});
+			}
+		}
+		// swap(prev, dp); // std::swap is O(n)
+		prev.swap(dp); // vector::swap is O(1) (exchange the addresses/contens of the containers)
+	}
+
+	return prev[r];
 }
 
 // Lessons: to do not deal with substrings generation, work with indexes!
