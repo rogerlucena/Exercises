@@ -16,6 +16,25 @@ using namespace std;
 // Example:
 // Given 1->2->3->4, you should return the list as 2->1->4->3.
 
+ListNode* swapTwo(ListNode* h) {
+	ListNode* tmp = h->next;
+	h->next = h->next->next;
+	tmp->next = h;
+	return tmp;
+}
+
+ListNode* mySwapPairs(ListNode* head) {
+	ListNode ans(-1);
+	ans.next = head;
+	ListNode* prev = &ans;
+	while(prev->next && prev->next->next) {
+		prev->next = swapTwo(prev->next);
+		prev = prev->next->next;
+	}
+
+	return ans.next;
+}
+
 ListNode* swapPairs(ListNode* head) {
 	if(!head) {
 		return head;
