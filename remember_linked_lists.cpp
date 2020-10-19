@@ -14,19 +14,6 @@ using namespace std;
 // - Inverse a linked list in place
 // - Merge two linked lists (alternating positions)
 
-// std::list -> is a doubly linked list (can operate with pointers, different than deque - see lru_cache problem)
-// .front(), .back(), .clear(), push_back, push_front, pop_back, pop_front
-//      void remove (const value_type& val); -> remove elemnts with that value
-//      iterator erase (iterator position);
-//      iterator erase (iterator first, iterator last);
-//          erase return an iterator to the the element that followed the last element erased by the function call             
-//      iterator insert (iterator position, const value_type& val);
-//      void insert     (iterator position, size_type n, const value_type& val) // n repetitions of val
-//      void insert     (iterator position, InputIterator first, InputIterator last)
-//          add just before "position" and return an "it" to the first of the newly added elements (first case)
-//          (same thing with std::deques)
-
-
 // Reverse in-place a linked list
 // https://www.geeksforgeeks.org/reverse-a-linked-list/
 ListNode* reverseList(ListNode* h) {

@@ -132,6 +132,7 @@ Inside "remember_set_and_map.cpp"
 "deque" with insert or delete in any position other than end/beginning invalidates all pointers/iterators/references 
     to elements of it, differently than "list", see lru_cache problem
 https://stackoverflow.com/questions/1436020/whats-the-difference-between-deque-and-list-stl-containers
+see remember_deque_and_list file
 
 -- SQL vs NoSQL
 SQL is for structured data not changing with time, has a wide support, vendors, mature techlogy, better for complex queries,
