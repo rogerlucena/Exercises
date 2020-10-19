@@ -27,7 +27,8 @@ using namespace std;
 //              also have finished course 1. So it is impossible.
 
 // Note: You may assume that there are no duplicate edges in the input prerequisites.
-
+// Time: O(V+E) to build graph and O(V+E) to traverse, final = O(V+E).
+// Space: O(V+E) for graph and O(V) for queue, final O(V+E).
 bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 	// Edge v -> u if u depend on v (with TopoSort all the dependents will be to the right then - that is precisely what we want)
     vector<vector<int>> g(numCourses, vector<int>());
