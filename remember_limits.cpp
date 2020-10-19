@@ -14,6 +14,11 @@ int main() {
     cout << "CHAR_MAX: " << CHAR_MAX << endl;
     cout << "LONG_MAX: " << LONG_MAX << endl;
     cout << "LONG_LONG_MAX: " << __LONG_LONG_MAX__ << endl;
+
+    cout << "float max: " << numeric_limits<float>::max() << endl;
+    cout << "float min: " << numeric_limits<float>::min() << endl;
+    cout << "double max: " << numeric_limits<double>::max() << endl;
+    cout << "double min: " << numeric_limits<double>::min() << endl;
     return 0;
 }
 
@@ -29,3 +34,8 @@ int main() {
 // long -> 8 bytes
 // LONG_MAX =  9.223.372.036.854.775.807 (2^63-1)
 // LONG_MIN = -9.223.372.036.854.775.808 (-2^63)
+
+// float max: 3.40282e+38
+// float min: 1.17549e-38
+// double max: 1.79769e+308, that is 2^(1024)−2^(971)
+// double min: 2.22507e-308, that is 2^(−1022)
