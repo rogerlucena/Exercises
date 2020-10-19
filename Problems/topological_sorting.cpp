@@ -7,11 +7,31 @@ using namespace std;
 // Very good implementation as well: https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
 // (this one above also verifies if the given graph is indeed a DAG)
 // (I prefer this one above = first one below, other than the second one below)
+// The first vertex in topological sorting is always a vertex with in-degree as 0 (a vertex with no in-coming edges).
+// Obs: A DAG G has at least one vertex with in-degree 0 and one vertex with out-degree 0.
 
 // 1)
 
 // A C++ program to print topological 
 // sorting of a graph using indegrees. 
+
+// Algorithm: Steps involved in finding the topological ordering of a DAG:
+
+// Step 1: Compute in-degree (number of incoming edges) for each of the vertex present in the DAG and 
+// initialize the count of visited nodes as 0.
+
+// Step 2: Pick all the vertices with in-degree as 0 and add them into a queue (Enqueue operation)
+
+// Step 3: Remove a vertex from the queue (Dequeue operation) and then.
+
+// Increment count of visited nodes by 1.
+// Decrease in-degree by 1 for all its neighboring nodes.
+// If in-degree of a neighboring nodes is reduced to zero, then add it to the queue.
+// Step 5: Repeat Step 3 until the queue is empty.
+
+// Step 6: If count of visited nodes is not equal to the number of nodes in the graph then the topological sort is not 
+// possible for the given graph.
+
 
 // Class to represent a graph 
 class Graph { 
@@ -233,7 +253,7 @@ void Graph::topologicalSort()
             topologicalSortUtil(i, visited, Stack);
 
     // Print contents of stack
-    while (Stack.empty() == false)
+    while (Stack.empty() == false) // only valid topo sort if you already know it is a DAG, otherwise gives an invalid topo ordering
     {
         cout << Stack.top() << " ";
         Stack.pop();

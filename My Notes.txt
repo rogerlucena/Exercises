@@ -72,6 +72,10 @@ vertices in a cycle): https://www.geeksforgeeks.org/topological-sorting-indegree
 (if "visitedCount != V" we have cycle - question at VTEX and "__course_schedule" problem)
 - Using DFS and a stack (add vertex to it only after going through all the neighbors) - only to find the TO 
 if you already know it is a DAG: https://www.geeksforgeeks.org/topological-sorting/ 
+Obs: The first vertex in topological sorting is always a vertex with in-degree as 0 (a vertex with no in-coming edges).
+Obs: A DAG G has at least one vertex with in-degree 0 and one vertex with out-degree 0.
+Obs: Max number of edges in a DAG is O(n^2), think about the bipartite graph Kn,n with all edges oriented to 
+the right (DAH with 2n nodes and n^2 edges), or see https://stackoverflow.com/questions/11699095/how-many-edges-can-there-be-in-a-dag ((n-1) + (n-2) + ... + 0).
 
 -- Trees (attention here):
 Depth: distance (#edges) from root (d(root) = 0)
