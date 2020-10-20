@@ -19,6 +19,11 @@ int main() {
     cout << "float min: " << numeric_limits<float>::min() << endl;
     cout << "double max: " << numeric_limits<double>::max() << endl;
     cout << "double min: " << numeric_limits<double>::min() << endl;
+
+	cout << "rand max: " << RAND_MAX << endl; // same as INT_MAX
+	// srand(time(NULL)); // seed
+	cout << "rand: " << rand() % 10 << endl; // use % to define the interval
+	
     return 0;
 }
 
@@ -39,3 +44,5 @@ int main() {
 // float min: 1.17549e-38
 // double max: 1.79769e+308, that is 2^(1024)−2^(971)
 // double min: 2.22507e-308, that is 2^(−1022)
+
+// rand max: 2147483647, see https://leetcode.com/problems/random-pick-with-weight/

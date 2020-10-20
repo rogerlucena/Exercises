@@ -95,6 +95,7 @@ ListNode* reverseList(ListNode* h) {
 }
 
 // Binary search
+// See remember_sort_binary_search_and_lower_bound file too.
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
 int binarySearch(const vector<int> &arr, int l, int r, int x) { 
     while (l <= r) { 
