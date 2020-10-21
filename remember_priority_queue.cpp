@@ -19,9 +19,14 @@ using namespace std;
 
 // General syntax:
 // auto cmp = [](int left, int right) {return left > right;};
+// priority_queue<int, vector<int>, decltype(cmp)> q3(container.begin(), container.end(), cmp);
 // priority_queue<int, vector<int>, decltype(cmp)> q3(cmp, container);
 // or:
 // priority_queue<int, vector<int>, greater<int>> q2;
+
+// eg of cmp for pq with hash map:
+// auto cmp = [](const pair<char, int> &p1, const pair<char, int> &p2) {return p1.second < p2.second;};
+// priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> mostCommon(count.begin(), count.end(), cmp);
 
 template<typename T> void print_queue(T& q) {
     while(!q.empty()) {
