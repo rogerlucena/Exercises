@@ -16,16 +16,16 @@ using namespace std;
 // Trick: analyse every bit modulos 3 and use "|=" and "<<" to contruct the answer
 int singleNumber(const vector<int> &A) {
 	int ans = 0;
-	vector<int> bitCount(32, 0);
 
 	for(int i = 0; i < 32; ++i) {
+		int bitCount = 0;
 		for(int el : A) {
 			if(((el >> i) & 1) == 1) {
-				++bitCount[i];
+				++bitCount;
 			} 
 		}
-		bitCount[i] %= 3;
-		ans |= (bitCount[i] << i);
+		bitCount %= 3;
+		ans |= (bitCount << i);
 	}
 
 	return ans;
