@@ -94,9 +94,12 @@ If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1
 
 -- Difference between Delete and Free:
 Delete is an operator while Free is a function. Delete frees the allocated memory and also calls 
-the destructor of the class in c++ while free() does not calls any destructor and only free the allocated 
+the destructor of the class in C++ while free() does not calls any destructor and only free the allocated 
 memory set with malloc in C. Free() uses C run time heap whereas Delete may be overloaded on class basis to use private heap.
 Syntax: delete ptr; free(ptr);
+Delete takes a pointer and releases that memory to be used by someone else too, calling the destructor before that (if defined).
+eg: Destructor for TreeNode can be {delete left; delete right;} called by Delete over a ptr (recursively call children and
+by the end it automatically frees itself too).
 
 -- There is a std::swap function:
 Use it to swap contents of vars.
