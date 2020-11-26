@@ -13,6 +13,8 @@ using namespace std;
 // getDifferentNumber that finds the smallest nonnegative integer that is NOT in the array.
 
 // in-place solution, cycle-sort
+// O(N) in time and O(1) in space (every number is swaped only once here, do not let the 2 loops fool you). 
+// Another solution is to use an auxiliar hash set, but then you get O(N) in space.
 int getDifferentNumber(vector<int> &arr) {
 	for(int i = 0; i < arr.size(); ++i) {
 		// int tmp = arr[i];
