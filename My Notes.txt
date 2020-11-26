@@ -191,12 +191,7 @@ Dicas forum: graph questions and string manipulations are common.
     Comeca com os mais simples (empty, {1}, corner cases, then small ones - 2/3 els, já é enough pra achar bugs)! 2x2 ja dá (robot)
     nao pega o input do problema original se muito grande se nao muito tempo testando!
         tempo valioso para follow ups ou outros problemas! simplifica o input para menor e roda nele se quiser (lembra feedback do pramp - careca irwin)
-6) No final: projeto favorito? algo que você mudaria em seu trabalho? (perguntas fora do macaco fazem lembrar de você)
-             what brought you here compared to others?
-             com o que você trabalha? o que você daria como conselho para alguém se formando agora em computacão?
-             o que diria pra voce mesmo com minha idade nessa mesma fase da carreira?
-             parte mais desafiadora lá? melhor parte comparado com as outras antes?
-             qual o bug mais interessante em que você já se encontrou? procedimento para deploy em prod?
+6) No final: ask questions about the work there, iteresting projects ...
 
 
 - Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
