@@ -28,6 +28,18 @@ using namespace std;
 // auto cmp = [](const pair<char, int> &p1, const pair<char, int> &p2) {return p1.second < p2.second;};
 // priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> mostCommon(count.begin(), count.end(), cmp);
 
+// Also works using a class:
+// class Compare {
+// public:
+//     bool operator() (Foo, Foo) {
+//         return true;
+//     }
+// };
+// int main() {
+//     std::priority_queue<Foo, std::vector<Foo>, Compare> pq;
+//     return 0;
+// }
+
 template<typename T> void print_queue(T& q) {
     while(!q.empty()) {
         std::cout << q.top() << " ";
