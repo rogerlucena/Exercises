@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// https://leetcode.com/problems/alien-dictionary/
+
 // Some words were ordered following an alphabetical order that is different from the normal one.
 // Given these words, could you get the ordered alphabet that generated the order of the words?
 // (mock with barra)
@@ -29,7 +31,12 @@ pair<char, char> getCharsOrdered(const string &w1, const string &w2){
 
 vector<char> getAlphabet(const vector<string> &words) {
 	unordered_map<char, unordered_set<char>> relsGraph;
-	for(int i = 0; i <= words.size()-2; ++i) {
+	for(string w : words) {
+		for(char c : w) {
+			relsGraph[c] = {};
+		}
+	}
+	for(int i = 0; i <= int(words.size())-2; ++i) { // attention when doing .size() minus something! (unsigned int)
 		pair<char, char> p = getCharsOrdered(words[i], words[i+1]);
 		if(p != pair<char, char>({})) {
 			// cout << p.first << " < " << p.second << endl;
@@ -71,11 +78,12 @@ vector<char> getAlphabet(const vector<string> &words) {
 		}
 	}
 
-	return alphabet;
+	return alphabet.size() == relsGraph.size() ? alphabet : vector<char>({}); // empty vector if invalid input
 }
 
 int main() {
 	vector<string> words = {"air", "car", "doodled", "doodleb", "doo", "doodle", "dooble"};
+	// vector<string> words = {"wnlb"};
 	for(char c : getAlphabet(words)) { // want: a, c, d, b
 		cout << c << " ";
 	}
