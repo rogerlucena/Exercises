@@ -111,6 +111,8 @@ https://www.geeksforgeeks.org/difference-between-stdswap-and-stdvectorswap/
 Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble!
 Treat this edge case separated (maybe along with v.size() == 1) at the beginning!
 
+-- Remember: mid = left + (right - left) / 2 to avoid int overflow!
+
 -- Graph representations:
 Adjacency Matrix: 
     Pros: O(1) to see if an edge
@@ -149,6 +151,10 @@ https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/?ref=rp
 
 -- Interesting:
 - Perform a modulus operation with negative numbers -> (a % b + b) % b (eg in string_shifts problem)
+
+-- Patterns for coding interviews (like grokking):
+https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed 
+https://dev.to/arslan_ah/the-ultimate-strategy-to-preparing-for-the-coding-interview-3ace
 
 ### impt ###
 

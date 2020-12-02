@@ -178,6 +178,18 @@ void quickSort(vector<int> &arr, int low, int high) {
     }
 }
 
+// Fast and Slow pointers
+// Two halves: first one with the middle element if odd number of elements
+ListNode* endOfFirstHalf(ListNode* head) {
+	ListNode* fast = head;
+	ListNode* slow = head;
+	while (fast.next != null && fast.next.next != null) {
+		fast = fast.next.next;
+		slow = slow.next;
+	}
+	return slow;
+}
+
 int main(void) {
 	cout << "QuickSort:" << endl;
     vector<int> arr = {10, 3, 40, 2, 4}; 
