@@ -120,7 +120,7 @@ Adjacency Matrix:
           copy everything into a new matrix; in this case, think about amortized to improve time efficiency)
 Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
-    Cons: To verify if an edge, O(V) in the worst case
+    Cons: To verify if an edge, O(V) in the worst case (you can use a hash set for the neighbors to improve this)
 
 -- Difference between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
@@ -167,7 +167,7 @@ Dicas forum: graph questions and string manipulations are common.
 
 - coisas implementação by heart: inverter uma linked list (https://www.geeksforgeeks.org/reverse-a-linked-list/), 
          binary search, merge two sorted linked lists (in remember_liked_lists.cpp), não pembe em DFS/BFS! (code imediato!),
-         quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
+        topological ordering, quick sort (?), rever outros sorts tb (merge, insertion, bubble, radix, bucket, counting ...)
 - revisa bem: hash_map (cai muito!), queues, stacks (problema dos parênteses, ver "merge_overlapping_intervals.cpp" também)
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
 - remember classes, inheritance, abstract, virtual (geeksforgeeks)
@@ -201,7 +201,8 @@ Dicas forum: graph questions and string manipulations are common.
 
 
 - Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
-    Nao inicializar alguma variavel, DFS, BFS, update step for not infinity loop inside while
+    Nao inicializar alguma variavel, DFS, BFS, update step for not infinity loop inside while,
+    usar constantes literais em vez de dar um nome meaningful pra elas (leftEdge em vez de -1 por eg)
 - Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
 
 se em algum momento viu um edge case:

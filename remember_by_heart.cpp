@@ -150,17 +150,16 @@ int partition (vector<int> &arr, int low, int high) {
     int pivot = arr[high]; // pivot, ideally a random in [low, high]
     int i = (low - 1); // index of smaller element  
   
-    for(int j = low; j <= high - 1; ++j) {  
+    for(int j = low; j <= high - 1; ++j) {
         // If current element is smaller than the pivot  
-        if (arr[j] < pivot) {  
-            i++; // increment index of smaller element  
-            swap(arr[i], arr[j]);  
+        if (arr[j] < pivot) {
+            swap(arr[++i], arr[j]); // increment index of smaller element  
         }  
     }
 
-    swap(arr[i + 1], arr[high]); // put pivot in its right position
+    swap(arr[++i], arr[high]); // put pivot in its right position
 
-    return i + 1; // final position of the pivot
+    return i; // final position of the pivot
 }
   
 // The main function that implements QuickSort  
