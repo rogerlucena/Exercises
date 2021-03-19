@@ -5,6 +5,71 @@
 
 using namespace std;
 
+// https://leetcode.com/problems/gas-station/
+
+// There are n gas stations along a circular route, where the amount of gas at the ith station is gas[i].
+
+// You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from the ith station to its
+// next (i + 1)th station. You begin the journey with an empty tank at one of the gas stations.
+
+// Given two integer arrays gas and cost, return the starting gas station's index if you can travel around the circuit 
+// once in the clockwise direction, otherwise return -1. If there exists a solution, it is guaranteed to be unique
+
+// Key idea: if you start in "i" and become negative in "j", then you already eliminate [i, i+1, ..., j) as possible start points.
+// Then, go through a first loop just to find the start point.
+// Obs: if total >= 0 then there will always be a solution.
+// O(n) in time.
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+	int n = gas.size();
+
+	int total = 0; // total accumulated tank
+	int tank = 0; // gas tank for "start" onwards
+	int start = 0;
+	for(int i = 0; i < n; ++i) {
+		tank += gas[i] - cost[i];
+		total += gas[i] - cost[i];
+		if(tank < 0) { // the next possible start point will be the "i" of the next iteration
+			tank = 0;
+			start = i + 1;
+		}
+	}
+
+	cout << "total: " << total << ", tank: " << tank << ", start: " << start << endl; 
+	return total < 0 ? -1 : start;
+}
+
+// O(n^2) in time.
+int canCompleteCircuitBrute(vector<int>& gas, vector<int>& cost) {
+	int n = gas.size();
+
+	for(int i = 0; i < n; ++i) {
+		if(gas[i] < cost[i]) {
+			continue;
+		}
+	
+		int accGas = 0;
+		for(int j = 0; j < n && accGas >= 0; ++j) {
+			int curr = (i + j) % n;
+			accGas += gas[curr] - cost[curr];
+		}
+
+		if(accGas >= 0) {
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+int main() {
+	vector<int> gas = {4,5,2,6,5,3}; //{1,2,3,4,5};
+	vector<int> cost = {3,2,7,3,2,9}; //{3,4,5,1,2};
+	cout << "Answer: " << canCompleteCircuit(gas, cost) << endl;
+
+	return 0;
+}
+
+
 // https://www.interviewbit.com/problems/gas-station/
 
 // Given two integer arrays A and B of size N.
@@ -94,7 +159,7 @@ int oldCanCompleteCircuit(const vector<int> &A, const vector<int> &B) {
 }
 
 
-int main() {
+int main2() {
 	vector<int> A = {684, 57, 602, 987};
 	vector<int> B = {909, 535, 190, 976};
 	cout << "Answer: " << canCompleteCircuit(A, B) << endl;
