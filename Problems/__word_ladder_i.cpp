@@ -8,12 +8,6 @@ using namespace std;
 
 // https://www.pramp.com/challenge/MW75pP53wAtzNPVLPG0d
 // 	(Similar to https://www.interviewbit.com/problems/word-ladder-i/)
-// 	Think in graphs here!
-// 	Use Djikstra only if weighted edges (and no negative edges! remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html)
-// 	Otherwise, a simple BFS will do the work :)
-//	 remember here: understand first well the problem, ask questions e nao se afobar!!
-//   target must be in "words", but not "source" (see example 2), Attention!!
-//   complexity: do not forget to consider the complexity "k" of "isOneStepAway"!
 
 // Shortest Word Edit Path
 // Given two words source and target, and a list of words words, find the length of the
@@ -35,6 +29,12 @@ using namespace std;
 // words = ["to"]
 // output: -1
 
+// 	Think in graphs here!
+// 	Use Djikstra only if weighted edges (and no negative edges! remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html)
+// 	Otherwise, a simple BFS will do the work :)
+//	 remember here: understand first well the problem, ask questions e nao se afobar!!
+//   target must be in "words", but not "source" (see example 2), Attention!!
+//   complexity: do not forget to consider the complexity "k" of "isOneStepAway"!
 bool isOneStepAway(const string &s1, const string &s2)
 {
 	if (s1.size() != s2.size())

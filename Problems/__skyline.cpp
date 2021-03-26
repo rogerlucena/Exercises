@@ -13,7 +13,7 @@ using namespace std;
 
 // Solution link: https://zxi.mytechroad.com/blog/tree/leetcode-218-the-skyline-problem/
 
-// Idea: create a vector of "Events" fron the input, sorte the events wrt the x coordinate,
+// Idea: create a vector of "Events" from the input, sort the events wrt the "x" coordinate,
 // auxiliar data structure to O(1) access to maxHeight (multiset), attention to corner cases
 	// if same x, if "entering": process highest first, if "leaving": process lowest first
 class Solution {

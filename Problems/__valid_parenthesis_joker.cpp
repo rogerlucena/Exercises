@@ -5,8 +5,6 @@
 using namespace std;
 
 // https://leetcode.com/problems/valid-parenthesis-string/
-// interesting: think about using an additional stack for the 'jokers', always using indexes
-// or think about dp with intervals, or see the great trick about the possible final 'balance' interval (below)
 
 // Given a string containing only three types of characters: '(', ')' and '*', write a function 
 // to check whether this string is valid. We define the validity of a string by these rules:
@@ -21,6 +19,8 @@ using namespace std;
 // Input: "(*))"
 // Output: True
 
+// interesting: think about using an additional stack for the 'jokers', always using indexes
+// or think about dp with intervals, or see the great trick about the possible final 'balance' interval (below)
 bool checkValidString(string s) {
 	stack<int> open;
 	stack<int> joker;
