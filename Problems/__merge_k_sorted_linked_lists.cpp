@@ -27,7 +27,7 @@ ListNode* mergeKLists(vector<ListNode*> &A) {
 
 	while(!q.empty()) {
 		ListNode* next = q.top();
-		q.pop();
+		q.pop(); // O(log k) in time
 
 		tmp->next = next;
 		next = next->next;
