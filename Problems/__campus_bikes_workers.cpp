@@ -19,6 +19,11 @@ using namespace std;
 // The Manhattan distance between two points p1 and p2 is Manhattan(p1, p2) = |p1.x - p2.x| + |p1.y - p2.y|.
 // Return a vector ans of length N, where ans[i] is the index (0-indexed) of the bike that the i-th worker is assigned to.
 
+// Note:
+// 0 <= workers[i][j], bikes[i][j] < 1000
+// All worker and bike locations are distinct.
+// 1 <= workers.length <= bikes.length <= 1000
+
 // Key idea: use the distances as buckets, be attentive with the order you fill the buckets.
 // The max distance is 2000!! Pay attention to the constraints of your problem.
 // O(N * M) in time and space

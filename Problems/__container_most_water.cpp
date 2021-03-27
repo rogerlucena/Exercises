@@ -8,7 +8,10 @@ using namespace std;
 // Start with the brute force and then analyze if you can optimize it - discard some 
 // iterations that will not improve the result
 
-// Find the max area of a container. 
+// Given n non-negative integers a1, a2, ..., an,
+// where each represents a point at coordinate (i, ai).
+// 'n' vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0).
+// Find two lines, which together with x-axis forms a container, such that the container contains the most water.
 
 // Example:
 // Input : [1, 5, 4, 3]

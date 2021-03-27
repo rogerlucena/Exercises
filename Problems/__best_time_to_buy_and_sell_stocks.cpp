@@ -70,7 +70,7 @@ int maxProfit(vector<int> &prices) {
 		return 0;
 	}
 
-	int s = prices.size();
+	int s = prices.size(); // .size() is unsigned, be careful when decrementing (eg: convert to int as here)
     vector<vector<int>> memo(2, vector<int>(s, 0));
 	memo[1][s-1] = prices[s-1];
 	for(int j = s-2; j >= 0; --j) {

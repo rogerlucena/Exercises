@@ -8,6 +8,9 @@ using namespace std;
 
 // https://www.interviewbit.com/problems/3-sum-zero/
 // (two pointer idea again)
+// Remember: in the two sum problem (https://leetcode.com/problems/two-sum/) the array must be sorted, if not you can still
+	// be O(N) in time keeping a hash map val-index after a first pass to try to find the complement wrt to target in the second pass
+	// (can even do in only one pass with hash map, verifying as we go if the complement was already seen in the past).
 
 // Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0?
 // Find all unique triplets in the array which gives the sum of zero.
@@ -18,6 +21,7 @@ using namespace std;
 // (-1, 0, 1)
 // (-1, -1, 2)
 
+// O(N^2) instead of O(N^3) below. =]
 int incrementTillDifferent(int j, vector<int> &A) {
 	while(A[j+1] == A[j]) {
 		++j;
