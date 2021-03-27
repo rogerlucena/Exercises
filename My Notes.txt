@@ -122,6 +122,11 @@ Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case (you can use a hash set for the neighbors to improve this)
 
+-- Dijkstra vs BFS
+Use Djikstra only if weighted edges, and no negative edges!
+Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html
+Otherwise, a simple BFS will do the work.
+
 -- Difference between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
 
