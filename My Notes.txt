@@ -32,7 +32,7 @@ https://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
 -- Sorting:
 
 - Stable means that i < j, A[i] == A[j], than pi(i) < pi(j), where "pi" is the map for the new positions (after sorting).
-- Merge sort is stable, quick and heap are not:
+- Merge and Insertion sort are stable, quick and heap are not:
 https://www.geeksforgeeks.org/stability-in-sorting-algorithms/
 
 - Quick Sort (chache friendly, not stable, in place, worst case is O(n²), but avoided if we choose a good pivot (near the median) - random):
@@ -125,6 +125,7 @@ Asjacency list:
 -- Dijkstra vs BFS
 Use Djikstra only if weighted edges, and no negative edges!
 Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html
+Complexity: O(E + V log V), makes sense.
 Otherwise, a simple BFS will do the work.
 
 -- Difference between "set/multiset" and "priority queues":
@@ -177,7 +178,7 @@ Dicas forum: graph questions and string manipulations are common.
 - knapsack problem, traveling salesman, "coin_exchange.cpp", "get_subsets.cpp" - DP
 - remember classes, inheritance, abstract, virtual (geeksforgeeks)
 
--- Lembrar, passo a passo:
+-- Lembrar, passo a passo (do not speak too fast!!):
 1) Faz um exemplo simples pra ver se realmente entendeu, se necessário
     Ask clarification questions to see if you really got what they want (float numbers? sorted? 
     repeated numbers? negative? can I get two of the same index? Any time/space requirements?
@@ -189,6 +190,8 @@ Dicas forum: graph questions and string manipulations are common.
     errado ele te corrige
 3) Brute-force and complexities (importante falar o brute-force logo! - nada bom se ele achar que nem o brute vc sabe) 
     then optimze! (no coding yet!)
+    REMEMBER: start with the brute force approach and then check if you can do better :) 
+    (if you start to optimize too early that can hurt you! as it happened in the award_budget_cuts problem)
     SE VC estah pensando em uma estrategia, mas viu um possivel problema, FALE, ele pode te dizer como
     resolver (eg: heaps tamanhos mto diferents no pb da median de um stream), ou que nem eh possivel ter esse problema
 4) Should I optimize more or can I code? Think out loud while coding!
