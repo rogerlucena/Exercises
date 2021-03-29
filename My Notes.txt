@@ -4,6 +4,11 @@
 -- To compile (command line)
 g++ -std=c++17 main.cpp -o main; ./main
 
+-- Notation for titles inside ./Problems folder:
+"__" stands for good problems with interesting / key ideas to remember
+"_" stands for more interesting / difficult problems, compared to the usual (but not necessarily with key ideas to remember)
+
+
 -- Tree traversals (Inorder, Preorder and Posorder)
 http://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/
 
@@ -15,10 +20,6 @@ E.g.: Inorder:
 
 Obs: Preorder to copy the tree (polish_notation too), Posorder to delete, Inorder to get int numbers in ascending order from a BST
 
-- Notation for titles inside ./Problems folder:
-"__" stands for good problems with interesting / key ideas to remember
-"_" stands for more interesting / difficult problems, compared to the usual (but not necessarily with key ideas to remember)
-
 - Construct Tree from given Inorder and Preorder traversals:
 http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
 
@@ -28,11 +29,10 @@ http://www.geeksforgeeks.org/construct-a-binary-search-tree-from-given-postorder
 -- STL Containers Complexities:
 https://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
 
-
 -- Sorting:
 
 - Stable means that i < j, A[i] == A[j], than pi(i) < pi(j), where "pi" is the map for the new positions (after sorting).
-- Merge and Insertion sort are stable, quick and heap are not:
+- Merge and Insertion sort are stable, Quick and Heap are not:
 https://www.geeksforgeeks.org/stability-in-sorting-algorithms/
 
 - Quick Sort (chache friendly, not stable, in place, worst case is O(n²), but avoided if we choose a good pivot (near the median) - random):
