@@ -189,6 +189,9 @@ ListNode* endOfFirstHalf(ListNode* head) {
 	return slow;
 }
 
+// Revisit __course_schedule_dependecies.cpp for topo sort.
+// Also, find an example of union-find with path compression in a problem.
+
 int main(void) {
 	cout << "QuickSort:" << endl;
     vector<int> arr = {10, 3, 40, 2, 4}; 
