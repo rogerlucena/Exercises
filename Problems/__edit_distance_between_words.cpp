@@ -35,6 +35,7 @@ using namespace std;
 
 // Lessons: to do not deal with substrings generation, work with indexes!
 // think simply, one step at a time, and memoize repeated work
+// interpretation: dp[i][j] -> taking the i first chars of A and the j first chars of B to do the conversion.
 int minDistance(string A, string B) {
 	int n = A.size();
 	int m = B.size();
