@@ -190,7 +190,20 @@ ListNode* endOfFirstHalf(ListNode* head) {
 }
 
 // Revisit __course_schedule_dependecies.cpp for topo sort.
-// Also, find an example of union-find with path compression in a problem.
+
+// Revisit priority_queue syntax and syntax for str.substr(start, size).
+	// std::size_t found = str.find(str2); 
+		// size_t is an unsigned int
+		// if str2 not found in str, returns std::string::npos (largest possible value for uint, equiv to -1 for uint)
+
+// Revisit union-find:
+	// Problem to find cycles in an undirected graph: https://www.geeksforgeeks.org/union-find/
+	// And also with path compression and union by rank: https://www.geeksforgeeks.org/union-find-algorithm-set-2-union-by-rank/
+
+// Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)
+	// Also, remember that XOR is ^
+
+// Revisit Counting Sort and Radix sort from My Notes.txt
 
 int main(void) {
 	cout << "QuickSort:" << endl;
