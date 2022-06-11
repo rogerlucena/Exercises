@@ -8,9 +8,10 @@ using namespace std;
 
 // https://www.pramp.com/challenge/aK6V5GVZ9MSPqvG1vwQp
 // Idea: remember cycle-sort for the inplace solution
+// Note: original cycle-sort is O(N^2) - for each number puts it in the right position by counting the number of items smaller than it (https://www.geeksforgeeks.org/cycle-sort/).
 // Plus: link with hare and tortoise algorithm better explained: https://leetcode.com/problems/find-the-duplicate-number/solution/
-// (detection of the only repeated number in O(N), detects the entrance point of a cycle in
-// a linked list, hare twice as fast as the tortoise - see final code, or the idea of bits)
+// (detection of the only repeated number in O(N), detects the entrance point of a cycle in a linked list, hare twice as fast
+// as the tortoise - see final code, or the second to last idea using bits) - problem also in __find_the_duplicate_number.cc
 
 // Given an array arr of unique nonnegative integers, implement a function 
 // getDifferentNumber that finds the smallest nonnegative integer that is NOT in the array.
