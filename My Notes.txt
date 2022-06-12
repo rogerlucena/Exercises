@@ -57,6 +57,10 @@ c^n < n! < n^n where c is a constant
 -- For complexity with recursions, see "Master method":
 https://www.geeksforgeeks.org/analysis-algorithm-set-4-master-method-solving-recurrences/
 
+-- Tail-recursive
+A function is tail-recursive if it ends by returning the value of the recursive call.
+See tail-recursive sum: https://www.baeldung.com/cs/tail-vs-non-tail-recursion#1-tail-recursive-sum
+
 -- Quick-Sort with Tail-Recursive Optimization (TRO or TCO)
 http://mypathtothe4.blogspot.com/2013/02/lesson-2-variations-on-quicksort-tail.html ("How this works is that instead of 'rigid' branches as in the original Quicksort, the new branches can swing into different positions to cover every path")
 Support: https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/ 
@@ -76,6 +80,22 @@ Obs: The first vertex in topological sorting is always a vertex with in-degree a
 Obs: A DAG G has at least one vertex with in-degree 0 and one vertex with out-degree 0.
 Obs: Max number of edges in a DAG is O(n^2), think about the bipartite graph Kn,n with all edges oriented to 
 the right (DAH with 2n nodes and n^2 edges), or see https://stackoverflow.com/questions/11699095/how-many-edges-can-there-be-in-a-dag ((n-1) + (n-2) + ... + 0).
+
+-- Applications of DFS:
+O(V+E) - remember algorithm
+1. Detecting a graph's cycle: A graph has a cycle if and only if a back edge is visible during DFS. As a result,
+you may run DFS on the graph to look for rear edges (or topo sort with indegree and visitedCount above).
+2. Path Finding: The DFS algorithm can be customized to discover a path between two specified vertices, a and b.
+    a. Use s as the start vertex in DFS(G, s).
+    b. Keep track of the path between the start vertex and the current vertex using a stack S.
+    c. Return the path as the contents of the stack as soon as destination vertex c is encountered.
+3. To determine if a graph is bipartite: You can use either BFS or DFS to color a new vertex opposite its parents when you first discover it.
+And check that each other edge does not connect two vertices of the same color. A connected component's first vertex can be either red or black.
+
+-- BFS
+O(V+E) as well
+1. To find a path with BFS, you can keep track of the parents in a hash map till you find target, and then backtrace
+after that and reverse vector - reverse(v.begin(), v.end()) (https://stackoverflow.com/questions/8922060/how-to-trace-the-path-in-a-breadth-first-search).
 
 -- Trees (attention here):
 Depth: distance (#edges) from root (d(root) = 0)
