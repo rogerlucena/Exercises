@@ -205,6 +205,10 @@ ListNode* endOfFirstHalf(ListNode* head) {
 
 // Revisit Counting Sort and Radix sort from My Notes.txt
 
+// upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
+
+// read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea)!
+
 int main(void) {
 	cout << "QuickSort:" << endl;
     vector<int> arr = {10, 3, 40, 2, 4}; 

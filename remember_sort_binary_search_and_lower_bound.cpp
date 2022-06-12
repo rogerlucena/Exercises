@@ -12,7 +12,8 @@ auto myfunction = [](int i,int j) { return (i>j); };
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
 // "-> bool" not necessary in lambda function
 
-// Lower bound remember (in <algorithm>) - http://www.cplusplus.com/reference/algorithm/lower_bound/:
+// Lower bound remember (in <algorithm>) - http://www.cplusplus.com/reference/algorithm/lower_bound
+// (Complexity: on average, logarithmic in the distance between first and last)
 // Returns an iterator pointing to the first element in the range [first,last) which does not compare less 
 // than val (>= val then, if multiple returns iterator to 1st one; iterator to last if not found).
 // Unlike upper_bound (first in [first, last) that is > val, iterator to last if not found), the value 
