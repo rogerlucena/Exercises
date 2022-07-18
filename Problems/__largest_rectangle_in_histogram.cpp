@@ -10,7 +10,7 @@ using namespace std;
 // not defined by the columns on the border, but by the min heigh in range [left, right]).
 
 // Given an array of integers A of size N. A represents a histogram i.e A[i] denotes height of
-// the ith histogram’s bar. Width of each bar is 1. Hiw big is the largest rectangle?
+// the ith histogram’s bar. Width of each bar is 1. How big is the largest rectangle?
 
 // Example:
 // Input:

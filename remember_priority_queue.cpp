@@ -14,6 +14,8 @@ using namespace std;
 // // priority_queue<int> pq (A.begin(), A.end()); // Initilize O(n) taking a container as input
 // (but to do the same, adding one element at a time -> O(n logn n))
 
+// Note: you can also implement a pq using a set, but seems to be slower (since you can also iterate it all in sorted manner).
+// do this only when you want to have id_to_val hash map and update val for given id, see My Notes.
 
 // defaut comparator is smaller (as smaller -> as weak then, less priority), pop will give the greatest number
 

@@ -3,11 +3,9 @@
 
 using namespace std;
 
-/*
+// Generating recursively subsets out of original set
 
-Generating recursively subsets out of original set
-
-*/
+// Reference the follow-up problem with duplicates as well: __powerset_with_duplicates.cpp
 
 void getSubsets(set<int>  myset, set<set<int>> &mySubsets) {
     if(myset.size() == 0){

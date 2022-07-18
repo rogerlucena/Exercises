@@ -3,8 +3,10 @@
 
 using namespace std; 
 
+// Obs: public and private keywords use half of the normal tab space (from Google C++ guide).
+
 // - Interfaces, abstract classes and virtual methods
-// Virtal methods are methods with no implementation, you put "virtual void f() = 0;"
+// Pure virtal methods are methods with no implementation, you put "virtual void f() = 0;"
 //      classes with virtual methods cannot be instantiated
 // Abstract classes are classes with at least one virtual method, others may be implemented
 // Interfaces can be understood as pure virtual classes (all methods are virtual, no implementations)

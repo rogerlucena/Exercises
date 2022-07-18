@@ -8,7 +8,7 @@ using namespace std;
 
 // https://leetcode.com/problems/diameter-of-binary-tree/
 // Remember you can use a base case offset by 1 as here :D
-// Other way: build a graph and do 2 BFSs, and the "diameter_tree" problem
+// Other way: build a graph and do 2 BFSs (or DFSs), see the "_diameter_of_tree" problem.
 
 // Given a binary tree, you need to compute the length of the diameter of the tree. The diameter 
 // of a binary tree is the length of the longest path between any two nodes in a tree. This path may or 

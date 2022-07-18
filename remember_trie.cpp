@@ -7,7 +7,8 @@ using namespace std;
 // https://interviews.school/trie
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 
-// Trie (we pronounce "try") or prefix tree is a tree data structure used to retrieve a key in a strings dataset.
+// Trie (PRONUNCIA certa é "TRY", lembre disso, se nao o cara nao vai saber o que vc ta falando, ou mencione "PREFIX TREE") is
+// a tree data structure used to retrieve a key in a strings dataset.
 // There are various applications of this very efficient data structure, such as autocomplete and spellchecker.
 
 // O(N) to add or search a word (optimal). If a lot of words with common prefixes, Trie optmizes memory.

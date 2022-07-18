@@ -18,6 +18,9 @@ using namespace std;
 // is O(N log N) (otherwise we would have found a faster way of sorting!)
 // (unless it's being built from a sequence that's already ordered - in which case it is also linear).
 
+// Note: you can implement a pq using a set, but it seems to be slower (since you can also iterate it all in sorted manner).
+// do this only when you want to have id_to_val hash map and update val for given id, see My Notes.
+
 // remember, for maps and sets we cannot do operations with the iterators such 
 // as "m.upper_bound(n) - m.begin()", or "m.begin()+1" (bidirectional iterators do not allow it), only ++ or -- 
 
@@ -72,6 +75,10 @@ int main() {
     A.size();
 
     // Same for "set"
+
+    // Extra, can also iterate set/map backwards:
+    // rit of type set<int>::reverse_iterator
+    // for (auto rit = s.rbegin(); rit != s.rend(); ++rit) {
 
 	return 0;
 }

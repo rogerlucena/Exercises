@@ -35,14 +35,15 @@ https://www.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
 - Merge and Insertion sort are stable, Quick and Heap are not:
 https://www.geeksforgeeks.org/stability-in-sorting-algorithms/
 
-- Quick Sort (chache friendly, not stable, in place, worst case is O(n²), but avoided if we choose a good pivot (near the median) - random):
+- Quick Sort (cache friendly, not stable, in place, worst case is O(n²), but avoided if we choose a good pivot (near the median) - random):
 https://www.geeksforgeeks.org/quick-sort/
 
 - Merge Sort (stable, additional O(n) in space but better for big data in different databases. For linked lists, where insertion is O(1), no need of additional space):
 https://www.geeksforgeeks.org/merge-sort/
 
 - Counting Sort (auxiliar array - 0 to 100 ages, O(n) time) and Radix Sort (O(kn) where k = log(max_el))
-They are better explained on the Cracking the Coding Interview
+They are better explained on the Cracking the Coding Interview.
+Also, Radix sort: https://www.geeksforgeeks.org/radix-sort/
 
 -- Interesting way of calculating binomial coeffs:
 https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
@@ -50,8 +51,8 @@ https://www.geeksforgeeks.org/binomial-coefficient-dp-9/
 -- Complexity:
 n < nlog(n)
 n^x < n^y if x < y
-n^x < c^n where c is a constant (polynomials will eventually grow slower than exponentials)
 log(n) < n
+n^x < c^n where c is a constant (polynomials will eventually grow slower than exponentials)
 c^n < n! < n^n where c is a constant
 
 -- For complexity with recursions, see "Master method":
@@ -97,6 +98,202 @@ O(V+E) as well
 1. To find a path with BFS, you can keep track of the parents in a hash map till you find target, and then backtrace
 after that and reverse vector - reverse(v.begin(), v.end()) (https://stackoverflow.com/questions/8922060/how-to-trace-the-path-in-a-breadth-first-search).
 
+-- Process vs Thread
+Process is a program under execution (program counter, process stack, registers, program code ...)
+Thread is a lightweight process that can be managed independently by a scheduler.
+Process contains threads.
+Processes are independent (need more work to communicate), threads inside the same Process may share memory/code and are dependant.
+(https://www.tutorialspoint.com/difference-between-process-and-thread)
+Thread is an execution unit (executing an instruction) that is part of a process. A process can have multiple threads, all executing at the same time.
+It is a unit of execution in concurrent programming. A thread is lightweight and can be managed independently by a scheduler.
+It helps you to improve the application performance using concurrency or parallelism (the later if you have multiple cores).
+(very good site: https://www.guru99.com/difference-between-process-and-thread.html)
+(good video: https://youtu.be/fxMOi7BlTyM)
+
+-- Semaphores
+Basically and int shared between threads.
+Controls the number of threads that can access a resource at the same time.
+Two operations: wait (until s > 0, then --s) and signal (++s), both atomic.
+Critical zone of the code = area between Wait and Signal.
+If s = 4 and 4 threads enter their critical zones, a 5th thread will need to wait until one of the others Signal (end of its critical zone) to it is unlocked.
+(very good: https://www.geeksforgeeks.org/semaphores-in-process-synchronization/)
+
+-- Core vs Thread
+A CPU core is a physical hardware component.
+Thread is a virtual component that is used to manage the tasks.
+(https://www.temok.com/blog/cores-vs-threads/, https://www.guru99.com/cpu-core-multicore-thread.html)
+"Basically consider that the cores are your mouth and threads are your hand. The process done by the CPU be eating your food."
+
+-- Deadlock
+Deadlock describes a situation where two or more threads are blocked forever, waiting for each other.
+Deadlock occurs when multiple threads need the same locks but obtain them in different order.
+Thread 1: Holding lock 1...
+Thread 2: Holding lock 2...
+Thread 1: Waiting for lock 2...
+Thread 2: Waiting for lock 1...
+Solution: change the order on which you get locks: make both critical zones get locks 1 -> 2 in this order!
+- How to handle it?
+Eliminate Circular Wait: each resource will be assigned with a numerical number. A process can request the resources increasing/decreasing. order of numbering.
+Eliminate Hold and Wait: allocate all required resources to the process before the start of its execution, but it may lead to low device utilization.
+Eliminate No Preemption: preempt resources from the process when resources required by other high priority processes.
+(https://www.geeksforgeeks.org/deadlock-prevention/)
+
+-- Hashmap implementation and collisions
+Implemented over an array.
+Hash function to map key to index in array.
+Linked list for each position in the array, Get is amortized to O(1).
+If collision, add back to the Linked List for that index and keep the pre-hash key there for comparison as well.
+Other way to handle collisions: keep going in the array till finding next available position, add there together with the pre-hash key too.
+    (When Get is called will go through the array, if empty skips, if not empty checks pre-hash key before returning Value).
+Some implementations also use a balanced tree instead of a linked list to improve worst case Get from O(N) to O(log N).
+
+-- Data structure bizuradas menos macaco
+Problema: priority queue com update eficiente.
+min-heap de {int val; int id;} onde quer update val de um certo id
+Exemplo: dijkstra
+Solucao:
+set<pair<int, int>> pq; // pair (priority, id)
+vector<int> id_to_val; // assumindo id (0, ..., n-1), se nao usa hash map
+Menor value em O(1): usa *pq.begin();
+Update de um value em O(log n):
+1) pq.erase(make_pair(id_to_val[id], id)); // here the val is the same as priority
+2) id_to_val[id] = new_val;
+3) pq.insert(make_pair(id_to_val[id], id));
+Remember, could also customize the comparator of the set (more in remember_set_and_map.cpp):
+eg: set<string, decltype(cmp)> s(cmp);
+// Note: you can implement a pq using a set, but seems to be slower in average (since you can also iterate it all in sorted manner, see https://leetcode.com/problems/top-k-frequent-words/).
+// do this only when you want to have id_to_val hash map and update val for given id, see My Notes.
+
+-- Complexidade em tempo da PD
+É o tamanho do cache * time de calcular uma cells
+eg: se n * m o tamanho de `memo`, e cada vez você itera n, complexidade final é O(m * n^2)
+
+-- Virtual and pure virtual methods in C++, Override keyword
+Virtual methods are marked at the parent class so, if a pointer of parent class type is used to reference a child class object,
+the method of the child class is called (while for non-virtual methods the base class method is called - this is called runtime polymorphism).
+(good: https://www.geeksforgeeks.org/virtual-function-cpp/)
+"Override" keyword makes sure that a base class has an identical prototype in one of its virtual functions: https://www.fluentcpp.com/2020/02/21/virtual-final-and-override-in-cpp/
+(showing the intention to the compiler that you want to override a virtual of the base, avoiding bugs of typos or different signatures with const etc)
+A pure virtual method is specified by placing "= 0" in its declaration (cannot instantiate an object, then), eg: 
+class Box {
+  public:
+    // pure virtual function
+    virtual double getVolume() = 0;
+  private:
+    double length; // Length of a box
+};
+Obs: public and private keywords use half of the normal tab space (from Google C++ guide).
+Obs: pure virtual methods are sometimes also called abstract methods.
+(to clarify more pure virtual vs virtual: https://www.geeksforgeeks.org/difference-between-virtual-function-and-pure-virtual-function-in-c/)
+(it is still valid to use Override for a child class method referencing a pure virtual parent class method: https://stackoverflow.com/questions/46446652/is-there-any-point-in-using-override-when-overriding-a-pure-virtual-function)
+
+-- Abstract classes in C++ (same as interface in C++)
+Has at least one pure virtual method (and then cannot be instantiated).
+Describes the behavior or capabilities of a C++ class without committing to a particular implementation of that class.
+Just for other classes to inherit from it following the same signature.
+(https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm)
+
+-- Naming
+Mantenha coerência, C++ style guide:
+MyMethodName, MyClassName, my_local_var
+(Pascal case for methods and classes, underlines for variables)
+
+-- Note to access unordered_map: g[node] or g.at[node]
+If g[node] may receive an error if g was passed by const ref, because [] syntax also allows to change g.
+g.at(node) is only read, then it works for const ref, but throws an error if node not present in g, has to deal with this edge case in a separate if.
+
+-- CPUs vs GPUs
+GPUs are faster for parallelization, image processing, matrices multiplications.
+- When CPUs are better than GPUs?
+Due to its architecture, a CPU is ideal for serial instruction processing, while a GPU is designed for parallel instruction processing.
+Some computing tasks (most) can’t be broken down to use lots and lots of cores operating in parallel. They need one or two cores operating fast, CPU is perfect for that.
+Analogy: tens of tea pickers are faster than one very able one, while an experienced montain climber climbs much faster than many unexceptional others (different tasks, cannot parallelize the later).
+(image processing or 3d rendering are highly parallelizable, each thread gets its own bit of screen to draw in parallel)
+CPUs are more flexible, we are trading flexibility for performance (same happens on GPU -> TPU).
+GPUs are very bad at doing floating point math, and so are not useful for rendering or simulations that require a lot of floating-point operations.
+GPUs are also not very good at doing lots of small tasks serially, while CPUs are great at this.
+- Why GPUs faster?
+GPUs have hundreds OR thousands of weaker smaller cores, great for parallelization, where 32 threads work on the same
+instruction (generally 16 Streaming Multiprocessors of 32 cores each = ~512 cores) as against a single thread in a CPU.
+(SIMT - Single Instruction Multiple Threads for GPU)
+Processing units organized like in a matrix fashion, immediate to access memory of neighboring units.
+Using actual genuine thread rotation, a GPU launches instructions every time from different threads. Unlike a GPU, a CPU uses out-of-order execution.
+All modern GPUs come with shared memory, which is several times faster than the bandwidth of a CPU’s L1 cache. It’s designed explicitly for algorithms with a high degree of locality.
+- GPUs for ML 
+Most CPUs are multi-core processors, operating with an MIMD architecture. In contrast, GPUs use a SIMD architecture. This difference
+makes GPUs well-suited to deep learning processes which require the same process to be performed for numerous data items. Distribution of training processes.
+Both CPUs and GPUs have ALUs (Arithmetic Logic Units) as building blocks.
+- Systolic array (organization of processing units in a matrix-like fashion)
+Systolic arrays are hardware structures built for fast and efficient operation of regular algorithms that perform the same task with different data at different time instants.
+Systolic arrays replace a pipeline structure with an array of processing elements that can be programmed to perform a common operation.
+TPUs have them, some GPUs may have as well (not all it seems).
+Neighbor cells can directly access memory of the neighbors.
+- CPU
+1. CPU normally has only 4 (few) powerful cores.
+2. A CPU architecture allows each physical CPU core to execute two threads on two virtual cores such that an individual thread executes the instructions independently.
+CPUs are designed to run almost any calculation; they're general-purpose computers.
+- GPU
+1. GPU has hundreds OR thousands of weak and smaller cores.
+2. GPU uses single instruction, multiple threads (SIMT) architecture, where 32 (generally) threads work on the same instruction as against a single thread in a CPU.
+GPUs use SPMD.
+(https://www.e2enetworks.com/blog/why-gpu-can-process-image-much-faster-than-cpu)
+
+-- TPUs
+"Custom build ASIC to accelerate ML and DL projects".
+Remember ASICs (Application-Specific Integrated Circuits).
+- The heart of the TPU: A systolic array (very different architecture from GPUs and CPUs).
+- Systolic because it likes the data goes in waves (like heart) accross the processing units (the same input for a register is passed through
+neighbor ALUs without the need to be saved in a register again, only at the end, neighbor ALUs have a wire between them) - remember, in matrix
+multiplication the same input (eg: a row) is used and summed over and over again.
+- It makes an engineering tradeoff: limiting registers, control and operational flexibility in exchange for efficiency and much higher operation density.
+Google seems to already be in the 3rd generation of TPUs.
+TPU design is strictly minimal and deterministic as it has to run only one task at a time: neural network prediction/training.
+TPUs are more specialized for machine learning calculations than GPUs.
+1. Google designed it as a Matrix Processor that was specialized for neural network work loads.
+2. Compute with Extreme Parallelism.
+3. Highly-optimized for large batches and CNNs (convolutional neural network).
+(https://cloud.google.com/blog/products/ai-machine-learning/an-in-depth-look-at-googles-first-tensor-processing-unit-tpu)
+-- TPU vs GPU vs CPU for ML
+- TPU: Tensor Processing Unit is highly-optimised for large batches and CNNs and has the highest training throughput.
+- GPU: Graphics Processing Unit shows better flexibility and programmability for irregular computations, such as small batches and nonMatMul computations.
+- CPU: Central Processing Unit achieves the highest FLOPS utilisation for RNNs and supports the largest model because of large memory capacity.
+
+-- Concurrency vs Parallelism
+- Concurrency is when two or more tasks can start, run, and complete in overlapping time periods.
+It doesn't necessarily mean they'll ever both be running at the same instant. For example, multitasking on a single-core machine.
+- Parallelism is when tasks literally run at the same time, e.g., on a multicore processor.
+Concurrency is achieved through the interleaving operation of processes on the central processing unit (CPU), or in
+other words by the context switching. It also increases the amount of work finished at a time.
+Concurrency can have a non-deterministic control flow approach.
+
+-- SPMD (Single Program Multiple Data)
+Example: Sum two vectors A and B into C, C[i] = A[i] + B[i], iterate through it with each thread doing
+the same thing (sum), but each thread over different data (different sub-range / sub-interval of A and B)
+SIMD can be understood similarly as SPMD but on multiple hardware, each ALU executing the same instruction
+MPI is used to perform SPMD as well (remember MPIgenerateImage on https://github.com/rogerlucena/RayTracer/blob/master/src/rt_tools.cpp).
+(https://ec.europa.eu/programmes/erasmus-plus/project-result-content/6d72bb05-2d38-48d2-87e4-a209e49cda4f/lec01_intro.pdf)
+
+-- Communication patterns on distributed computing
+Brodcast (communicate to all)
+Multicast (communicate to few)
+Unicast (communicate to only one other)
+Remember MPI example above: all other nodes unicast to 0-node (unicast), and 0-node receives from all of them and builds the image (aggregation).
+There is also Brodcast, Aggregation (all-reduce too?) and Shuffle (as in map reduce, elements with same key): (https://www.researchgate.net/figure/Three-common-communication-patterns-for-distributed-applications-broadcast-aggregation_fig1_331034553).
+
+-- Differences between programming languages
+C++ faster because it does not have a garbage collector, Java and Python do.
+C++ faster because static typing, Python supports dynamic typing.
+C++ and Java use a compiler, Python uses an interpreter.
+  (Interpreters usually take less amount of time to analyze the source code. However, the overall execution time is comparatively slower than compilers.)
+  (Interpreters are line by line, Compilers take the whole program into machine code)
+  https://www.geeksforgeeks.org/difference-between-compiler-and-interpreter/
+
+-- Float numbers (understand mantissa, accuracy ...)
+To better understand mantissa, exponent etc: https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html
+Why floating-point values do not represent exact value: https://www.geeksforgeeks.org/why-floating-point-values-do-not-represent-exact-value/
+Some numbers cannot be represented as the sum of 1/2 + 1/4 + 1/8 ..., such as  0.1: https://www.cs.technion.ac.il/users/yechiel/c++-faq/floating-point-arith.html
+(Just like 1/3 in decimal base)
+
 -- Trees (attention here):
 Depth: distance (#edges) from root (d(root) = 0)
 Height: largest distance (#edges) to a leaf (h(every leaf) = 0)
@@ -130,6 +327,7 @@ https://www.geeksforgeeks.org/difference-between-stdswap-and-stdvectorswap/
 -- Remember: If "v" is an empty vector -> v.size()-1: 18446744073709551615
 Attention when iterating a vector backwards, in the edge case of empty input you can be in trouble!
 Treat this edge case separated (maybe along with v.size() == 1) at the beginning!
+or do a "+1" operation over the index to compare, instead of "-1" over the size; or cast to int if allowed.
 
 -- Remember: mid = left + (right - left) / 2 to avoid int overflow!
 
@@ -150,6 +348,7 @@ Otherwise, a simple BFS will do the work.
 
 -- Difference between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
+You can use a set as a pq too for nice update in value, see "Data structure bizuradas menos macaco" above.
 
 -- For maps and sets we cannot do operations with the iterators such as:
 "m.upper_bound(n) - m.begin()", or "m.begin()+1" -> bidirectional iterators do not allow it, only ++ or -- 
@@ -241,7 +440,7 @@ here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (te
 
 Think about inverting, calculating, and then inverting again:
     invert_words Pramp problem (reverse_the_string problem in ./Problems) ...
-Remember std::to_string() method and s.append() in the place of ostringstream, for example
+Remember std::to_string() method and s.append() in the place of ostringstream (remember_strings.cpp file), for example
 
 Ideia geral para DP:
     if (caso base)
@@ -260,3 +459,18 @@ Ideia geral para implementar iterators:
         return ans
     has_next
         verificar state 
+
+Macaco: anagramas, pense em fingerprint da string
+    a1b2
+    sort na string
+    vetor com 26 posicoes e o count de cada char
+
+Cuidado com saltos logicos, se vc tah assumindo uma DS jah, diga isso
+    e.g. to assumindo que as palavras do ingles ja tao num hash set (na hora de mencionar complexidade com O(1) access)
+
+Sempre pensar se dá pra fazer um preprocessing que ajude
+    aqui seria ja organizar num hash map de fingerprint/signature para vector<string>
+
+C++ (lembrar)
+    lembrar que [] no map modifica, tem que usar at() se você recebeu o hash map por const ref (read-only access)
+    ele default inicializa/insert com 0 se o value do hash map for int

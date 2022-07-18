@@ -40,6 +40,7 @@ int main() {
 // LONG_MAX =  9.223.372.036.854.775.807 (2^63-1)
 // LONG_MIN = -9.223.372.036.854.775.808 (-2^63)
 
+// To better understand mantissa, exponent etc: https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html
 // float max: 3.40282e+38
 // float min: 1.17549e-38
 // double max: 1.79769e+308, that is 2^(1024)−2^(971)

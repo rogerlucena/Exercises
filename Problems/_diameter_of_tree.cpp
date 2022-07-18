@@ -19,6 +19,7 @@ void printGraph(unordered_map<int, vector<int>> &g) {
 	}
 }
 
+// using only "parent" because we are in a tree, if it was an actual graph we should use hash set "visited".
 pair<int, int> dfs(int n, unordered_map<int, vector<int>> &g, int parent) {
 	int maxDistance = 0;
 	int farthestNode = n;
@@ -37,6 +38,8 @@ pair<int, int> dfs(int n, unordered_map<int, vector<int>> &g, int parent) {
 	return ans;
 }
 
+// Obs: case of empty edges, resulting in an empty graph, is handled by g[n] above returning an empty vector. If
+// using g.at(n) as below (to use const ref for the graph) we have an error and then we need to handle this case as a separate if (as below).
 int treeDiameter(vector<vector<int>> &edges) {
 	unordered_map<int, vector<int>> g;
 	for(vector<int> e : edges) {
@@ -51,6 +54,45 @@ int treeDiameter(vector<vector<int>> &edges) {
 
 	return ans.first;
 }
+
+/*
+pair<int, int> GetFarthestFrom(int n, const unordered_map<int, vector<int>>& g, unordered_set<int>& visited) {
+	pair<int, int> farthest = {n, 0};
+	visited.insert(n);
+	for (int neigh : g.at(n)) {
+	if (visited.find(neigh) != visited.end()) {
+		continue;
+	}
+	pair<int, int> farthest_from_neigh = GetFarthestFrom(neigh, g, visited);
+	if (farthest_from_neigh.second + 1 > farthest.second) {
+		// farthest = farthest_from_neigh;
+		// farthest = make_pair<int, int>(int(farthest_from_neigh.first), farthest_from_neigh.second + 1);
+		farthest.first = farthest_from_neigh.first;
+		farthest.second = farthest_from_neigh.second + 1;
+	}
+	}
+
+	return farthest;
+}
+
+int treeDiameter(vector<vector<int>>& edges) {
+	if (edges.empty()) {
+	return 0;
+	}
+	unordered_map<int, vector<int>> g;
+	for (const vector<int>& e : edges) {
+	g[e[0]].push_back(e[1]);
+	g[e[1]].push_back(e[0]);
+	}
+
+	unordered_set<int> visited;
+	pair<int, int> farthest = GetFarthestFrom(0, g, visited);
+	visited.clear();
+	pair<int, int> ans = GetFarthestFrom(farthest.first, g, visited);
+
+	return ans.second;
+}
+*/
 
 int main() {
 	// vector<vector<int>> edges = {{0,1},{0,2}}; // ans expected: 2

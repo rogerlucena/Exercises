@@ -45,15 +45,15 @@ void dfs(int src) {
 // For BFS, we keep an "enqueued" boolean structure (instead of "visited" like in the DFS)
 void bfs(int source) {
 	q.push(source);
-	enqueued[source] = true;
+	enqueued.insert(source); // hash set
 	while(!q.empty()) {
 		v = q.front();
 		q.pop();
 		doSomething(v);
-		for(neigh : neighbors(v)) {
-			if(!enqueued[neigh]) {
+		for(int neigh : neighbors(v)) {
+			if(enqueued.find(neigh) == enqueued.end()) {
 				q.push(neigh);
-				enqueued[neigh] = true;
+				enqueued.insert(neigh);
 			}
 		}
 	}
@@ -97,7 +97,7 @@ ListNode* reverseList(ListNode* h) {
 // Binary search
 // See remember_sort_binary_search_and_lower_bound file too.
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
-int binarySearch(const vector<int> &arr, int l, int r, int x) { 
+int binarySearch(const vector<int> &arr, int l, int r, int x) {
     while (l <= r) { 
         int m = l + (r - l) / 2; // to avoid int overflow!
   
@@ -111,7 +111,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
 		} else {
             r = m - 1; 
 		}
-    } 
+    }
   
     // if we reach here, then element was not present 
     return -1; 
@@ -199,6 +199,7 @@ ListNode* endOfFirstHalf(ListNode* head) {
 // Revisit union-find:
 	// Problem to find cycles in an undirected graph: https://www.geeksforgeeks.org/union-find/
 	// And also with path compression and union by rank: https://www.geeksforgeeks.org/union-find-algorithm-set-2-union-by-rank/
+	// revisit problem __redundant_connection_union_find.cpp
 
 // Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)
 	// Also, remember that XOR is ^
@@ -207,7 +208,7 @@ ListNode* endOfFirstHalf(ListNode* head) {
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 
-// read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea)!
+// read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
 
 int main(void) {
 	cout << "QuickSort:" << endl;

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -7,14 +8,25 @@ using namespace std;
     // To understand a number as string (int -> string)
     use std::to_string(number);
 
+    // use stoi (string to int) to do the opporsite, precising the base (2, 10, ...)
+    // int i_bin = std::stoi(str_bin, nullptr, 2);
+
     // Syntax of ostringstream (previous way of doing int -> string)
     int a=55;
     std::ostringstream aux;
     aux << a;
     cout << "char aux is: " << aux.str() << endl;
 
-    // use stoi (string to int) to do the opporsite, precising the base (2, 10, ...)
-    // int i_bin = std::stoi (str_bin,nullptr,2);
+    // syntax for substr
+    // s.substr(start_index, size);
+
+    // See how to tokenize a string given s separator below.
+
+    string str = "We think in generalities, but we live in details."; // (quoting Alfred N. Whitehead)
+    string str2 = str.substr(3, 5);     // "think", precised start and size
+    std::size_t pos = str.find("live");      // position of "live" in str, 
+    cout << "pos: " << pos << endl;          // pos: 33
+    string str3 = str.substr(pos);     // get from "live" to the end
 
     Notes:
 
@@ -22,8 +34,7 @@ using namespace std;
 	char c = char('9' - 1); // '8'
 */
 
-int main ()
-{
+int main () {
     // string s = "eu sou o roger lindao";
     // int pos = s.find("roger");
     // cout << "size_t pos is: " << pos << endl;
@@ -131,4 +142,42 @@ int main ()
     cout << "final size: " << strn.size() << endl; // final size: 44
 
     return 0;
+}
+
+// If library implemented correctly, it can linear on the size of "s".
+vector<string> Split(const string& s, const string& sep) {
+  vector<string> splitted;
+  int start = 0;
+  int end = s.find(sep);
+  while (end != string::npos) {
+      splitted.push_back(s.substr(start, end - start)); // s.subtr(start_pos, size_to_copy). Generally linear in the length of the returned object.
+      start = end + sep.size();
+      end = s.find(sep, start); // s.find(target, index_starting_from). Generally up to linear in length()-start times the length of the sequence to match (worst case).
+  }
+
+  splitted.push_back(s.substr(start)); // from "start" till the end.
+  return splitted;
+}
+
+vector<string> SplitWithErase(string s, const string& sep) {
+	vector<string> splitted;
+	int position = s.find(sep);
+	while (position != string::npos) {
+		string token = s.substr(0, position);
+		splitted.push_back(token);
+		s.erase(0, position + sep.size()); // s.erase(start_pos, size_to_erase).
+		position = s.find(sep);
+	}
+	splitted.push_back(s);
+
+	return splitted;
+}
+
+int main2() {
+	string s = "122.111.33.37";
+	string sep = ".";
+	for (string w : Split(s, sep)) {
+		cout << w << endl;
+	}
+	return 0;
 }

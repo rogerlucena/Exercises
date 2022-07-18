@@ -29,7 +29,6 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 	return leftLca ? leftLca : rightLca;
 }
 
-
 int main() {
 	cout << "Hello, World!";
 	return 0;

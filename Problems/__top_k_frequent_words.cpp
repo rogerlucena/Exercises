@@ -65,7 +65,7 @@ int main() {
 	vector<string> words = {"i", "love", "leetcode", "i", "love", "coding"}; // ans: "i", "love" (alphabetical order)
 	int k = 2;
 	
-	vector<string> words1 = {"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"}; // ans: "the", "is", "sunny", "day"
+	vector<string> words2 = {"the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"}; // ans: "the", "is", "sunny", "day"
 	int k2 = 4;
 
 	vector<string> ans = topKFrequent(words, k);
