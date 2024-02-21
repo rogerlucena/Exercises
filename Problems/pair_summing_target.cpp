@@ -11,6 +11,7 @@ using namespace std;
 
 */
 
+// O(N) in time and O(1) in space
 pair<int, int> FindPairSummingToTarget(const vector<int>& nums, int target) {
     int index1 = 0;
     int index2 = nums.size() - 1;
