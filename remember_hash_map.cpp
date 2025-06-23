@@ -8,6 +8,7 @@ using namespace std;
 
 // mymap.find(key_value) - it is mymap.end() if not found
 // for (auto &p : mymap) cout << p.first << " " << p.second << endl;
+// for (const auto& [num, freq] : frequencies) { // C++17 accepts
 // mymap["newkey_value"] = "newobj_value";
 // mymap.size()  // O(1)
 

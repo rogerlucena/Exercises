@@ -12,7 +12,7 @@ using namespace std;
         // Floyd builds the tree from the bottom up (n/2 elements are leaves, n/4 have 
         // height 1 and so on, final complexity: n(1/2 + 1/4 + ...) = n) 
 // // priority_queue<int> pq (A.begin(), A.end()); // Initilize O(n) taking a container as input
-// (but to do the same, adding one element at a time -> O(n logn n))
+// (but to do the same, adding one element at a time -> O(n log n))
 
 // Note: you can also implement a pq using a set, but seems to be slower (since you can also iterate it all in sorted manner).
 // do this only when you want to have id_to_val hash map and update val for given id, see My Notes.
