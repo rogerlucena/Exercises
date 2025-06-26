@@ -6,11 +6,12 @@
 
 using namespace std;
 
+// https://leetcode.com/problems/3sum
 // https://www.interviewbit.com/problems/3-sum-zero/
 // (two pointer idea again)
 // Remember: in the two sum problem (https://leetcode.com/problems/two-sum/) the array must be sorted, if not you can still
 	// be O(N) in time keeping a hash map val-index after a first pass to try to find the complement wrt to target in the second pass
-	// (can even do in only one pass with hash map, verifying as we go if the complement was already seen in the past).
+	// (can even do in only one pass with hash map, verifying as we go if the complement was already seen in the past) - but then will need extra space.
 
 // Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0?
 // Find all unique triplets in the array which gives the sum of zero.
@@ -22,6 +23,35 @@ using namespace std;
 // (-1, -1, 2)
 
 // O(N^2) instead of O(N^3) below. =]
+vector<vector<int>> threeSum(vector<int>& nums) {
+    sort(nums.begin(), nums.end());
+    vector<vector<int>> ans;
+
+    for (int i = 0; i < nums.size() - 2; ++i) {
+		if (nums[i] > 0) break;
+		if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+        int target = -(nums[i]);
+        for (int j = i + 1, k = nums.size() - 1; j < k;) {
+            if (nums[j] + nums[k] == target) {
+                ans.push_back({nums[i], nums[j], nums[k]});
+                ++j;
+                --k;
+                while (j < k && nums[j] == nums[j - 1]) {  // to avoid repeated triplets, no need todo this for k as well; j < k to avoid out of bounds.
+                    ++j;
+                }
+            } else if (nums[j] + nums[k] < target) {
+                ++j;
+            } else {
+                --k;
+            }
+        }
+    }
+
+    return ans;
+}
+
+// Dirtier solution below.
 int incrementTillDifferent(int j, vector<int> &A) {
 	while(A[j+1] == A[j]) {
 		++j;
@@ -36,7 +66,7 @@ int decrementTillDifferent(int k, vector<int> &A) {
 	return k-1;
 }
 
-vector<vector<int>> threeSum(vector<int> &A) {
+vector<vector<int>> threeSumOld(vector<int> &A) {
 	vector<vector<int>> ans = {};
 	if(A.size() < 3) {
 		return ans;
