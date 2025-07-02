@@ -11,6 +11,12 @@ using namespace std;
     // use stoi (string to int) to do the opporsite, precising the base (2, 10, ...)
     // int i_bin = std::stoi(str_bin, nullptr, 2);
 
+    // String has a push_back and a pop_back method for chars too - useful when backtracking for eg (eg: https://leetcode.com/problems/generate-parentheses)
+    // s.back() -> returns a reference to the last char of s, can edit it then (eg: str.back() = '!';).
+    // vector has a .back() method as well.
+
+    // Use += to append another string with max probability to do not recopy the entire original string too (worse complexity) - being O(size of added string) only then.
+
     // Syntax of ostringstream (previous way of doing int -> string)
     int a=55;
     std::ostringstream aux;
