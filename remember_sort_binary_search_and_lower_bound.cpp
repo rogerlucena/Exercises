@@ -12,7 +12,7 @@ auto myfunction = [](int i,int j) { return (i>j); };
 // auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
 // "-> bool" not necessary in lambda function
 
-// sort(position_speed.rbegin(), position_speed.rend()); // way to sort in decreasing order.
+// sort(position_speed.rbegin(), position_speed.rend()); // another way to sort in decreasing order, or using std::greater<int>() comparator.
 
 // Lower bound remember (in <algorithm>) - http://www.cplusplus.com/reference/algorithm/lower_bound
 // (Complexity: on average, logarithmic in the distance between first and last)
@@ -29,20 +29,28 @@ auto myfunction = [](int i,int j) { return (i>j); };
 // but remember, for maps and sets we cannot do operations with the iterators such 
 // as "m.upper_bound(n) - m.begin()", or "m.begin()+1" (bidirectional iterators do not allow it), only ++ or --
 
-int rememberLowerBound() {
-    vector<int> v{10, 20, 30, 30, 30, 40, 50}; 
-    vector<int>::iterator low1, low2, low3; 
+int rememberLowerUpperBound() {
+    vector<int> v{10, 20, 30, 30, 30, 40, 50};
+    vector<int>::iterator low1, low2, low3, up1, up2, up3;
       
     // std :: lower_bound 
     low1 = lower_bound(v.begin(), v.end(), 30);
     low2 = lower_bound(v.begin(), v.end(), 35);
     low3 = lower_bound(v.begin(), v.end(), 55);
   
-    // Printing the lower bounds 
     cout << "lower_bound for element 30 at position : " << (low1 - v.begin()); // 2
     cout << "\nlower_bound for element 35 at position : " << (low2 - v.begin()); // 5
     cout << "\nlower_bound for element 55 at position : " << (low3 - v.begin()); // 7, v.end() was returned here.
     
+    // upper_bound
+    up1 = upper_bound(v.begin(), v.end(), 30);
+    up2 = upper_bound(v.begin(), v.end(), 45);
+    up3 = upper_bound(v.begin(), v.end(), 50);
+    
+    cout << "\n\nupper_bound for element 30 at position : " << (up1 - v.begin()); // 5
+    cout << "\nupper_bound for element 45 at position : " << (up2 - v.begin()); // 6
+    cout << "\nupper_bound for element 50 at position : " << (up3 - v.begin()); // 7, v.end() was returned here.
+
     return 0;
 }
 
@@ -88,7 +96,7 @@ int binarySearch(int arr[], int l, int r, int x)
 {
     if (r >= l) // "ele"=left, not one here
     {
-        int mid = l + (r - l)/2; // "ele"=left and "erre"=right, not one here
+        int mid = l + (r - l)/2; // "ele"=left and "erre"=right, not one here, this way to avoid int overflow.
 
         // If the element is present at the middle
         // itself
@@ -108,4 +116,9 @@ int binarySearch(int arr[], int l, int r, int x)
     // We reach here when element is not
     // present in array
     return -1;
+}
+
+int main() {
+    rememberLowerUpperBound();
+    return 0;
 }
