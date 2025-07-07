@@ -6,6 +6,7 @@ using namespace std;
 // https://neetcode.io/problems/find-minimum-in-rotated-sorted-array
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array
 // Quick review: In a rotated sorted array, mid can be in the same sorted segment as left or right, compare to right to find out.
+// If they three are in the same sorted segment it is also correctly dealt below.
 
 // Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, 
 // the array nums = [0,1,2,4,5,6,7] might become:
@@ -38,6 +39,7 @@ using namespace std;
 
 // O(log n) in time.
 // In a rotated sorted array, mid can be in the same sorted segment as left or right, compare to right to find out.
+// If they three are in the same sorted segment it is also correctly dealt below.
 int findMin(vector<int> &nums) {
 	int l = 0;
 	int r = nums.size() - 1;
