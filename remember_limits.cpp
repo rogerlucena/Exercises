@@ -41,9 +41,14 @@ int main() {
 // LONG_MIN = -9.223.372.036.854.775.808 (-2^63)
 
 // To better understand mantissa, exponent etc: https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html
-// float max: 3.40282e+38
+// float -> 4 bytes (typically stores numbers with about 7 decimal digits of accuracy)
+// float max: 3.40282e+38 (exponent here is 10^38)
 // float min: 1.17549e-38
+// double -> 8 bytes (typically stores numbers with about 15–16 decimal digits of accuracy)
 // double max: 1.79769e+308, that is 2^(1024)−2^(971)
 // double min: 2.22507e-308, that is 2^(−1022)
+
+// there is also "long double" for more precision than double if compiler/platform supports it with true extended precision:
+// 8–16 bytes (varies) -> (~18–21+ digits of precision - platform-dependent)
 
 // rand max: 2147483647, see https://leetcode.com/problems/random-pick-with-weight/
