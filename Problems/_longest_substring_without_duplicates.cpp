@@ -7,7 +7,8 @@ using namespace std;
 
 // https://neetcode.io/problems/longest-substring-without-duplicates
 // https://leetcode.com/problems/longest-substring-without-repeating-characters
-// Quick: sliding window valid because the others will be of smaller length and then can increase "start".
+// Review: nice to use a hash map 'found[c]' to store the last index on which char 'c' was found.
+// Sliding window valid because the others will be of smaller length and then can increase "start".
 
 // Given a string s, find the length of the longest substring without duplicate characters.
 
@@ -24,6 +25,26 @@ using namespace std;
 // Constraints:
 // 0 <= s.length <= 5 * 104
 // s consists of English letters, digits, symbols and spaces.
+
+// Optimal (but same time and space complexity as below):
+// For each char in s verify if it can be the rightmost index of the longest substring, eliminating the other possibilities.
+int lengthOfLongestSubstring(string s) {
+	unordered_map<char, int> found;
+	int longest = 0;
+
+	int l = 0, r = 0;
+	while (r < s.size()) {
+		if (found.count(s[r])) {
+			l = max(l, found[s[r]] + 1);
+		}
+
+		longest = max(longest, r - l + 1);
+		found[s[r]] = r;
+		++r;
+	}
+
+	return longest;
+}
 
 // Time O(N), Space O(M)
 // N is the length of the string and 
@@ -45,19 +66,24 @@ int lengthOfLongestSubstring(string s) {
     return longest;
 }
 
-// Optimal below from Neetcode solutions (but same time and space complexity as above):
+// Other file - older:
+// Time complexity : O(n). Index j will iterate n times.
+// Space complexity : O(min(m, n)). Same as the previous approach. We need O(k) space for the sliding 
+// window, where k is the size of the Set. The size of the Set is upper bounded by the size of the string n and the 
+// size of the charset/alphabet m.
 int lengthOfLongestSubstring(string s) {
-    unordered_map<char, int> mp;
-    int l = 0, res = 0;
+	unordered_map<char, int> found;
+	int maxLength = 0;
+	for(int i = 0, j = 0; j < s.size(); ++j) {
+		if(found.find(s[j]) != found.end()) {
+			i = max(found[s[j]] + 1, i);
+		}
 
-    for (int r = 0; r < s.size(); r++) {
-        if (mp.find(s[r]) != mp.end()) {
-            l = max(mp[s[r]] + 1, l);
-        }
-        mp[s[r]] = r; // record the last time that char was found.
-        res = max(res, r - l + 1);
-    }
-    return res;
+		maxLength = max(maxLength, j-i+1);
+		found[s[j]] = j; 
+	}
+
+	return maxLength;
 }
 
 int main() {
