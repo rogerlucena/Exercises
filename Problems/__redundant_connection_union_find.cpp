@@ -7,7 +7,7 @@ using namespace std;
 // https://leetcode.com/problems/redundant-connection/
 // Classic example of Union-Find.
 // A boolean DFS(source, target, visited) auxiliar function would have also worked (return true if reaches target from source).
-// Complexity for DFS: O(N^2) in time and O(N) is space.
+// Complexity for running a DFS after taking each edge above: O(N^2) in time and O(N) is space.
 // Complexity for Union-Find with path compression and union by rank: O(N) in space and O(N.α(N)) ≈ O(N) in time, where α is the Inverse-Ackermann function (function which value goes very very slowly).
 // (it can be shown that the optmized Union above takes amortized O(α(N)) time, and that O(α(N)) is approximately O(1))
 

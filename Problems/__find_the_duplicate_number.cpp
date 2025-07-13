@@ -3,7 +3,8 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/find-the-duplicate-number/
+// https://leetcode.com/problems/find-the-duplicate-number/ (solution explains hare tortoise visually there)
+// also explained here: https://www.geeksforgeeks.org/dsa/find-any-one-of-the-multiple-repeating-elements-in-read-only-array-set-2/
 
 // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 // There is only one repeated number in nums, return this repeated number.
@@ -23,16 +24,16 @@ using namespace std;
 // 1 <= nums[i] <= n
 // All the integers in nums appear only once except for precisely one integer which appears two or more times.
 
-// hare and tortoise solution - O(N), and O(1) in space.
+// Hare and Tortoise solution - O(N), and O(1) in space.
 int findDuplicate(vector<int>& nums) {
 	int hare = nums[0];
 	int tortoise = nums[0];
 	do {
 		hare = nums[nums[hare]];
 		tortoise = nums[tortoise];
-	} while (hare != tortoise);
+	} while (hare != tortoise); // they meet each other inside the cycle but not necessarily at the point the cycle begins.
 
-	tortoise = nums[0];
+	tortoise = nums[0]; // now they will meet at the point the cycle begins with v = 1 for each.
 	while (hare != tortoise) {
 		hare = nums[hare];
 		tortoise = nums[tortoise];
@@ -40,6 +41,12 @@ int findDuplicate(vector<int>& nums) {
 
 	return hare;
 }
+// Proof of Hare and Tortoise to find the entrance point of the cycle:
+// v.t, 2v.t
+// e (distance to start cycle)
+// (2v.t-e) % C == (v.t-e) % C => v.t is congruent to 0 modulus C (size of cycle).
+// e/v time after tortoise start from 0 again
+// position of hare will be: (e/v * v) + (v.t-e) == v.t modulus C which is 0 (entrance of the cycle as we wanted).
 
 // Idea for binary search: find the smallest number such that the count of numbers less than or equal to it is greater than the number itself.
 // 		log(N) times it goes through the entire array to get the count above = N log (N) solution

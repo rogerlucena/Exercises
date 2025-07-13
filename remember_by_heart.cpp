@@ -213,14 +213,16 @@ bool hasCycle(ListNode* head) {
 		// if str2 not found in str, returns std::string::npos (largest possible value for uint, equiv to -1 for uint)
 
 // Revisit union-find:
-	// Problem to find cycles in an undirected graph: https://www.geeksforgeeks.org/union-find/
-	// And also with path compression and union by rank: https://www.geeksforgeeks.org/union-find-algorithm-set-2-union-by-rank/
+	// Problem to find cycles in an undirected graph: https://www.geeksforgeeks.org/dsa/introduction-to-disjoint-set-data-structure-or-union-find-algorithm 
+	// And also with path compression and union by rank (clearer path compression implementation here): https://www.geeksforgeeks.org/dsa/union-by-rank-and-path-compression-in-union-find-algorithm 
 	// revisit problem __redundant_connection_union_find.cpp
 
 // Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)
 	// Also, remember that XOR is ^
 
 // Revisit Counting Sort and Radix sort from My Notes.txt
+
+// Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link of algorithm and my calculation proving that it works is also there).
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 
