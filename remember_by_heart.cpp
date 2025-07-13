@@ -120,6 +120,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
 // Merge two sorted lists
 // Sentinel idea very useful, like in the swap_nodes_in_pairs problem
 // Can use "ans" as local stack variable here (no destructor defined to delete nexts and so on) 
+// O(N+M) in time and O(1) in space (if used recursion calls there would be the recursion stack space N+M too).
 ListNode* mergeSorted(ListNode* a, ListNode* b) {
 	ListNode ans(-1);
 	ListNode* tmp = &ans;
@@ -182,11 +183,26 @@ void quickSort(vector<int> &arr, int low, int high) {
 ListNode* endOfFirstHalf(ListNode* head) {
 	ListNode* fast = head;
 	ListNode* slow = head;
-	while (fast.next != null && fast.next.next != null) {
-		fast = fast.next.next;
-		slow = slow.next;
+	while (fast->next && fast->next->next) {
+		fast = fast->next->next;
+		slow = slow->next;
 	}
 	return slow;
+}
+// Also useful to find if there is cycle in linked list.
+bool hasCycle(ListNode* head) {
+	ListNode* slow = head;
+	ListNode* fast = head;
+
+	while (fast && fast->next) {
+		slow = slow->next;
+		fast = fast->next->next;
+		if (slow == fast) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 // Revisit __course_schedule_dependecies.cpp for topo sort.
