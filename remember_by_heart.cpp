@@ -179,22 +179,29 @@ void quickSort(vector<int> &arr, int low, int high) {
 }
 
 // Fast and Slow pointers
-// Two halves: first one with the middle element if odd number of elements
+// Two halves: first one with the middle element if odd number of elements.
 ListNode* endOfFirstHalf(ListNode* head) {
-	ListNode* fast = head;
+	if (!head) {
+		return head;
+	}
+
 	ListNode* slow = head;
-	while (fast->next && fast->next->next) {
-		fast = fast->next->next;
+	ListNode* fast = head;
+	while (fast->next && fast->next->next) { // useful like this to get the end of first half and not the start of 2nd half, handle if head is null at the beginning.
 		slow = slow->next;
+		fast = fast->next->next;
 	}
 	return slow;
 }
 // Also useful to find if there is cycle in linked list.
 bool hasCycle(ListNode* head) {
+	if (!head) {
+		return false;
+	}
+
 	ListNode* slow = head;
 	ListNode* fast = head;
-
-	while (fast && fast->next) {
+	while (fast->next && fast->next->next) {
 		slow = slow->next;
 		fast = fast->next->next;
 		if (slow == fast) {
