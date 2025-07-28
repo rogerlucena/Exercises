@@ -24,16 +24,17 @@ using namespace std;
 // 1 <= nums[i] <= n
 // All the integers in nums appear only once except for precisely one integer which appears two or more times.
 
-// Hare and Tortoise solution - O(N), and O(1) in space.
+// Hare and Tortoise solution - O(N), and O(1) in space - Floyd's Cycle Detection algorithm.
+// Neetcode considers it not a medium but a hard problem that even Floyd would not solve in 30 min without seeing it before.
 int findDuplicate(vector<int>& nums) {
-	int hare = nums[0];
-	int tortoise = nums[0];
+	int hare = nums[0]; // "fast" pointer
+	int tortoise = nums[0]; // "slow" pointer
 	do {
 		hare = nums[nums[hare]];
 		tortoise = nums[tortoise];
 	} while (hare != tortoise); // they meet each other inside the cycle but not necessarily at the point the cycle begins.
 
-	tortoise = nums[0]; // now they will meet at the point the cycle begins with v = 1 for each.
+	tortoise = nums[0]; // now they will meet at the point the cycle begins with v = 1 for each. Or create/name it a "slow2" pointer for clarity.
 	while (hare != tortoise) {
 		hare = nums[hare];
 		tortoise = nums[tortoise];
@@ -50,6 +51,7 @@ int findDuplicate(vector<int>& nums) {
 
 // Idea for binary search: find the smallest number such that the count of numbers less than or equal to it is greater than the number itself.
 // 		log(N) times it goes through the entire array to get the count above = N log (N) solution
+// clever idea.
 int findDuplicateBinarySearch(vector<int>& nums) {
 	// Lambda function to count how many numbers are less than or equal to 'cur'
 	auto small_or_equal = [&](int cur) {
@@ -76,6 +78,21 @@ int findDuplicateBinarySearch(vector<int>& nums) {
 	}
 
 	return duplicate;
+}
+
+// Solution changing the input (cycle sort - problem from Pramp).
+// O(N) in time and O(1) in space.
+int findDuplicate(vector<int>& nums) {
+	for (int i = 0; i < nums.size(); ++i) {
+		while (nums[i] != i) {
+			if (nums[nums[i]] == nums[i]) {
+				return nums[i];
+			}
+			swap(nums[i], nums[nums[i]]);
+		}
+	}
+
+	return -1;
 }
 
 // Bit solution below - O(N log N), O(1) in space. 
