@@ -6,19 +6,20 @@
 using namespace std;
 
 // https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+// Review: remember to use sentinel "dummy" for corner cases (eg: only one node), clever idea to use two pointers and put a space of "n" nodes between them at the beginning.
 
 // Given the head of a linked list, remove the nth node from the end of the list and return its head.
 // Follow up: Could you do this in one pass?
 
-// Solution in one pass: use two pointers, and at the beginning advance one of them in n+1 steps.
+// Solution in one pass: use two pointers, and at the beginning advance one of them in n steps (the number of nodes between the pointers will be "n" then as wanted).
 // Remember sentinel "dummy" for corner cases here (only one node). 
 ListNode* removeNthFromEnd(ListNode* head, int n) {
 	ListNode dummy;
 	dummy.next = head;
 	
 	ListNode* fst = &dummy;
-	ListNode* scnd = fst;
-	for(int i = 1; i <= n+1; ++i) {
+	ListNode* scnd = head;
+	for(int i = 1; i <= n; ++i) {
 		scnd = scnd->next;
 	}
 
