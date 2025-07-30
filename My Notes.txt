@@ -299,6 +299,12 @@ Depth: distance (#edges) from root (d(root) = 0)
 Height: largest distance (#edges) to a leaf (h(every leaf) = 0)
 Height of the tree: h(root)
 
+-- Binary Search Tree (BST):
+A BST is a type of binary tree data structure in which each node contains
+a __unique__ key and satisfies a specific ordering property:
+a) All nodes in the left subtree of a node contain values __strictly__ less than the node’s value.
+b) All nodes in the right subtree of a node contain values __strictly__ greater than the node’s value.
+
 -- Idea to prove Greedy:
 https://www.interviewbit.com/tutorial/activity-selection-problem/
 If other ("k") than the greedy choice ("1") was taken, show that "(S - {k}) U {1}" would also be a solution 
