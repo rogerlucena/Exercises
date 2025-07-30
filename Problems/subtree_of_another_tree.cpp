@@ -5,7 +5,8 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/subtree-of-another-tree/
+// https://leetcode.com/problems/subtree-of-another-tree
+// https://neetcode.io/problems/subtree-of-a-binary-tree
 
 // Given two non-empty binary trees s and t, check whether tree t has exactly the 
 // same structure and node values with a subtree of s. A subtree of s is a tree consists 
@@ -39,28 +40,28 @@ using namespace std;
 //  1   2
 // Return false.
 
-bool isSameTree(TreeNode* s, TreeNode* t) {
-	if(!s && !t) {
-		return true;
-	} 
+bool sameTree(TreeNode* t1, TreeNode* t2) {
+	if (!t1 || !t2) {
+		return t1 == t2;
+	}
 
-	if(!s || !t) {
+	return (t1->val == t2->val) && sameTree(t1->left, t2->left) && sameTree(t1->right, t2->right);
+}
+
+bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+	if (!subRoot) {
+		return true;
+	}
+
+	if (!root) {
 		return false;
 	}
 
-	return s->val == t->val && (isSameTree(s->left, t->left) && isSameTree(s->right, t->right));
-}
+	if (sameTree(root, subRoot)) {
+		return true;
+	}
 
-bool isSubtree(TreeNode* s, TreeNode* t) {
-	if(!t || isSameTree(s, t)) {
-		return true;
-	}
-	
-	if(s && isSubtree(s->left, t)) {
-		return true;
-	}
-	
-	return s && isSubtree(s->right, t);
+	return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
 }
 
 int main() {
