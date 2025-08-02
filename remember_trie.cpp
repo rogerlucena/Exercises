@@ -13,6 +13,9 @@ using namespace std;
 // https://leetcode.com/problems/design-add-and-search-words-data-structure
 // https://neetcode.io/problems/design-word-search-data-structure
 
+// Review: remember to use pointers when managing tree-like structures (like Trie) and wanting to actually move
+// through it and change it indeed and not a copy of it.
+
 // Trie (PRONUNCIA certa é "TRY", lembre disso, se nao o cara nao vai saber o que vc ta falando, ou mencione "PREFIX TREE") is
 // a tree data structure used to retrieve a key in a strings dataset.
 // There are various applications of this very efficient data structure, such as autocomplete and spellchecker.
@@ -81,6 +84,13 @@ public:
 
 		return currNode->isEnd || !currNode->children.empty();
     }
+
+	~Trie() {
+		// Clean up allocated memory.
+		for (auto& [_, child_node] : children) {
+			delete child_node;
+		}
+	}
 };
 // Or separate TrieNode from PrefixTree (two classes, the first one just to encapsulate isEnd and children, the second holds 'TrieNode* root' and the methods)
 // as done in Neetcode in the link above, or below.
@@ -194,3 +204,94 @@ int main2() {
 
 	return 0;
 }
+
+
+// Also interesting problem asked at Google in the past:
+// www.interviewbit.com/problems/shortest-unique-prefix
+
+// Find shortest unique prefix to represent each word in the list.
+
+// Example:
+// Input: [zebra, dog, duck, dove]
+// Output: {z, dog, du, dov}
+
+// Nice idea: add a count to each child, increment while inserting, and only return the prefix when count == 1.
+class Trie {
+private:
+	unordered_map<char, pair<Trie*, int>> children;
+	bool is_end;
+
+public:
+	Trie() {
+		children = {};
+		is_end = false;
+	}
+
+	void insert(const string& s) {
+		Trie* curr = this;
+		for (char c : s) {
+			if (!curr->children.count(c)) {
+				curr->children[c] = make_pair(new Trie(), 0);
+			}
+			++curr->children[c].second;
+			curr = curr->children[c].first;
+		}
+		curr->is_end = true;
+	}
+
+	string getShortestUniquePrefix(const string& s) {
+		Trie* curr = this;
+		string prefix = "";
+		for (char c : s) {
+			prefix += c;
+			if (curr->children[c].second == 1) {
+				return prefix;
+			}
+			curr = curr->children[c].first;
+		}
+
+		return prefix;
+	}
+
+	~Trie() {
+		// Clean up allocated memory.
+		for (auto& [_, pair] : children) {
+			delete pair.first;
+		}
+	}
+};
+
+vector<string> prefix(vector<string>& A) {
+	Trie trie;
+	for (const string& s : A) {
+		trie.insert(s);
+	}
+
+	vector<string> prefixes = {};
+	for (const string& s : A) {
+		prefixes.push_back(trie.getShortestUniquePrefix(s));
+	}
+
+	return prefixes;
+}
+
+int main3() {
+	vector<string> input = {"zebra", "dog", "duck", "dove"};
+	vector<string> output = prefix(input); // expected: {z, dog, du, dov}
+
+	for (string s : output) {
+		cout << s << endl;
+	}
+
+	return 0;
+}
+
+// For C++17 recomended to use smart pointers for safer memory management as well:
+// #include <memory> // for unique_ptr and std::make_unique
+// unordered_map<char, pair<unique_ptr<Trie>, int>> children;
+// (...)
+// curr->children[c] = make_pair(make_unique<Trie>(), 0);
+// (...)
+// Trie* curr = this;
+// (...)
+// curr = curr->children[c].first.get(); // get raw normal pointer (Trie*) from unique_ptr

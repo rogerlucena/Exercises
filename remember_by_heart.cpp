@@ -235,6 +235,9 @@ bool hasCycle(ListNode* head) {
 
 // read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
 
+// review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
+// to actually move through it and change it indeed and not a copy of it).
+
 int main(void) {
 	cout << "QuickSort:" << endl;
     vector<int> arr = {10, 3, 40, 2, 4}; 
