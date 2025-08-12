@@ -17,14 +17,15 @@ using namespace std;
 // Note: you can also implement a pq using a set, but seems to be slower (since you can also iterate it all in sorted manner).
 // do this only when you want to have id_to_val hash map and update val for given id, see My Notes.
 
-// defaut comparator is smaller (as smaller -> as weak then, less priority), pop will give the greatest number
+// defaut comparator is smaller (as smaller -> as weak then, less priority), pop will give the greatest number (will be a max-heap).
+// to remember: imagine the vector being sorted using that cmp and pop giving the pop_back value - use this as mnemonic.
 
 // General syntax:
 // auto cmp = [](int left, int right) {return left > right;};
 // priority_queue<int, vector<int>, decltype(cmp)> q3(container.begin(), container.end(), cmp);
 // priority_queue<int, vector<int>, decltype(cmp)> q3(cmp, container);
 // or:
-// priority_queue<int, vector<int>, greater<int>> q2;
+// priority_queue<int, vector<int>, greater<int>> q2; // will be a min-heap.
 
 // eg of cmp for pq with hash map:
 // auto cmp = [](const pair<char, int> &p1, const pair<char, int> &p2) {return p1.second < p2.second;};
