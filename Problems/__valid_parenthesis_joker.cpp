@@ -4,7 +4,11 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/valid-parenthesis-string/
+// https://neetcode.io/problems/valid-parenthesis-string
+// https://leetcode.com/problems/valid-parenthesis-string
+// Remember: for parenthesis, consider using stack with indexes, where also include a stack for the "jokers" (stars).
+// Or think about DP (variable "i" and "open" define the state), or with intervals - see the great trick about 
+// the possible final 'balance' interval (below).
 
 // Given a string containing only three types of characters: '(', ')' and '*', write a function 
 // to check whether this string is valid. We define the validity of a string by these rules:
@@ -19,40 +23,71 @@ using namespace std;
 // Input: "(*))"
 // Output: True
 
-// interesting: think about using an additional stack for the 'jokers', always using indexes
-// or think about dp with intervals, or see the great trick about the possible final 'balance' interval (below)
+// Interesting: think about using an additional stack for the 'jokers' ('star'), always using indexes.
+// O(N) in time and space.
 bool checkValidString(string s) {
-	stack<int> open;
-	stack<int> joker;
+	stack<int> left;
+	stack<int> star;
 
-	for(int i = 0; i < s.size(); ++i) {
-		char c = s[i];
-		if(c == '(') {
-			open.push(i);
-		} else if(c == '*') {
-			joker.push(i);
-		} else {
-			if(!open.empty()) {
-				open.pop();
-			} else if(!joker.empty()) {
-				joker.pop();
+	for (int i = 0; i < s.size(); ++i) {
+		if (s[i] == '(') {
+			left.push(i);
+		} else if (s[i] == '*') {
+			star.push(i);
+		} else { // ')'
+			if (!left.empty()) {
+				left.pop();
+			} else if (!star.empty()) {
+				star.pop();
 			} else {
 				return false;
 			}
 		}
 	}
 
-	while (!open.empty()) {
-		int openPos = open.top();
-		open.pop();
-		if(!joker.empty() && openPos < joker.top()) {
-			joker.pop();
-		} else {
+	while (!left.empty() && !star.empty()) {
+		if (left.top() > star.top()) {
 			return false;
 		}
+		left.pop();
+		star.pop();
 	}
 
-	return true;
+	return left.empty();
+}
+
+// DP solution:
+// O(N^2) in time and space.
+bool dfs(const string& s, int i, int open, vector<vector<int>>& memo) {
+    if (open < 0) {
+        return false;
+    }   
+    if (i == s.size()) {
+        return open == 0;
+    }
+
+    if (memo[i][open] != -1) {
+        return memo[i][open];
+    }
+
+    bool res = false;
+    if (s[i] == '(') {
+        res = dfs(s, i + 1, open + 1, memo);
+    } else if (s[i] == '*') {
+        res = dfs(s, i + 1, open + 1, memo);
+        res |= dfs(s, i + 1, open, memo);
+        res |= dfs(s, i + 1, open - 1, memo);
+    } else if (open > 0) { // ')'
+        res = dfs(s, i + 1, open - 1, memo);
+    }
+
+    memo[i][open] = res;
+    return res;
+}
+
+bool checkValidStringDP(string s) {
+    vector<vector<int>> memo(s.size() + 1, vector<int>(s.size() + 1, -1));
+    return dfs(s, 0, 0, memo);
 }
 
 // Website solution (greedy)
