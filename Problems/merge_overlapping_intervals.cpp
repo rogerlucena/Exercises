@@ -6,6 +6,8 @@
 
 using namespace std;
 
+// https://neetcode.io/problems/merge-intervals
+// https://leetcode.com/problems/merge-intervals
 // https://www.interviewbit.com/problems/merge-overlapping-intervals/
 
 // Given a collection of intervals, merge all overlapping intervals.
@@ -23,6 +25,26 @@ struct Interval {
 	Interval() : start(0), end(0) {}
 	Interval(int s, int e) : start(s), end(e) {}
 };
+
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    sort(intervals.begin(), intervals.end());
+
+    int curr_start = intervals[0][0];      
+    int curr_end = intervals[0][1];
+    vector<vector<int>> ans;
+    for (int i = 1; i < intervals.size(); ++i) {
+        if (intervals[i][0] <= curr_end) {
+            curr_end = max(curr_end, intervals[i][1]);
+        } else {
+            ans.push_back({curr_start, curr_end});
+            curr_start = intervals[i][0];
+            curr_end = intervals[i][1];
+        }
+    }
+    ans.push_back({curr_start, curr_end});
+
+    return ans;
+}
 
 void addInterval(int s, int e, vector<Interval> &ans) {
 	Interval it (s, e);
