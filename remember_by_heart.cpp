@@ -231,6 +231,9 @@ bool hasCycle(ListNode* head) {
 
 // Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link of algorithm and my calculation proving that it works is also there).
 
+// Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
+// like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
+
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 
 // read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
