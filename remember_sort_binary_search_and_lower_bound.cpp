@@ -21,7 +21,7 @@ auto myfunction = [](int i,int j) { return (i>j); };
 // Unlike upper_bound (first in [first, last) that is > val, iterator to last if not found), the value 
 // pointed by the iterator returned by lower_bound function may also be equivalent to val, and not only 
 // greater (useful when wanting the position of binary_search).
-// Note: the array must be sorted with comp, default is "<"
+// Note: the array must be already sorted with comp before calling lower_bound, default is "<"
 // template <class ForwardIterator, class T, class Compare>
 //   ForwardIterator lower_bound (ForwardIterator first, ForwardIterator last, const T& val, Compare comp);
 

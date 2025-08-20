@@ -235,6 +235,9 @@ bool hasCycle(ListNode* head) {
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
+// remember "int m = *std::max_element(v.begin(), v.end())" exists as well (O(N)), "min_element" too, "max({1, 3, 2})" (overloaded given vector initializer) works but max(v) does not! "max" is for only 2 elements "max(a, b)"
+//     obs: if more than one element is largest, the iterator returned points to the first of such elements.
+// can use "if(hash_map.count(el))" to check if we have a key "el" in the hash map (instead of .find != .end).
 
 // read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
 
