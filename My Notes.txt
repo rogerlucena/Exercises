@@ -348,7 +348,7 @@ Asjacency list:
 
 -- Dijkstra vs BFS
 Use Djikstra only if weighted edges, and no negative edges!
-Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html
+Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html (use wayback machine to see)
 Complexity: O(E + V log V), makes sense.
 Otherwise, a simple BFS will do the work.
 
