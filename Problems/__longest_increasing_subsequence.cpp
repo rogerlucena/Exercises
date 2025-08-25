@@ -4,7 +4,12 @@
 
 using namespace std;
 
+// https://neetcode.io/problems/longest-increasing-subsequence
+// https://leetcode.com/problems/longest-increasing-subsequence
 // https://www.interviewbit.com/problems/longest-increasing-subsequence/
+// Remember: you have to test all the elements j to the right of i and check LIS if nums[i] < nums[j],
+// not only the next greater element to the right of i using a stack and going from right to left (gives wrong answer).
+// 1D DP problem here, for memo think about memo[j] being the LIS using nums from j onwards including j.
 
 // Find the longest increasing subsequence of a given array of integers, A.
 
@@ -27,25 +32,19 @@ using namespace std;
 
 // DP: try to divide into smaller recursive problems, if overlaps -> memoization
 // go from right to left, iterate through the elements to the right bigger than "curr" using "memo", 
-// save the max size increasing for every element
-int lis(const vector<int> &A) {
-	unordered_map<int, int> m;
+int lengthOfLIS(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> lis(n, 1);
+    for (int i = n - 2; i >= 0; --i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (nums[i] < nums[j]) {
+                lis[i] = max(lis[i], lis[j] + 1);
+            }
+        }
+    }
 
-	int longest = 0;
-	for(int i = A.size()-1; i >= 0; --i) {
-		m[i] = 1;
-		for(int j = i+1; j < A.size(); ++j) {
-			if(A[i] < A[j]) {
-				m[i] = max(m[i], m[j]+1);
-			}
-		}
-
-		longest = max(longest, m[i]);
-	} 
-
-	return longest;
+    return *max_element(lis.begin(), lis.end());
 }
-
 
 int main() {
 	cout << "Hello, World!";
