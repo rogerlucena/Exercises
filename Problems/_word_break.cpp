@@ -4,8 +4,10 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/word-break/
-// DP, think recursion and then reuse previous work
+// https://neetcode.io/problems/word-break
+// https://leetcode.com/problems/word-break 
+// 1D DP, think recursion and then reuse previous work. Recursion tends to be more intuitive, Xandão likes it better as well.
+// Remember: ok for complexity to be O(n * m * t) here depending also on t the max len of a word in dict.
 
 // Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, 
 // determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -25,35 +27,54 @@ using namespace std;
 // Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
 //              Note that you are allowed to reuse a dictionary word.
 
-bool wordBreakAux(const string &s, unordered_set<string> &dict, int start, vector<int> &memo) {
-	if(memo[start] != -1) {
-		return memo[start];
-	}
+// O(n * m * t) in time, O(n) in space - where n is len(s), m is len(wordDict) and t is max length of any word in wordDict.
+bool wordBreakRecursive(const string& s, int i, const vector<string>& wordDict, vector<int>& memo) {
+    if (i == s.size()) {
+        return true;
+    }
+    if (memo[i] != -1) {
+        return memo[i];
+    }
 
-	// cout << "start: " << start << endl;
+    bool res = false;
+    for (const string& word : wordDict) {
+        if (i + word.size() > s.size() || s.substr(i, word.size()) != word) {
+            continue;
+        }
+        if (wordBreakRecursive(s, i + word.size(), wordDict, memo)) {
+            res = true;
+            break;
+        }
+    }
 
-	memo[start] = 0;
-	for(int l = 1; l <= s.size() - start && !memo[start]; ++l) {
-		string w = s.substr(start, l);
-		if(dict.find(w) == dict.end()) {
-			continue;
-		}
-
-		memo[start] = l == s.size() - start ? true : wordBreakAux(s, dict, start+l, memo);
-	}
-
-	return memo[start];
+    memo[i] = res == true ? 1 : 0;
+    return res;
 }
 
-bool wordBreak(string s, vector<string> &wordDict) {
-	if(s.empty()) {
-		return false;
-	}
+bool wordBreak(string s, vector<string>& wordDict) {
+    vector<int> memo(s.size(), -1);
+    return wordBreakRecursive(s, 0, wordDict, memo);
+}
 
-	unordered_set<string> dict(wordDict.begin(), wordDict.end());
-	vector<int> memo(s.size(), -1);
+// Bottom-up:
+// Same complexity as above.
+bool wordBreak(string s, vector<string>& wordDict) {
+    vector<bool> dp(s.size() + 1, false);
+    dp[s.size()] = true;
 
-	return wordBreakAux(s, dict, 0, memo);
+    for (int i = s.size() - 1; i >= 0; i--) {
+        for (const auto& w : wordDict) {
+            if ((i + w.size()) <= s.size() &&
+                    s.substr(i, w.size()) == w) {
+                dp[i] = dp[i + w.size()];
+            }
+            if (dp[i]) {
+                break;
+            }
+        }
+    }
+
+    return dp[0];
 }
 
 int main() {
