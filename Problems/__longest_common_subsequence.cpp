@@ -3,7 +3,8 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/longest-common-subsequence/
+// https://neetcode.io/problems/longest-common-subsequence
+// https://leetcode.com/problems/longest-common-subsequence
 
 // Given two strings text1 and text2, return the length of their longest common subsequence.
 
@@ -19,27 +20,49 @@ using namespace std;
 // Output: 3  
 // Explanation: The longest common subsequence is "ace" and its length is 3.
 
-void fillMemo(const string &text1, const string &text2, vector<vector<int>> &memo) {
-	for(int i = text1.size() - 1; i >= 0; --i) {
-		for(int j = text2.size() - 1; j >= 0; --j) {
-			if(text1[i] == text2[j]) {
-				memo[i][j] = 1 + memo[i+1][j+1];
-			} else {
-				memo[i][j] = max(memo[i+1][j], memo[i][j+1]);
-			}
-		}
-	}
+// Top-down:
+// O(m*n) in time and space.
+int longestCommonSubsequenceRecursive(const string& text1, int i, const string& text2, int j, vector<vector<int>>& memo) {
+    if (i == text1.size() || j == text2.size()) {
+        return 0;
+    }
+    if (memo[i][j] != -1) {
+        return memo[i][j];
+    }
+
+    if (text1[i] == text2[j]) {
+        memo[i][j] = 1 + longestCommonSubsequenceRecursive(text1, i + 1, text2,
+                                                           j + 1, memo);
+    } else {
+        memo[i][j] = max(
+            longestCommonSubsequenceRecursive(text1, i + 1, text2, j, memo),
+            longestCommonSubsequenceRecursive(text1, i, text2, j + 1, memo));
+    }
+
+    return memo[i][j];
 }
 
 int longestCommonSubsequence(string text1, string text2) {
-	if(text1.empty() || text2.empty()) {
-		return 0;
-	}
+    vector<vector<int>> memo(text1.size(), vector<int>(text2.size(), -1));
+    return longestCommonSubsequenceRecursive(text1, 0, text2, 0, memo);
+}
 
-	vector<vector<int>> memo(text1.size()+1, vector<int>(text2.size()+1, 0));
-	fillMemo(text1, text2, memo);
+// Bottom-up:
+// Same complexity in time/space as above, but faster on leetcode percentage.
+int longestCommonSubsequence(string text1, string text2) {
+    vector<vector<int>> dp(text1.size() + 1, vector<int>(text2.size() + 1));
 
-	return memo[0][0];
+    for (int i = text1.size() - 1; i >= 0; i--) {
+        for (int j = text2.size() - 1; j >= 0; j--) {
+            if (text1[i] == text2[j]) {
+                dp[i][j] = 1 + dp[i + 1][j + 1];
+            } else {
+                dp[i][j] = max(dp[i][j + 1], dp[i + 1][j]);
+            }
+        }
+    }
+
+    return dp[0][0];
 }
 
 int main() {
