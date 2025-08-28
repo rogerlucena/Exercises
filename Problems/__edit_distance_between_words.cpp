@@ -3,8 +3,12 @@
 
 using namespace std;
 
-// https://www.interviewbit.com/problems/edit-distance/
-// Dynamic Programming
+// https://www.interviewbit.com/problems/edit-distance
+// https://neetcode.io/problems/edit-distance
+// https://leetcode.com/problems/edit-distance
+// 2D Dynamic Programming.
+// Remember: Lessons - to do not deal with substrings generation, work with indexes!
+// 			 Think simply, one step at a time, and memoize repeated work.
 
 // Given two strings A and B, find the minimum number of steps required to convert A to B. (each operation is counted as 1 step.)
 
@@ -32,10 +36,8 @@ using namespace std;
 //     => Operation 1: Replace s with t.
 //     => Operation 2: Insert i.
 
-
-// Lessons: to do not deal with substrings generation, work with indexes!
-// think simply, one step at a time, and memoize repeated work
-// interpretation: dp[i][j] -> taking the i first chars of A and the j first chars of B to do the conversion.
+// Bottom-up:
+// Interpretation: dp[i][j] -> taking the i first chars of A and the j first chars of B to do the conversion.
 int minDistance(string A, string B) {
 	int n = A.size();
 	int m = B.size();
@@ -96,8 +98,8 @@ int minDistanceOptimized(string A, string B) {
 	return prev[r];
 }
 
-// Lessons: to do not deal with substrings generation, work with indexes!
-// below we have my solution, DP memoization + recursive stack size in memory too (but sill O(n*m) in memory).
+// Top-down:
+// Below we have my solution, DP memoization + recursive stack size in memory too (but sill O(n*m) in memory).
 int editDistance(string &s1, int index1, string &s2, int index2, vector<vector<int>> &m) {
 	if(m[index1][index2] != -1) {
 		return m[index1][index2];
