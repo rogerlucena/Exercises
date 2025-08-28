@@ -54,11 +54,11 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 		// our virtual Topological Ordering without breaking any dependencies
 		++visitedCount;
 		int v = q.front();
-		// topoOrdering.push_back(v);
+		// topoOrdering.push_back(v); // if you want to have the ordering.
 		q.pop();
 
 		for(int neighbor : g[v]) {
-			 if(--inDegree[neighbor] == 0) {
+			 if(--inDegree[neighbor] == 0) { // the ones that were 0 become negative now, so not visited again.
 				 q.push(neighbor);
 			 }
 		 }
