@@ -213,6 +213,11 @@ bool hasCycle(ListNode* head) {
 }
 
 // Revisit __course_schedule_dependecies.cpp for topo sort.
+// Remember: topo sort is for *directed_ graphs*, for undirected ones think about simple DFS/BFS (maybe keeping 
+// track of the "parent" to not "come back" if checking if it has no cycles) or even Union-Find - see __valid_tree.cpp
+// To check the existence of cycles in a graph:
+// 		For directed graphs see __course_schedule_dependecies.cpp (use topo ordering with indegrees and a queue similar to BFS - simpler to have only this by heart, remember topo ordering <=> no cycles, otherwise use DFS also backtracking current recursion_stack[v] bools)
+// 		For undirected graphs see __valid_tree.cpp (use DFS from every unvisited node and keep track of parent to not "come back" skipping that already visited neighbor)
 
 // Revisit priority_queue syntax and syntax for str.substr(start, size).
 	// std::size_t found = str.find(str2); 
@@ -221,7 +226,7 @@ bool hasCycle(ListNode* head) {
 
 // Revisit union-find:
 	// Problem to find cycles in an undirected graph: https://www.geeksforgeeks.org/dsa/introduction-to-disjoint-set-data-structure-or-union-find-algorithm 
-	// And also with path compression and union by rank (clearer path compression implementation here): https://www.geeksforgeeks.org/dsa/union-by-rank-and-path-compression-in-union-find-algorithm 
+	// And also with path compression and union by rank (clearer path compression implementation here): https://www.geeksforgeeks.org/dsa/union-by-rank-and-path-compression-in-union-find-algorithm (also mentions the time and space complexities)
 	// revisit problem __redundant_connection_union_find.cpp
 
 // Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)

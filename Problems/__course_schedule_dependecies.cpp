@@ -7,6 +7,7 @@ using namespace std;
 
 // https://leetcode.com/problems/course-schedule/
 // (topological sort is usually used when dealing with scheduling with dependencies, like here for example)
+// Note: topo ordering has a <=> (if and only if) relation with existing no cycle in the directed graph!
 
 // There are a total of n courses you have to take, labeled from 0 to n-1.
 // Some courses may have prerequisites, for example to take course 0 you have to first take course 1, 
@@ -58,16 +59,16 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 		q.pop();
 
 		for(int neighbor : g[v]) {
-			 if(--inDegree[neighbor] == 0) { // the ones that were 0 become negative now, so not visited again.
-				 q.push(neighbor);
-			 }
-		 }
+            if (--inDegree[neighbor] == 0) {  // the ones that were 0 become negative now, so not enqueued again (similar to BFS with inDegree[i] == 0 representing the check to enqueue).
+                q.push(neighbor);
+            }
+         }
 	}
 	
 	return visitedCount == numCourses;
 }
 
-// Topological sort with DFS below (work if it is a DAG, does not verify if it is indeed a DAG - with no cycles)
+// Topological sort with DFS below (work if it is a DAG, does not verify if it is indeed a DAG <=> with no cycles)
 void topologicalOrderingDFS(const vector<vector<int>> &g, int v, vector<bool> &visited, stack<int> &topoOrdering) {
 	visited[v] = true;
 	for(int neighbor : g[v]) {
@@ -100,6 +101,54 @@ vector<int> possibleSchedulingOrder(int numCourses, vector<vector<int>> &prerequ
 	}
 	
 	return ans;
+}
+
+// To verify if a directed graph has cycles use topo sort with queue as above (simpler), or the adaptation
+// of DFS below.
+// Note: for verifying if cycle in undirected graph use BFS or DFS tracking "parent" as in __valid_tree.cpp 
+// For directed graphs see the example: a -> b -> c and d -> b (b is visited from another DFS, but still we do not 
+// have a cycle), so we need to keep recursion_stack[v] bools because only if visited in the current DFS we have
+// a cycle, recursion_stack[v] is backtracked to false after visiting the neighbors during that DFS.
+// Utility function for DFS to detect a cycle in a directed graph.
+bool isCyclicUtil(vector<vector<int>> &g, int v, vector<bool>& visited, vector<bool>& rec_stack) {
+    // Mark the current node as visited and add it to the recursion stack.
+    visited[v] = true;
+    rec_stack[v] = true;
+
+    for (int neighbor : g[v]) {
+		if (rec_stack[neighbor]) {
+			return true;
+		}
+		if (!visited[neighbor] && isCyclicUtil(g, neighbor, visited, rec_stack)) {
+			return true;
+		}   
+	}
+
+    // Remove the node from the recursion stack ("current DFS").
+    rec_stack[v] = false;
+    return false;
+}
+
+// Function to detect cycle in a directed graph using DFS (from GeeksForGeeks).
+bool isCyclicDFS(int n, vector<vector<int>> &edges) {
+    vector<vector<int>> g(n);
+    for(vector<int> e : edges) {
+		g[e[1]].push_back(e[0]); // Arrow from e[1] to e[0] in this case as above for course dependencies.
+	}
+
+    // visited[] keeps track of all-time visited nodes.
+    // recStack[] keeps track of nodes in the current recursion stack (current DFS).
+    vector<bool> visited(n, false);
+    vector<bool> rec_stack(n, false);
+
+    // Check for cycles starting from every unvisited node.
+    for (int i = 0; i < n; i++) {
+        if (!visited[i] && isCyclicUtil(g, i, visited, rec_stack)) {
+            return true; // Cycle found.
+		}
+    }
+
+    return false; // No cycles detected.
 }
 
 int main() {

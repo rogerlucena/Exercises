@@ -8,10 +8,15 @@ using namespace std;
 // Classic example of Union-Find.
 // A boolean DFS(source, target, visited) auxiliar function would have also worked (return true if reaches target from source).
 // Complexity for running a DFS after taking each edge above: O(N^2) in time and O(N) is space.
-// Complexity for Union-Find with path compression and union by rank: O(N) in space and O(N.α(N)) ≈ O(N) in time, where α is the Inverse-Ackermann function (function which value goes very very slowly).
-// (it can be shown that the optmized Union above takes amortized O(α(N)) time, and that O(α(N)) is approximately O(1))
+// A boolean DFS(node, parent, visited) function could have also worked (return true if reaches already visited node, keeping track of parent since undirected graph to not "come back from where it came", see __valid_tree.cpp for how to check for cycle in undirected graph using DFS).
 
-// In this problem, a tree is an undirected graph that is connected and has no cycles.
+// Remember:
+// Complexity for Union-Find with path compression and union by rank/size: O(N) in space and O(N.α(N)) ≈ O(N) in time, where α is the Inverse-Ackermann function (function which value goes very very slowly) - think of it as amortized.
+// (it can be shown that the optimized Find and Union methods with path compression and union by rank takes amortized O(α(V)) time, and that O(α(V)) is approximately O(1)) - amortized.
+// Worst case Union/Find have both linear complexities if not using path compression and union by rank/size.
+// For Union-Find with only path compression and not union by rank/size it seems the complexity for each method becomes O(log V) (already better than linear) - Princeton https://stackoverflow.com/questions/56229760/what-is-the-complexity-of-path-compression-technique-for-disjoint-set-algorithm
+
+// In this problem, a tree is an *undirected graph* that is connected and has no cycles.
 
 // -- Problem:
 // You are given a graph that started as a tree with n nodes labeled from 1 to n, with one additional edge added. The added
