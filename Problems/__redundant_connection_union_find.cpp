@@ -39,30 +39,62 @@ using namespace std;
 // There are no repeated edges.
 // The given graph is connected.
 
-int Find(unordered_map<int, int>& parent, int a) {
+int Find(int v, vector<int>& parent) {
+    if (parent[v] != v) {
+        parent[v] = Find(parent[v], parent);  // path compression.
+    }
+
+    return parent[v];
+}
+
+void Union(int u, int v, vector<int>& parent, vector<int>& rank) {  // union by rank.
+    int rep_u = Find(u, parent);
+    int rep_v = Find(v, parent);
+    if (rep_u == rep_v) {
+        return;
+    }
+    if (rank[rep_u] < rank[rep_v]) {
+        parent[rep_u] = rep_v;
+    } else if (rank[rep_u] > rank[rep_v]) {
+        parent[rep_v] = rep_u;
+    } else { // same rank, choose one as root and increment its rank then.
+        parent[rep_v] = rep_u;
+        ++rank[rep_u];
+    }
+}
+
+void UnionWithoutByRank(int u, int v, vector<int>& parent) {
+    int rep_u = Find(u, parent);
+    int rep_v = Find(v, parent);
+    parent[rep_u] = rep_v;  // if rep_u == rep_v nothing is changed.
+}
+
+int FindWithNotInitializedHashMap(int a, unordered_map<int, int>& parent) {
 	if(parent.find(a) == parent.end()) {
 		parent[a] = a;
 	} else if (parent[a] != a) {
-		parent[a] = Find(parent, parent[a]);
+		parent[a] = FindWithNotInitializedHashMap(parent[a], parent);
 	}
 
 	return parent[a];
 }
 
-void Union(unordered_map<int, int>& parent, int a, int b) {
-	parent[Find(parent, a)] = Find(parent, b);
-}
-
 vector<int> findRedundantConnection(vector<vector<int>>& edges) {
-	unordered_map<int, int> parent;
-	for (const vector<int>& edge : edges) {
-		if (Find(parent, edge[0]) == Find(parent, edge[1])) {
-			return edge;
-		}
-		Union(parent, edge[0], edge[1]);
-	}
+    int n = edges.size();  // nodes from 1 to n.
+    vector<int> rank(n + 1, 0);
+    vector<int> parent(n + 1);
+    for (int i = 1; i <= n; ++i) {
+        parent[i] = i;
+    }
 
-	return {};
+    for (const vector<int>& e : edges) {  // O(N*alpha(N)) on Leetcode complexity result using both path compression and union by rank.
+        if (Find(e[0], parent) == Find(e[1], parent)) {
+            return e;
+        }
+        Union(e[0], e[1], parent, rank);
+    }
+
+    return {};
 }
 
 int main() {
