@@ -346,11 +346,21 @@ Asjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case (you can use a hash set for the neighbors to improve this)
 
--- Dijkstra vs BFS
+-- Dijkstra vs BFS (vs Bellman-Ford - extra)
 Use Djikstra only if weighted edges, and no negative edges!
-Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html (use wayback machine to see)
-Complexity: O(E + V log V), makes sense.
+Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html (use wayback machine to see, or see GeeksForGeeks)
+Complexity: O((V + E) log V) in time using a heap, makes sense, and O(V) in extra space (heap) - https://www.geeksforgeeks.org/dsa/time-and-space-complexity-of-dijkstras-algorithm
 Otherwise, a simple BFS will do the work.
+Dijkstra fails with negative edges because it assumes that once a node’s shortest path is found (node is "closed", greedy local assumption that leads to global 
+optimum), it cannot be improved with any of the other farther nodes in the min-heap (which is true for the case with non-negative edges).
+For the case with negative edges, think of using Bellman-Ford (pretty straight-forward):
+    Do the relaxation of all edges V-1 times (size of the longest shortest path without negative cycles), where for each edge [u, v]
+    relaxation means comparing distance[v] > distance[u] + w, if yes update distance[v] and sets u as the predecessor[v].
+    Complexity: O(V*E) in time (two fors, one for V-1 and an inner one over all edges E) - normally slower than Dijkstra, and O(V) in space.
+    To see if there is a negative cycle, do one more time and if any edge is still relaxed we have a negative cycle.
+    (Reference https://www.geeksforgeeks.org/dsa/bellman-ford-algorithm-dp-23 and ChatGPT)
+        Note: remember "tmp_dist = dist" before the inner "for" over edges, update only "tmp_dist", and then 
+        assign "dist = tmp_dist" after for next loop over V-1 - see __cheapest_flights_within_k_stops.cpp
 
 -- Difference between "set/multiset" and "priority queues":
 Inside "remember_set_and_map.cpp"
