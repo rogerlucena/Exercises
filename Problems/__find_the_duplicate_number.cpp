@@ -42,6 +42,7 @@ int findDuplicate(vector<int>& nums) {
 
 	return hare;
 }
+// Note: if in a linked list, also needs to check that "fast" and "fast->next" are not nullptr.
 // Proof of Hare and Tortoise to find the entrance point of the cycle:
 // v.t, 2v.t
 // e (distance to start cycle)

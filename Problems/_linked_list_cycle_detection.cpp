@@ -6,7 +6,9 @@ using namespace std;
 
 // https://neetcode.io/problems/linked-list-cycle-detection
 // https://leetcode.com/problems/linked-list-cycle
-// Review: Fast And Slow Pointers to find cycle in LinkedList.
+// https://www.tryexponent.com/practice/prepare/linked-list-cycle
+// Review: Fast and Slow pointers to find cycle in LinkedList (similar to Hare and Tortoise), remember 
+// to check fast and fast->next not being nullptr.
 
 // Given the beginning of a linked list head, return true if there is a cycle in the linked list. 
 // Otherwise, return false.

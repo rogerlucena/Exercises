@@ -261,7 +261,8 @@ bool hasCycle(ListNode* head) {
 
 // Revisit Counting Sort and Radix sort from My Notes.txt
 
-// Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link of algorithm and my calculation proving that it works is also there).
+// Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link 
+// of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers in _linked_list_cycle_detection.cpp
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
