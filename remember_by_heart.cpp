@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 
 #include "tools.cpp"
 
@@ -74,6 +75,30 @@ void bfs_with_depth(int source) {
 			}
 		}
 	}
+}
+
+// BFS with levels - another way to also keep track of the depth, useful sometimes as in __rotting_oranges.cpp
+void bfs_with_levels(int source) {
+	queue<int> q;
+    q.push(source);
+    enqueued[source] = true;
+    int curr_level = 0;
+	
+    while (!q.empty()) {
+        int len = q.size();
+        for (int i = 1; i <= len; ++i) {  // process the entire current level.
+            int v = q.front();
+            q.pop();
+			doSomething(v);
+            for(int neigh : neighbors(v)) {
+				if(!enqueued[neigh]) {
+					q.push(neigh);
+					enqueued[neigh] = true;
+				}
+			}
+        }
+        ++curr_level;
+    }
 }
 
 // Reverse in-place a linked list
