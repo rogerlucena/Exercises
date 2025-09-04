@@ -203,7 +203,7 @@ void quickSort(vector<int> &arr, int low, int high) {
     }
 }
 
-// Fast and Slow pointers
+// Fast and Slow pointers (similar to Hare and Tortoise)
 // Two halves: first one with the middle element if odd number of elements.
 ListNode* endOfFirstHalf(ListNode* head) {
 	if (!head) {
@@ -262,7 +262,7 @@ bool hasCycle(ListNode* head) {
 // Revisit Counting Sort and Radix sort from My Notes.txt
 
 // Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link 
-// of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers in _linked_list_cycle_detection.cpp
+// of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers above in "endOfFirstHalf" (use fast->next && fast->next->next) and also in _linked_list_cycle_detection.cpp
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
@@ -272,9 +272,11 @@ bool hasCycle(ListNode* head) {
 //     obs: if more than one element is largest, the iterator returned points to the first of such elements.
 // can use "if(hash_map.count(el))" to check if we have a key "el" in the hash map (instead of .find != .end).
 
-// read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
+// Read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
 
-// review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
+// Read Soldado's google doc with tips and my version of it with additional tips from other mocks as well.
+
+// Review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
 // to actually move through it and change it indeed and not a copy of it).
 
 int main(void) {

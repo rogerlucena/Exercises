@@ -414,7 +414,7 @@ Dicas forum: graph questions and string manipulations are common.
 - remember classes, inheritance, abstract, virtual (geeksforgeeks)
 
 -- Lembrar, passo a passo (do not speak too fast!!):
-1) Faz um exemplo simples pra ver se realmente entendeu, se necessário
+1) Faz um exemplo simples pra ver se realmente entendeu, se necessário, e já mencione corner cases aqui tbm
     Ask clarification questions to see if you really got what they want (float numbers? sorted? 
     repeated numbers? negative? can I get two of the same index? Any time/space requirements?
     se nao tem resposta, o que retorno nesse caso? (eg: era empty no caso de {1} no pb do produto dos outros),
@@ -443,7 +443,7 @@ Dicas forum: graph questions and string manipulations are common.
 6) No final: ask questions about the work there, iteresting projects ...
 
 
-- Red flags: base case recursion, lembre usar a condition tb otherwise infinite loop! 
+- Red flags (pega mal): base case recursion, lembre usar a condition tb otherwise infinite loop! 
     Nao inicializar alguma variavel, DFS, BFS, update step for not infinity loop inside while,
     usar constantes literais em vez de dar um nome meaningful pra elas (leftEdge em vez de -1 por eg)
 - Invariants … boa palavra, gostam quando usamos (e.g.: you have to phisically bring the robot back) 
@@ -452,7 +452,7 @@ se em algum momento viu um edge case:
     pode comentar em voz alta, colocar um comentario pra lidar depois, ou se simples resolver logo
     pode falar de edges cases em voz alta na analise do algo mesmo antes de codar tb
 
-here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (team match tips as well)
+here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (my version too, team match tips as well)
 
 Think about inverting, calculating, and then inverting again:
     invert_words Pramp problem (reverse_the_string problem in ./Problems) ...
