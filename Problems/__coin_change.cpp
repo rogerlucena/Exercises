@@ -113,6 +113,11 @@ int changeRecursive(const vector<int>& coins, int i, int amount, vector<vector<i
     return memo[i][amount];
 }
 
+int change(int amount, vector<int>& coins) {
+    vector<vector<int>> memo(coins.size(), vector<int>(amount + 1, -1));
+    return changeRecursive(coins, 0, amount, memo);
+}
+
 // Bottom-up (less intuitive to come up fastly):
 int change(int amount, vector<int>& coins) {
     int n = coins.size();
@@ -134,11 +139,6 @@ int change(int amount, vector<int>& coins) {
     }
 
     return dp[0][amount];
-}
-
-int change(int amount, vector<int>& coins) {
-    vector<vector<int>> memo(coins.size(), vector<int>(amount + 1, -1));
-    return changeRecursive(coins, 0, amount, memo);
 }
 
 int main() {
