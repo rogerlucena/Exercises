@@ -322,7 +322,7 @@ memory set with malloc in C. Free() uses C run time heap whereas Delete may be o
 Syntax: delete ptr; free(ptr);
 Delete takes a pointer and releases that memory to be used by someone else too, calling the destructor before that (if defined).
 eg: Destructor for TreeNode can be {delete left; delete right;} called by Delete over a ptr (recursively call children and
-by the end it automatically frees itself too).
+by the end it automatically frees itself too, do not call for "this" pointer).
 
 -- There is a std::swap function:
 Use it to swap contents of vars.
@@ -392,6 +392,22 @@ https://www.geeksforgeeks.org/sql-vs-nosql-which-one-is-better-to-use/?ref=rp
 
 -- Interesting:
 - Perform a modulus operation with negative numbers -> (a % b + b) % b (eg in string_shifts problem)
+
+-- Circular arrays (Soldado mentioned this pattern for problems in his doc):
+Forward wrap: (i + k) % n
+Backward wrap: (i - k + n) % n (to avoid negative indices)
+- If sliding window with wrap around, it can be useful to double the array (eg: to sum k consecutive elements):
+vector<int> extended(arr.begin(), arr.end());
+extended.insert(extended.end(), arr.begin(), arr.end());  // and then indexes are linearized now.
+Extra memory but simpler logic (acceptable in interviews unless problem says "O(1) extra space") - using modulus if possible can avoid that too but easier to make mistakes in logic.
+- Other example - next greater element in circular array (use a monotonic stack and iterate twice over the array to simulate circularity):
+for(int i = 2 * n - 1; i >= 0; --i) {
+    while(!st.empty() && arr[i % n] >= st.top()) {
+        st.pop();
+    }
+    next_greater[i % n] = st.empty() ? -1 : st.top();
+    st.push(arr[i % n]);
+}
 
 -- Patterns for coding interviews (like grokking):
 https://hackernoon.com/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed 

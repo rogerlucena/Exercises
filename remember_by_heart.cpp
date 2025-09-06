@@ -279,6 +279,8 @@ bool hasCycle(ListNode* head) {
 // Review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
 // to actually move through it and change it indeed and not a copy of it).
 
+// Quickly see __lowest_common_ancestor.cpp (but in the case you have a "parent" pointer, can go up marking as visited from one and then go up from the other checking the first visited starting to check from the other itself)
+
 int main(void) {
 	cout << "QuickSort:" << endl;
     vector<int> arr = {10, 3, 40, 2, 4}; 
