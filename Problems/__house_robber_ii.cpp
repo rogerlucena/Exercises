@@ -21,11 +21,16 @@ using namespace std;
 // Input: nums = [3,4,3]
 // Output: 4
 
-int dfs(int i, int flag, vector<int>& nums, vector<vector<int>>& memo) {
-    if (i >= nums.size() || (flag == 1 && i == nums.size() - 1)) return 0;
-    if (memo[flag][i] != -1) return memo[flag][i];
-    memo[flag][i] = max(dfs(i + 1, flag, nums, memo),
-                        nums[i] + dfs(i + 2, flag, nums, memo));
+int dfs(int i, int flag, vector<int>& nums, vector<vector<int>>& memo) {  // flag is just to indicate if the first house was robbed.
+    if (i >= nums.size() || (flag == 1 && i == nums.size() - 1)) {
+        return 0;
+    }
+    if (memo[flag][i] != -1) {
+        return memo[flag][i];
+    }
+
+    memo[flag][i] = max(dfs(i + 1, flag, nums, memo), nums[i] + dfs(i + 2, flag, nums, memo));
+    
     return memo[flag][i];
 }
 
