@@ -471,7 +471,7 @@ se em algum momento viu um edge case:
     pode comentar em voz alta, colocar um comentario pra lidar depois, ou se simples resolver logo
     pode falar de edges cases em voz alta na analise do algo mesmo antes de codar tb
 
-here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (my version too, team match tips as well)
+here -> remember_by_heart.cpp -> files with __ -> googles docs dicas Soldado (my version too with more questions to ask the interviewer there, and team match tips as well)
 
 Think about inverting, calculating, and then inverting again:
     invert_words Pramp problem (reverse_the_string problem in ./Problems) ...

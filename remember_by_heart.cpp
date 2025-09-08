@@ -274,7 +274,7 @@ bool hasCycle(ListNode* head) {
 
 // Read over "My Notes.txt" briefly (trade-offs graph implementation, hash set for adjacency list good idea if you want to verify an edge in O(1))!
 
-// Read Soldado's google doc with tips and my version of it with additional tips from other mocks as well.
+// Read Soldado's google doc with tips and my version of it with additional tips from other mocks as well (and more questions to ask the interviewer too).
 
 // Review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
 // to actually move through it and change it indeed and not a copy of it).
