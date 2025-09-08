@@ -204,7 +204,7 @@ void quickSort(vector<int> &arr, int low, int high) {
 }
 
 // Fast and Slow pointers (similar to Hare and Tortoise)
-// Two halves: first one with the middle element if odd number of elements.
+// Two halves: if we have an odd number of nodes the middle node will stay in the first half.
 ListNode* endOfFirstHalf(ListNode* head) {
 	if (!head) {
 		return head;

@@ -298,6 +298,9 @@ Some numbers cannot be represented as the sum of 1/2 + 1/4 + 1/8 ..., such as  0
 Depth: distance (#edges) from root (d(root) = 0)
 Height: largest distance (#edges) to a leaf (h(every leaf) = 0)
 Height of the tree: h(root)
+In a completely filled Binary Tree (all levels filled) the total number of nodes is 2^(h + 1) - 1.
+If only the last level is partially filled to the left (definition of "Complete Binary Tree"), then the 
+total number of nodes is at least 2^h and at most 2^(h + 1) - 1.
 
 -- Binary Search Tree (BST):
 A BST is a type of binary tree data structure in which each node contains

@@ -14,7 +14,31 @@ using namespace std;
 // That gives:
 // Expected = 2*1/3 + 1/3 + 2*1/3 = 5/3 ~= 1.6667
 
-// First approach: backtracking.
+// The best approach is this first here - PD.
+// Size of the train is n.
+// Complexidade da PD: tamanho do cache * time de calcular uma cell
+//   eg: se n * m o tamanho de memo, e cada vez vc itera n, complexidade final é O(m * n^2)
+// Aqui abaixo: O(n^2) acredito.
+double ExpectedNumber(int n, vector<double>& memo) {
+  if (n <= 0) {
+    return 0;
+  }
+
+  if(memo[n]) {
+    return memo[n];
+  }
+  
+  double acc_child = 0;
+  for (int i = 0; i < n; ++i) {
+    // If person sits at position i, it is like train of size i-1 to its left and size n-i-2 to its right, plus 1 for the person sitting there.
+    acc_child += ExpectedNumber(i-1, memo) + ExpectedNumber(n-i-2, memo) + 1;
+  }
+
+  memo[n] = acc_child / n;
+  return memo[n];
+}
+
+// Older approach: backtracking.
 // n * (n-2) * () ... that is O(n!) more or less, or n^(n/2)
 // better: O((n!)^(1/2))
 // Even with memoization it is bad.
@@ -55,30 +79,6 @@ double ExpectedNumber(vector<int>& train) {
   }
 
   return acc_child/n_child;
-}
-
-// Better approach below.
-// Size of the train is n.
-// Complexidade da PD: tamanho do cache * time de calcular uma cell
-//   eg: se n * m o tamanho de memo, e cada vez vc itera n, complexidade final é O(m * n^2)
-// Aqui abaixo: O(n^2) acredito.
-double ExpectedNumber(int n, vector<double>& memo) {
-  if (n <= 0) {
-    return 0;
-  }
-
-  if(memo[n]) {
-    return memo[n];
-  }
-  
-  double acc_child = 0;
-  for (int i = 0; i < n; ++i) {
-    // If person sits at position i, it is like train of size i-1 to its left and size n-i-2 to its right, plus 1 for the person sitting there.
-    acc_child += ExpectedNumber(i-1, memo) + ExpectedNumber(n-i-2, memo) + 1;
-  }
-
-  memo[n] = acc_child / n;
-  return memo[n];
 }
 
 int main() {

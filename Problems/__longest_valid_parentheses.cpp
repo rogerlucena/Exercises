@@ -5,6 +5,7 @@
 using namespace std;
 
 // https://leetcode.com/problems/longest-valid-parentheses/
+// Remember: use a stack with the indexes (great hint for parentheses problems, remember that).
 
 // Given a string containing just the characters '(' and ')', find the length of the longest 
 // valid (well-formed) parentheses substring.
@@ -19,7 +20,6 @@ using namespace std;
 // Output: 4
 // Explanation: The longest valid parentheses substring is "()()"
 
-// Idea: use a stack with the indexes (great hint, remember that)
 int longestValidParentheses(string s) {
     int longest = 0;
 	vector<int> lastSizeFinishing(s.size(), 0);
