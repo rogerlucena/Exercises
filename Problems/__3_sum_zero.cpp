@@ -37,7 +37,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
                 ans.push_back({nums[i], nums[j], nums[k]});
                 ++j;
                 --k;
-                while (j < k && nums[j] == nums[j - 1]) {  // to avoid repeated triplets, no need todo this for k as well; j < k to avoid out of bounds.
+                while (j < k && nums[j] == nums[j - 1]) {  // to avoid repeated triplets, no need to do this for k as well; j < k to avoid out of bounds.
                     ++j;
                 }
             } else if (nums[j] + nums[k] < target) {

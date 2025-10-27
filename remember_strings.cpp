@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 
 using namespace std;
@@ -150,18 +151,22 @@ int main () {
     return 0;
 }
 
+// How to tokenize a string given a separator:
+
+// 1) Manually:
+
 // If library implemented correctly, it can linear on the size of "s".
 vector<string> Split(const string& s, const string& sep) {
   vector<string> splitted;
   int start = 0;
   int end = s.find(sep);
-  while (end != string::npos) {
-      splitted.push_back(s.substr(start, end - start)); // s.subtr(start_pos, size_to_copy). Generally linear in the length of the returned object.
+  while (end != string::npos) {  // means "no position" or "not found".
+      splitted.push_back(s.substr(start, end - start));  // s.subtr(start_pos, size_to_copy). Generally linear in the length of the returned object.
       start = end + sep.size();
-      end = s.find(sep, start); // s.find(target, index_starting_from). Generally up to linear in length()-start times the length of the sequence to match (worst case).
+      end = s.find(sep, start);  // s.find(target, index_starting_from). Generally up to linear in length()-start times the length of the sequence to match (worst case).
   }
 
-  splitted.push_back(s.substr(start)); // from "start" till the end.
+  splitted.push_back(s.substr(start));  // from "start" till the end.
   return splitted;
 }
 
@@ -171,12 +176,38 @@ vector<string> SplitWithErase(string s, const string& sep) {
 	while (position != string::npos) {
 		string token = s.substr(0, position);
 		splitted.push_back(token);
-		s.erase(0, position + sep.size()); // s.erase(start_pos, size_to_erase).
+		s.erase(0, position + sep.size());  // s.erase(start_pos, size_to_erase).
 		position = s.find(sep);
 	}
 	splitted.push_back(s);
 
 	return splitted;
+}
+
+// 2) Using stringstream (see problem word_pattern_tokenize_string.cpp):
+
+vector<string> splitBySpace(const string& str) {
+	istringstream iss(str);
+	vector<string> words;
+	string token;
+    while (iss >> token) {  // operator>> skips whitespaces/tabs/newlines automatically.
+        words.push_back(token);
+    }
+
+    return words;
+}
+
+vector<string> splitByDelimiter(const string& s, const char delimiter) {
+    istringstream iss(s);
+    vector<string> words;
+    string token;
+    while (getline(iss, token, delimiter)) {
+        if (!token.empty()) {  // skip empty tokens.
+            words.push_back(token);
+		}
+    }
+
+    return words;
 }
 
 int main2() {
