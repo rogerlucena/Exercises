@@ -8,6 +8,8 @@ using namespace std;
 // https://leetcode.com/problems/course-schedule/
 // (topological sort is usually used when dealing with scheduling with dependencies, like here for example)
 // Note: topo ordering has a <=> (if and only if) relation with existing no cycle in the directed graph!
+// Note: topo ordering is <=> if you reverse the edges (regarding existence and the final complete ordering)
+//     but if you are aiming for partial ordering double check for the semantic of your case (see __find_all_possible_recipes_from_given_supplies).
 
 // There are a total of n courses you have to take, labeled from 0 to n-1.
 // Some courses may have prerequisites, for example to take course 0 you have to first take course 1, 
@@ -30,6 +32,7 @@ using namespace std;
 // Note: You may assume that there are no duplicate edges in the input prerequisites.
 // Time: O(V+E) to build graph and O(V+E) to traverse, final = O(V+E).
 // Space: O(V+E) for graph and O(V) for queue, final O(V+E).
+// The implementation below using indegrees is called "Kahn's Algorithm".
 bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 	// Edge v -> u if u depend on v (with TopoSort all the dependents will be to the right then - that is precisely what we want)
     vector<vector<int>> g(numCourses, vector<int>());
@@ -59,7 +62,7 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
 		q.pop();
 
 		for(int neighbor : g[v]) {
-            if (--inDegree[neighbor] == 0) {  // the ones that were 0 become negative now, so not enqueued again (similar to BFS with inDegree[i] == 0 representing the check to enqueue).
+            if (--inDegree[neighbor] == 0) {  // the ones that were 0 become negative now, so not enqueued again (similar to BFS with inDegree[i] == 0 representing the check to enqueue) -> but actually if indegree becomes 0 it will never appear in this line here again by definition of indegree 0, and thus never become negative.
                 q.push(neighbor);
             }
          }
