@@ -53,41 +53,94 @@ using namespace std;
 //     How many unique recipes (nodes) do you expect? (If N is large, the O(N·L) mapping cost may be offset by O(E·L) savings in traversal - this is the tradeoff).
 // O(n + m + s) in time and space, where n is #recipes, m is the total number of ingredients across all recipes and s is the #supplies.
 vector<string> findAllRecipes(vector<string>& recipes, vector<vector<string>>& ingredients, vector<string>& supplies) {
+    vector<string> created_recipes;
+    unordered_set<string> supplies_set(supplies.begin(), supplies.end());
+    unordered_map<string, int> indegree;
+    unordered_map<string, vector<string>> g;  // dependency graph.
+    for (const string& recipe : recipes) {
+        g[recipe] = {};
+        indegree[recipe] = 0;
+    }
+    for (int i = 0; i < ingredients.size(); ++i) {
+        for (int j = 0; j < ingredients[i].size(); ++j) {
+            if (!supplies_set.count(ingredients[i][j])) {  // only if the ingredient is not already available in the initial supplies - this ensures that the in-degree of a recipe reflects only the number of unavailable ingredients it depends on.
+                g[ingredients[i][j]].push_back(recipes[i]);  // the ingredients that do not appear neither in recipes nor in supplies will start will in-degree 0 but will not initially enter q below (we iterate through recipes to initialize q) and then will never enter q (as they will not be reachable from a neighbor since they do not depend on anyone) - one of the test cases.
+                ++indegree[recipes[i]];
+            }
+        }
+    }
+
+    // Start with recipes that only need supplies (in-degree zero, already available to be made).
+    queue<string> q;
+    for (const string& recipe : recipes) {
+        if (indegree[recipe] == 0) {
+            q.push(recipe);
+        }
+    }
+
+    while(!q.empty()) {
+        string item = q.front();
+        q.pop();
+        created_recipes.push_back(item);  // the partial topo ordering (elements in the acyclic part of the graph and that do not depend on any cycle).
+
+        for (const string& neigh : g[item]) {
+            if (--indegree[neigh] == 0) {
+                q.push(neigh);
+            }
+        }
+    }
+
+    return created_recipes;
+}
+
+// Improved version of the above using integer indices for recipes to avoid repeated hashing on recipe strings.
+vector<string> findAllRecipesAIImprovedIndexMapping(vector<string>& recipes, vector<vector<string>>& ingredients, vector<string>& supplies) {
 	vector<string> created_recipes;
 	unordered_set<string> supplies_set(supplies.begin(), supplies.end());
-	unordered_map<string, int> indegree;
-	unordered_map<string, vector<string>> g;  // dependency graph.
-	for (const string& recipe : recipes) {
-		g[recipe] = {};
-		indegree[recipe] = 0;
-	}
+
+	int n = recipes.size();
+	unordered_map<string, int> recipe_to_idx;
+    for (int i = 0; i < n; ++i) {
+        recipe_to_idx[recipes[i]] = i;
+    }
+
+    // indegree only for recipes (index-based). Adjacency maps an ingredient name -> list of recipe indices that depend on it.
+	vector<int> indegree(n, 0);
+	unordered_map<string, vector<int>> g;  // ingredient -> list of recipe indices
+
 	for (int i = 0; i < ingredients.size(); ++i) {
-		for (int j = 0; j < ingredients[i].size(); ++j) {
-			if (!supplies_set.count(ingredients[i][j])) {  // only if the ingredient is not already available in the initial supplies - this ensures that the in-degree of a recipe reflects only the number of unavailable ingredients it depends on.
-				g[ingredients[i][j]].push_back(recipes[i]);  // the ingredients that do not appear neither in recipes nor in supplies will start will in-degree 0 but will not initially enter q below (we iterate through recipes to initialize q) and then will never enter q (as they will not be reachable from a neighbor since they do not depend on anyone) - one of the test cases.
-				++indegree[recipes[i]];
+		for (const string& ing : ingredients[i]) {
+			if (!supplies_set.count(ing)) {
+				g[ing].push_back(i);
+				++indegree[i];  // recipe i needs one more ingredient that is not initially available.
 			}
 		}
 	}
 
-	// Start with recipes that only need supplies (in-degree zero, already available to be made).
-	queue<string> q;
-	for (const string& recipe : recipes) {
-		if (indegree[recipe] == 0) {
-			q.push(recipe);
-		}
-	}
+	// Start with recipes that only need supplies (in-degree zero)
+	queue<int> q;
+	for (int i = 0; i < n; ++i) {
+        if (indegree[i] == 0) {
+            q.push(i);
+        }
+    }
 
-	while(!q.empty()) {
-		string item = q.front();
+	while (!q.empty()) {
+		int idx = q.front();
 		q.pop();
-		created_recipes.push_back(item);  // the partial topo ordering (elements in the acyclic part of the graph and that do not depend on any cycle).
+		created_recipes.push_back(recipes[idx]);
 
-		for (const string& neigh : g[item]) {
-			if (--indegree[neigh] == 0) {
-				q.push(neigh);
-			}
-		}
+		// When a recipe becomes available it can act as an ingredient for others.
+		const string& item = recipes[idx];
+		auto it = g.find(item);
+        if (it == g.end()) {
+            continue;
+        }
+        for (int neigh_idx : it->second) {
+            if (--indegree[neigh_idx] == 0) {
+                q.push(neigh_idx);
+            }
+        }
 	}
 
 	return created_recipes;
@@ -191,7 +244,38 @@ vector<string> findAllRecipesOtherWithTopoOrdering(vector<string>& recipes, vect
 	return topo_ordering;
 }
 
+static void printVec(const vector<string>& v) {
+	cout << "[";
+	for (int i = 0; i < v.size(); ++i) {
+		cout << '"' << v[i] << '"';
+        if (i + 1 < v.size()) {
+            cout << ", ";
+        }
+    }
+	cout << "]" << endl;
+}
+
 int main() {
-	cout << "Hello, World!";
+	// Example 1
+	vector<string> recipes1 = {"bread"};
+	vector<vector<string>> ingredients1 = {{"yeast","flour"}};
+	vector<string> supplies1 = {"yeast","flour","corn"};
+	vector<string> out1 = findAllRecipes(recipes1, ingredients1, supplies1);
+	cout << "Example 1 output: "; printVec(out1);
+
+	// Example 2
+	vector<string> recipes2 = {"bread","sandwich"};
+	vector<vector<string>> ingredients2 = {{"yeast","flour"},{"bread","meat"}};
+	vector<string> supplies2 = {"yeast","flour","meat"};
+	vector<string> out2 = findAllRecipes(recipes2, ingredients2, supplies2);
+	cout << "Example 2 output: "; printVec(out2);
+
+	// Example 3
+	vector<string> recipes3 = {"bread","sandwich","burger"};
+	vector<vector<string>> ingredients3 = {{"yeast","flour"},{"bread","meat"},{"sandwich","meat","bread"}};
+	vector<string> supplies3 = {"yeast","flour","meat"};
+	vector<string> out3 = findAllRecipes(recipes3, ingredients3, supplies3);
+	cout << "Example 3 output: "; printVec(out3);
+
 	return 0;
 }
