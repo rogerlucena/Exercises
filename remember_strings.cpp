@@ -9,7 +9,7 @@ using namespace std;
     // To understand a number as string (int -> string)
     use std::to_string(number);
 
-    // use stoi (string to int) to do the opporsite, precising the base (2, 10, ...)
+    // use stoi (string to int) to do the opposite, precising the base (2, 10, ...)
     // int i_bin = std::stoi(str_bin, nullptr, 2);
 
     // String has a push_back and a pop_back method for chars too - useful when backtracking for eg (eg: https://leetcode.com/problems/generate-parentheses)
