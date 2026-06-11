@@ -1,12 +1,13 @@
 #include <iostream>
-#include <vector>
+#include <map>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
 // https://neetcode.io/problems/meeting-schedule-ii (well explained solution)
 // https://leetcode.com/problems/meeting-rooms-ii/
-// Remember: for "intervals" problems it is useful to think about sorting - same in merge-overlapping-intervals and non-overlapping-intervals (also pasted below).
+// Remember: for "intervals" problems it is useful to think about sorting (normally by start_time) - same in merge-overlapping-intervals and non-overlapping-intervals (also pasted below).
 // Remember: for min number of rooms, nice to have all start times sorted in one vector and end times sorted in 
 // the other, and use two pointers. 
 // When using two indexes use a "while" and not "for" to avoid incrementing one index when also incremented the other as below.
@@ -63,8 +64,53 @@ int minMeetingRooms(vector<Interval>& intervals) {
     return max_rooms;
 }
 
+// O(n log n) in time and O(n) in space.
+int minMeetingRoomsSweepLine(vector<Interval>& intervals) {  // Using "events", Sweep Line algorithm.
+	vector<vector<int>> events;
+
+	for (const Interval& i : intervals) {
+		events.push_back({i.start, +1});
+		events.push_back({i.end, -1});
+	}
+
+	sort(events.begin(), events.end());
+	// sort in lexicographical order by default (if same number in index 0, compare index 1 and so on, and if all elements equal and eventually one vector is smaller than the other the smaller one goes first (not happening here) - just like strings).
+	// this way, in the case of a tie in the timestamp the pair with -1 will show up first - which is what we want to keep track of max_count below.
+
+	int count = 0;
+	int max_count = 0;
+	for (const vector<int>& e : events) {
+		if (e[1] == 1) {
+			++count;
+		} else {
+			--count;
+		}
+		max_count = max(max_count, count);
+	}
+
+	return max_count;
+}
+
+// Nice solution using an ordered map in C++ as well: 
+// O(n log n) in time and O(n) in space too.
+int minMeetingRoomsMap(vector<Interval>& intervals) {
+    map<int, int> mp;  // at that timestamp, gives the liquid increment or decrement on the number of rooms used.
+    for (auto& i : intervals) {
+        ++mp[i.start];
+        --mp[i.end];
+    }
+
+    int rooms = 0, max_rooms = 0;
+    for (const auto& [_, diff] : mp) {
+        rooms += diff;
+        max_rooms = max(max_rooms, rooms);
+    }
+
+    return max_rooms;
+}
+
 // Older solution (less clear):
-int minMeetingRooms(vector<vector<int>> &intervals) {
+int minMeetingRooms(vector<vector<int>>& intervals) {
 	if(intervals.empty()) {
 		return 0;
 	}
@@ -87,7 +133,7 @@ int minMeetingRooms(vector<vector<int>> &intervals) {
 }
 
 
-// More "intervals" problems (sorting is useful):
+// More "intervals" problems (sorting by start_time is useful!):
 
 // merge-overlapping-intervals
 vector<vector<int>> merge(vector<vector<int>>& intervals) {

@@ -256,6 +256,8 @@ bool hasCycle(ListNode* head) {
 	// revisit problem __redundant_connection_union_find.cpp
 	// 		one more example in _count_connected_components_in_undirected_graph.cpp
 
+// Remember backtracking, and dynamic programming (recursive top-down and iterative bottom-up, 1D DP and 2D DP too).
+
 // Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)
 	// Also, remember that XOR is ^
 
@@ -266,6 +268,7 @@ bool hasCycle(ListNode* head) {
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
+// Revisit common "Intervals" problems on that __meeting_rooms file too.
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 // remember "int m = *std::max_element(v.begin(), v.end())" exists as well (O(N)), "min_element" too, "max({1, 3, 2})" (overloaded given vector initializer) works but max(v) does not! "max" is for only 2 elements "max(a, b)"
