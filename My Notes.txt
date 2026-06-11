@@ -351,7 +351,7 @@ Asjacency list:
 
 -- Dijkstra vs BFS (vs Bellman-Ford - extra)
 Use Djikstra only if weighted edges, and no negative edges!
-Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html (use wayback machine to see, or see GeeksForGeeks)
+Remember Djikstra: http://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html (use wayback machine to see, eg: https://web.archive.org/web/20230621172832/https://www.inf.ufsc.br/grafos/temas/custo-minimo/dijkstra.html - or see on GeeksForGeeks)
 Complexity: O((V + E) log V) in time using a heap, makes sense, and O(V) in extra space (heap) - https://www.geeksforgeeks.org/dsa/time-and-space-complexity-of-dijkstras-algorithm
 Otherwise, a simple BFS will do the work.
 Dijkstra fails with negative edges because it assumes that once a node’s shortest path is found (node is "closed", greedy local assumption that leads to global 
