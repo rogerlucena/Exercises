@@ -13,11 +13,39 @@ using namespace std;
 // mymap.size()  // O(1)
 
 // Erasing:
-// if (mymap.find(key) != mymap.end()) 
-//    mymap.erase(mymap.find(key)); // return "it" just following the last deleted element
+// if (mymap.find(key) != mymap.end())
+//    mymap.erase(mymap.find(key)); // return "it" just following the last deleted element (ATTENTION here: when iterating and sometimes erasing use "it" and "++", because if iterating using "for" and erase it invalidates the iteration and gives an error)
 // OR mymap.erase(key); // return an int - number of elements deleted, 0 if not key found in mymap
 // OR mymap.erase(mymap.begin(()); // erasing only one element, return "it" just following
 // OR mymap.erase(mymap.begin(), mymap.end()) - erase everything
+
+// Important note: C++ already has a built-in hash function for all pointers <T*> since pointers are just memory
+// addresses in the form of a 32-bit or 64-bit unsigned integer (they are of type size_t):
+struct CustomNode {
+    int data;
+};
+int mainTestHashForPointer() {  // this code works as is in C++ - no need to specify a hash function for the pointer (useful for problems like "Copy List with Random Pointer" - common problem for senior and staff SWEs - Gemini gave a nice solution and commentary for it).
+    unordered_map<CustomNode*, string> nodeMap;
+
+    // Allocate some objects on the heap
+    CustomNode* a = new CustomNode{10};
+    CustomNode* b = new CustomNode{20};
+
+    // This compiles and works perfectly!
+    nodeMap[a] = "Node A's Metadata";
+    nodeMap[b] = "Node B's Metadata";
+
+    cout << nodeMap[a] << endl;  // Outputs: "Node A's Metadata".
+
+    delete a;
+    delete b;
+
+    return 0;
+}
+// Obs: if you want to compare the **content** of that structure (and not the memory address), then you should specify a hash function.
+
+
+// Default hash map demo below:
 
 template <class T1, class T2>
 class myPair {

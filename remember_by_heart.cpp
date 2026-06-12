@@ -124,7 +124,7 @@ ListNode* reverseList(ListNode* h) {
 // It returns the location of x in given array arr[l..r] if present, otherwise -1
 int binarySearch(const vector<int> &arr, int l, int r, int x) {
     while (l <= r) {
-        int m = l + (r - l) / 2; // to avoid int overflow!
+        int m = l + (r - l) / 2;  // to avoid int overflow!
   
         // Check if x is present at mid 
         if (arr[m] == x) {
@@ -263,8 +263,8 @@ bool hasCycle(ListNode* head) {
 
 // Revisit Counting Sort and Radix sort from My Notes.txt
 
-// Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link 
-// of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers above in "endOfFirstHalf" (use fast->next && fast->next->next) and also in _linked_list_cycle_detection.cpp
+// Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link
+// of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers above in "endOfFirstHalf" (use fast->next && fast->next->next, checking if head == nullptr first) and also in _linked_list_cycle_detection.cpp
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
