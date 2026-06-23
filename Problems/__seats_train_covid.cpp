@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Covid times. Only sit in  train at minimum distance of 1 from other person.
+// Covid times. Only sit in train at minimum distance of 1 from other person.
 // Among possible seats, choose randomly one.
 // Question: give expected number of passangers, and the complexity as well.
 

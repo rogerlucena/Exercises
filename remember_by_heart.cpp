@@ -143,7 +143,7 @@ int binarySearch(const vector<int> &arr, int l, int r, int x) {
 }
 
 // Merge two sorted lists
-// Sentinel idea very useful, like in the swap_nodes_in_pairs problem
+// Sentinel idea very useful, like in the swap_nodes_in_pairs problem and __copy_linked_list_with_random_pointer
 // Can use "ans" as local stack variable here (no destructor defined to delete nexts and so on) 
 // O(N+M) in time and O(1) in space (if used recursion calls there would be the recursion stack space N+M too).
 ListNode* mergeSorted(ListNode* a, ListNode* b) {
@@ -265,6 +265,9 @@ bool hasCycle(ListNode* head) {
 
 // Hare and Tortoise to find entrance point of a cycle in Linked List: __find_the_duplicate_number.cpp (explanation link
 // of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers above in "endOfFirstHalf" (use fast->next && fast->next->next, checking if head == nullptr first) and also in _linked_list_cycle_detection.cpp
+
+// Also, remember when to use sentinel idea for Linked Lists with the tips in __copy_linked_list_with_random_pointer.cpp
+// Also, use (d1 + c + d2) idea for how to find intersection of 2 linked lists from __lowest_common_ancestor.cpp
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
