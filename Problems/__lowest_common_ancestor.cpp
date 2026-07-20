@@ -52,6 +52,8 @@ TreeNode* lowestCommonAncestor(TreeNode* p, TreeNode* q) {
 // In the way above both pointers travel with speed 1 and on time (d1 + c + d2) will meet at the LCA (addition is commutative).
 // Same algorithm for finding when 2 linked lists intersect.
 // Insight form https://github.com/ovbystrova (Apple 2026).
+// Note: in the case you have a "parent" pointer you could also go up marking as visited from one and then go up from the other
+// checking the first visited starting to check from the other itself - simple, but not O(1) in space as you would need to track "visited".
 
 int main() {
 	cout << "Hello, World!";

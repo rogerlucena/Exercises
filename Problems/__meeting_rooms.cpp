@@ -49,8 +49,8 @@ int minMeetingRooms(vector<Interval>& intervals) {
 
     int curr_rooms = 0, max_rooms = 0;
     int i = 0, j = 0;
-    while (i < starts.size()) { // be careful and use a "while" here to avoid incrementing "i" when you also increment "j" (gives wrong answer).
-        if (starts[i] < ends[j]) {
+    while (i < starts.size()) {  // be careful and use a "while" here to avoid incrementing "i" when you also increment "j" (gives wrong answer).
+        if (starts[i] < ends[j]) {  // note that in the case of equality you decrement the counter first - as wanted (can reuse that room for the new meeting, otherwise could yield a fake max_rooms)
             ++curr_rooms;
             ++i;
         } else {

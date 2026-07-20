@@ -267,7 +267,8 @@ bool hasCycle(ListNode* head) {
 // of algorithm and my calculation proving that it works is also there). Additional fast and slow pointers above in "endOfFirstHalf" (use fast->next && fast->next->next, checking if head == nullptr first) and also in _linked_list_cycle_detection.cpp
 
 // Also, remember when to use sentinel idea for Linked Lists with the tips in __copy_linked_list_with_random_pointer.cpp
-// Also, use (d1 + c + d2) idea for how to find intersection of 2 linked lists from __lowest_common_ancestor.cpp
+// Also, use (d1 + c + d2) idea for how to find intersection of 2 linked lists from __lowest_common_ancestor.cpp (in the case you have a "parent" pointer)
+	// (but in the case you have a "parent" pointer you can go up marking as visited from one and then go up from the other checking the first visited starting to check from the other itself - simple, but not O(1) in space as you need to track visited)
 
 // Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
@@ -284,8 +285,6 @@ bool hasCycle(ListNode* head) {
 
 // Review remember_trie.cpp briefly as well (remember to use pointers when managing tree-like structures and wanting
 // to actually move through it and change it indeed and not a copy of it).
-
-// Quickly see __lowest_common_ancestor.cpp (but in the case you have a "parent" pointer, can go up marking as visited from one and then go up from the other checking the first visited starting to check from the other itself)
 
 int main(void) {
 	cout << "QuickSort:" << endl;
