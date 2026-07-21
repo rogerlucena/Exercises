@@ -134,6 +134,7 @@ int minMeetingRooms(vector<vector<int>>& intervals) {
 
 
 // More "intervals" problems (sorting by start_time is useful!):
+// (think of them as horizontal line segments with "start" and "end" timestamps)
 
 // merge-overlapping-intervals
 vector<vector<int>> merge(vector<vector<int>>& intervals) {
@@ -173,6 +174,64 @@ int eraseOverlapIntervals(vector<vector<int>>& intervals) {
     }
 
     return count;
+}
+
+// insert-new-interval
+// original "intervals" already sorted by "start", insert the "newInterval" and merge as needed (if needed).
+vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+	vector<vector<int>> ans;
+	int start = newInterval[0];
+	int end = newInterval[1];
+
+	for (const vector<int>& i : intervals) {
+		if (i[1] < start) {
+			ans.push_back(i);
+			continue;
+		}
+		if (i[0] > end) {
+			ans.push_back({start, end});
+			start = i[0];
+			end = i[1];
+			continue;
+		}
+
+        // Intersection happened, expand the interval accordingly:
+		start = min(start, i[0]);
+		end = max(end, i[1]);
+	}
+
+	ans.push_back({start, end});
+
+	return ans;
+}
+// Or even simpler (more straight-forward step-by-step):
+vector<vector<int>> insertSimpler(vector<vector<int>>& intervals, vector<int>& newInterval) {
+	int n = intervals.size();
+	int i = 0;
+	int start = newInterval[0];
+	int end = newInterval[1];
+	vector<vector<int>> ans;
+
+	while (i < n && intervals[i][1] < start) {
+		ans.push_back(intervals[i]);
+		++i;
+	}
+
+	// Handle intersections (if any):
+	while (i < n && intervals[i][0] <= end) {
+		start = min(start, intervals[i][0]);
+		end = max(end, intervals[i][1]);
+		++i;
+	}
+	ans.push_back({start, end});
+
+	// Add remaining intervals:
+	while (i < n) {
+		ans.push_back(intervals[i]);
+		++i;
+	}
+
+	return ans;
 }
 
 int main() {
