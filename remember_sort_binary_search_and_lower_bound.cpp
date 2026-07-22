@@ -9,7 +9,7 @@
 auto myfunction = [](int i,int j) { return (i>j); };
 
 // Third paramater in sort(), lambda function as my comparator (do not forget "const ref"!!)
-// auto cmp = [](const Interval &i1, const Interval &i2) -> bool {return i1.start < i2.start;};
+// auto cmp = [](const Interval& i1, const Interval& i2) -> bool {return i1.start < i2.start;};
 // "-> bool" not necessary in lambda function
 
 // sort(position_speed.rbegin(), position_speed.rend()); // another way to sort in decreasing order, or using std::greater<int>() comparator.

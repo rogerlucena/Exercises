@@ -27,9 +27,9 @@ using namespace std;
 // or:
 // priority_queue<int, vector<int>, greater<int>> q2; // will be a min-heap.
 
-// eg of cmp for pq with hash map:
-// auto cmp = [](const pair<char, int> &p1, const pair<char, int> &p2) {return p1.second < p2.second;};
-// priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> mostCommon(count.begin(), count.end(), cmp);
+// example of cmp for pq with a hash map "count":
+// auto cmp = [](const pair<char, int>& p1, const pair<char, int>& p2) {return p1.second < p2.second;};
+// priority_queue<pair<char, int>, vector<pair<char, int>>, decltype(cmp)> mostCommon(count.begin(), count.end(), cmp);  // is a max-heap.
 
 // Also works using a class:
 // class Compare {

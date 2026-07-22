@@ -85,7 +85,7 @@ the right (DAH with 2n nodes and n^2 edges), or see https://stackoverflow.com/qu
 -- Applications of DFS:
 O(V+E) - remember algorithm
 1. Detecting a graph's cycle: A graph has a cycle if and only if a back edge is visible during DFS. As a result,
-you may run DFS on the graph to look for rear edges (or topo sort with indegree and visitedCount above).
+you may run DFS on the graph to look for rear edges (for undirected graphs keep track of parent to not flag fake cycle, for directed graphs use topo sort with indegree and visitedCount above).
 2. Path Finding: The DFS algorithm can be customized to discover a path between two specified vertices, a and b.
     a. Use s as the start vertex in DFS(G, s).
     b. Keep track of the path between the start vertex and the current vertex using a stack S.
@@ -345,7 +345,7 @@ Adjacency Matrix:
     Pros: O(1) to see if an edge
     Cons: Consumes O(V^2) space (even if sparse), O(V^2) to add a new vertex too (if you have to 
           copy everything into a new matrix; in this case, think about amortized to improve time efficiency)
-Asjacency list:
+Adjacency list:
     Pros: O(V+E) in space, adding a vertex is easier; space worst case: C(V, 2) edges in a graph thus consuming O(V^2) space
     Cons: To verify if an edge, O(V) in the worst case (you can use a hash set for the neighbors to improve this)
 

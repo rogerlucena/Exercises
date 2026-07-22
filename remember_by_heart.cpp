@@ -246,7 +246,7 @@ bool hasCycle(ListNode* head) {
 // 			Note: for normal DFS in undirected graphs there is no need to keep track of parent since not checking for cycles and the "parent" will already be marked as "visited" and then skipped - thus no infinite loop - see _count_connected_components_in_undirected_graph.cpp
 
 // Revisit priority_queue syntax and syntax for str.substr(start, size).
-	// std::size_t found = str.find(str2); 
+	// std::size_t found = str.find(str2); (get the position of the first character of the first match if found)
 		// size_t is an unsigned int
 		// if str2 not found in str, returns std::string::npos (largest possible value for uint, equiv to -1 for uint)
 
@@ -270,9 +270,10 @@ bool hasCycle(ListNode* head) {
 // Also, use (d1 + c + d2) idea for how to find intersection of 2 linked lists from __lowest_common_ancestor.cpp (in the case you have a "parent" pointer)
 	// (but in the case you have a "parent" pointer you can go up marking as visited from one and then go up from the other checking the first visited starting to check from the other itself - simple, but not O(1) in space as you need to track visited)
 
-// Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events 
+// Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events
 // like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
-// Revisit common "Intervals" problems on that __meeting_rooms file too.
+// Note that for the problem above the standard "sort" already sort the "vector<vector<int>> intervals" in lexicographical order (-1 goes before than 1 then as wanted for the same timestamp, and if first elements equal but sizes were diferrent the smaller vector would be sorted first too)
+// Revisit other common "Intervals" problems there on that __meeting_rooms.cpp file too.
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 // remember "int m = *std::max_element(v.begin(), v.end())" exists as well (O(N)), "min_element" too, "max({1, 3, 2})" (overloaded given vector initializer) works but max(v) does not! "max" is for only 2 elements "max(a, b)"
