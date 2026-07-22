@@ -6,14 +6,16 @@
 
 using namespace std;
 
-// https://leetcode.com/problems/word-search-ii/
+// https://neetcode.io/problems/search-for-word-ii
+// https://leetcode.com/problems/word-search-ii
 
 // Given an m x n board of characters and a list of strings words, return all words on the board.
 
 // Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally
 // or vertically neighboring. The same letter cell may not be used more than once in a word.
 
-// O(N * (4*3^{L-1})) in time, where N is the total number of cells in board and L is the size of the largest word seached.
+// Time: O(N * (4*3^{L-1}) + W*L), where N is the total number of cells in board, L is the size of the largest word seached, and W is the size of "words" (W*L is the time complexity to build the Trie; and 4 is the number of directions from the first cell, then it is 3 as cannot come back).
+// Space: O(W * L) - the Trie.
 // (maybe can improve performance verifying char match before recursion, and making "word" and "children" public / not using
 // unnecessary methods to access private info)
 class TrieNode {
