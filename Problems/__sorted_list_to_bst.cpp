@@ -58,8 +58,8 @@ TreeNode* sortedListToBST(ListNode* head) {
 
 
 // Version using an auxiliar vector below (O(N) space and time too):
-TreeNode* toBSTold(const vector<int> &v, int i, int j) {
-	if(i>j) {
+TreeNode* toBSTold(const vector<int>& v, int i, int j) {
+	if(i > j) {
 		return nullptr;
 	}
 
@@ -67,10 +67,10 @@ TreeNode* toBSTold(const vector<int> &v, int i, int j) {
 		return new TreeNode(v[i]);
 	}
 
-	int mid = (i+j)/2;
+	int mid = (i + j) / 2;
 	TreeNode* ans = new TreeNode(v[mid]);
-	ans->left = toBST(v, i, mid-1);
-	ans->right = toBST(v, mid+1, j);
+	ans->left = toBSTold(v, i, mid - 1);
+	ans->right = toBSTold(v, mid + 1, j);
 
 	return ans;
 }
@@ -86,7 +86,7 @@ TreeNode* sortedListToBSTold(ListNode* head) {
 		head = head->next;
 	}
 
-	return toBST(v, 0, v.size()-1);
+	return toBSTold(v, 0, v.size()-1);
 }
 
 int main() {
