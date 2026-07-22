@@ -18,7 +18,7 @@ using namespace std;
 // Size of the train is n.
 // Complexidade da PD: tamanho do cache * time de calcular uma cell
 //   eg: se n * m o tamanho de memo, e cada vez vc itera n, complexidade final é O(m * n^2)
-// Aqui abaixo: O(n^2) acredito.
+// Aqui abaixo: O(n^2) acredito (faz sentido pq seria soma de elementos de uma PA de 0 a N se fizesse DP iterative bottom-up).
 double ExpectedNumber(int n, vector<double>& memo) {
   if (n <= 0) {
     return 0;
@@ -42,7 +42,7 @@ double ExpectedNumber(int n, vector<double>& memo) {
 // n * (n-2) * () ... that is O(n!) more or less, or n^(n/2)
 // better: O((n!)^(1/2))
 // Even with memoization it is bad.
-// But can do better, other approach below dealing only with number of seats n.
+// But can do better, other approach above is elegant dealing only with number of seats n.
 bool CanSeat(const vector<int>& train, int pos) {
   if (train[pos]) {
     return false;

@@ -36,8 +36,8 @@ void printMatrix(const vector<vector<T>> &m) {
 // Definition for singly-linked list (from InterviewBit)
 struct ListNode {
 	int val;
-	ListNode *next;
-	ListNode(int x = 0) : val(x), next(NULL) {} // on the website there is no default to 0
+	ListNode* next;
+	ListNode(int v = 0, ListNode* n = nullptr) : val(v), next(n) {} // on the website there is no default to 0.
 };
 
 ListNode* generateList(const vector<int> &v) {
@@ -82,4 +82,3 @@ void printInorder(TreeNode* t) {
 	cout << " " << t->val << " ";
 	printInorder(t->right);
 }
-

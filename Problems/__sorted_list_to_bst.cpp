@@ -27,20 +27,20 @@ using namespace std;
 // Every element only once -> O(N) in time
 // O(log N) in space -> only size of the recursion stack (at most equal to the height of our BST)
 // (cool: after calling for left, head will point exactly to root, inorder perfect here)
-TreeNode* toBST(ListNode* &head, int start, int end) {
+TreeNode* toBST(ListNode*& head, int start, int end) {
 	if(start > end) {
 		return nullptr;
 	}
 
-	int mid = (start+end)/2;
+	int mid = (start + end) / 2;
 	
-	TreeNode* left = toBST(head, start, mid-1);
+	TreeNode* left = toBST(head, start, mid - 1);
 
 	TreeNode* ans = new TreeNode(head->val); // after calling for left, head will point exactly to root :D
 	head = head->next;
 	ans->left = left;
 
-	ans->right = toBST(head, mid+1, end);
+	ans->right = toBST(head, mid + 1, end);
 
 	return ans;
 }
