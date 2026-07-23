@@ -17,11 +17,39 @@ using namespace std;
 // Output : 2 
 // for the pair (3, 4)
 
-// genius trick: after sorting and keeping the original indexes for every new A[i] in indexes[i],
+// Best solution (without creating a second additional vector):
+// Idea: create a new vector with the pairs (A[i], i), sort it, then process from backwards keeping track of the max i seen so far (from right to left).
+int maximumGapImproved(const vector<int> &A) {
+	if(A.size() == 0) {
+		return -1;
+	}
+
+	vector<pair<int, int>> newA; 
+	newA.reserve(A.size());
+
+	for(int i = 0; i < A.size(); ++i) {
+		pair<int, int> p = {A[i], i};
+		newA.push_back(p);	
+	}
+	
+	sort(newA.begin(), newA.end()); 
+
+	int ans = 0;
+	int currIndexMax = newA[newA.size()-1].second; 
+	for(int i = newA.size()-2; i >= 0; --i) { 
+		pair<int, int> p = newA[i];
+		ans = max(ans, currIndexMax - p.second);
+		currIndexMax = max(currIndexMax, p.second); // generating vector "indexMax" on the fly
+	}
+
+	return ans;
+}
+
+// trick for below (similar to above but more space):
+//               after sorting and keeping the original indexes for every new A[i] in indexes[i],
 //   		     do a preprocessing over indexes to generate a new array called indexMax with the 
 //               max index taken from indexes of every element to the right of indexes[i]
-//               Think BACKWARDS on the vector to the pre-processing be O(n)! (accumulate information thinking)
-
+//               Think BACKWARDS on the vector to the pre-processing be O(n)! (accumulate information thinking as done above)
 auto printEl = [](const pair<int, int> &p) -> void {std::cout << "(" << p.first << "," << p.second << ")";};
 
 // O(n), very useful pre-processing
@@ -64,33 +92,6 @@ int maximumGap(const vector<int> &A) {
 	}
 
 	// printVector(newA, (std::function<void(const pair<int, int>&)>) printEl);
-	return ans;
-}
-
-// Best solution, in-place:
-int maximumGapImproved(const vector<int> &A) {
-	if(A.size() == 0) {
-		return -1;
-	}
-
-	vector<pair<int, int>> newA; 
-	newA.reserve(A.size());
-
-	for(int i = 0; i < A.size(); ++i) {
-		pair<int, int> p = {A[i], i};
-		newA.push_back(p);	
-	}
-	
-	sort(newA.begin(), newA.end()); 
-
-	int ans = 0;
-	int currIndexMax = newA[newA.size()-1].second; 
-	for(int i = newA.size()-2; i >= 0; --i) { 
-		pair<int, int> p = newA[i];
-		ans = max(ans, currIndexMax - p.second);
-		currIndexMax = max(currIndexMax, p.second); // generating vector "indexMax" on the fly
-	}
-
 	return ans;
 }
 

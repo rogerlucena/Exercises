@@ -64,8 +64,8 @@ int robRecursive(vector<int>& nums, int i, vector<int>& memo) {
         return memo[i];
     }
 
-    memo[i] = max(nums[i] + robRecursive(nums, i + 2, memo),
-                  robRecursive(nums, i + 1, memo));
+    memo[i] = max(nums[i] + robRecursive(nums, i + 2, memo), robRecursive(nums, i + 1, memo));
+
     return memo[i];
 }
 

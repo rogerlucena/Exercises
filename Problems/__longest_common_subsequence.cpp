@@ -5,6 +5,7 @@ using namespace std;
 
 // https://neetcode.io/problems/longest-common-subsequence
 // https://leetcode.com/problems/longest-common-subsequence
+// (Clean example of 2D DP)
 
 // Given two strings text1 and text2, return the length of their longest common subsequence.
 
@@ -21,7 +22,8 @@ using namespace std;
 // Explanation: The longest common subsequence is "ace" and its length is 3.
 
 // Top-down:
-// O(m*n) in time and space.
+// O(m*n) in time and space (number of cells in memo * time to calculate each cell).
+// Understand this function as "LCS using the substr of text1 from i onwards and the substr of text2 from j onwards". 
 int longestCommonSubsequenceRecursive(const string& text1, int i, const string& text2, int j, vector<vector<int>>& memo) {
     if (i == text1.size() || j == text2.size()) {
         return 0;
@@ -50,10 +52,10 @@ int longestCommonSubsequence(string text1, string text2) {
 // Bottom-up:
 // Same complexity in time/space as above, but faster on leetcode percentage.
 int longestCommonSubsequence(string text1, string text2) {
-    vector<vector<int>> dp(text1.size() + 1, vector<int>(text2.size() + 1));
+    vector<vector<int>> dp(text1.size() + 1, vector<int>(text2.size() + 1, 0));
 
-    for (int i = text1.size() - 1; i >= 0; i--) {
-        for (int j = text2.size() - 1; j >= 0; j--) {
+    for (int i = text1.size() - 1; i >= 0; --i) {
+        for (int j = text2.size() - 1; j >= 0; --j) {
             if (text1[i] == text2[j]) {
                 dp[i][j] = 1 + dp[i + 1][j + 1];
             } else {

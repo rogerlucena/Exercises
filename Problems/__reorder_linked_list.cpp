@@ -65,10 +65,10 @@ ListNode* reverseLinkedList(ListNode* head) {
 }
 
 void reorderList(ListNode* head) {
-	ListNode* enf_of_first_half = getEndOfirstHalf(head);
+	ListNode* end_of_first_half = getEndOfirstHalf(head);
 	
-	ListNode* second_half = enf_of_first_half->next;
-	enf_of_first_half->next = nullptr;
+	ListNode* second_half = end_of_first_half->next;
+	end_of_first_half->next = nullptr;
 
 	ListNode* reversed_second_half = reverseLinkedList(second_half);
 

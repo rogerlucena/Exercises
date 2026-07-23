@@ -31,7 +31,7 @@ using namespace std;
 // keeping track of the maximum diameter as we go with the DFS
 // Time Complexity: O(N). We visit every node once.
 // Space Complexity: O(N), the size of our implicit call stack during our depth-first search.
-int height(TreeNode* root, int &ans) { // number of edges of the longest path to a leaf
+int height(TreeNode* root, int& ans) { // number of edges of the longest path to a leaf
 	if(!root) {
 		return -1;
 	}
@@ -39,7 +39,7 @@ int height(TreeNode* root, int &ans) { // number of edges of the longest path to
 	int L = height(root->left, ans);
 	int R = height(root->right, ans);
 
-	ans = max(ans, L+R+2); // test it as the "top most node"
+	ans = max(ans, L + R + 2); // test it as the "top most node"
 	return 1 + max(L, R);
 }
 

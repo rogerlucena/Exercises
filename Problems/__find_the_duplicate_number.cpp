@@ -64,7 +64,7 @@ int findDuplicate(vector<int>& nums) {
 // }
 // From: https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space
 
-// Solution changing the input (cycle sort - problem from Pramp).
+// Solution changing the input (cycle sort - problem very similar to that from Pramp/Exponent (__get_different_number_cycle_sort) - difference is that here nums are bounded in the interval [1, n]).
 // O(N) in time and O(1) in space.
 int findDuplicate(vector<int>& nums) {
 	for (int i = 0; i < nums.size(); ++i) {
@@ -177,7 +177,7 @@ int repeatedNumber(const vector<int> &A) {
 }
 
 
-// Bit solution below (counting bits in [from 1 to n] and in nums and comparing) - O(N log N), O(1) in space.
+// Bit solution below (counting bits in [from 1 to n] and in nums and comparing) - O(N log N) in time, O(1) in space.
 // Algorithm:
 // 1. Initialize the answer (duplicat) to 0
 // 2. Iterate over each bit from 0 to bits where bits is the bit-length of n.

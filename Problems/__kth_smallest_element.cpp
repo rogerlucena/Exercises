@@ -17,8 +17,8 @@ using namespace std;
 // Inspired in quick-sort (making changes in-place here)
 	// Quick sort: Worst case O(n^2), but normally O(n log n)
 	// (to improve the worst case use a median of medians to choose the pivot - divide it in ceil(n/5) gropus of five and sort each one to take the median)
-// For below, since we do not do recursion on both sides, it finishes being O(N) in time on average, O(N^2) worst case (bad pivots).
-int partition(vector<int> &A, int l, int r) { // [l, r) -> "r" not included
+// For below, since we do not do recursion on both sides, it finishes being O(N) in time on average (= N + N/2 + N/4 + ...), O(N^2) worst case (bad pivots), and O(1) in space.
+int partition(vector<int> &A, int l, int r) {  // [l, r) -> "r" not included
 	int i = l;
 	int x = A[r-1];
 	for(int j = l; j < r-1; ++j) {

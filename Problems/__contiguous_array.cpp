@@ -5,7 +5,7 @@
 using namespace std;
 
 // https://leetcode.com/problems/contiguous-array/
-// Interesting: O(n) solution with hash map and an accumulator with 0 computed as -1 (nice)
+// Interesting: O(n) solution with hash map and an accumulator with 0 computed as -1 (nice).
 
 // Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
 
@@ -24,7 +24,7 @@ using namespace std;
 int findMaxLength(vector<int> &nums) {
 	int acc = 0;
 	int maxLength = 0;
-	unordered_map<int, int> seen;
+	unordered_map<int, int> seen;  // keeps track of the position on which that acc was seen for the FIRST time (as wanted to give max length).
 	seen[0] = -1;
 
 	for(int i = 0; i < nums.size(); ++i) {

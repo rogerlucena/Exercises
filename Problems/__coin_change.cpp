@@ -10,7 +10,7 @@ using namespace std;
 // https://leetcode.com/problems/coin-change-ii
 // Remember: 1D DP here is enough, which coins used are not important, just the amount dimension is 
 // enough and simpler and better in space - O(amount) in space, instead of O(amount*n) - do not overcomplicate!
-// To get the min number of coins as above the 1D DP is enough because what only matters is the total number of 
+// To get the min number of coins as the first case below the 1D DP is enough because what only matters is the total number of 
 // coins used and not which coins were used, but to get the total number of ways to sum amount which coins 
 // were used becomes important to differentiate two ways - then the 2D DP becomes necessary to avoid counting
 // more than once some possibilities - see Coin Change II below.
@@ -28,6 +28,7 @@ using namespace std;
 
 // Top-down approach - recursive (website solution):
 // O(n*t) in time where t is the amount, O(t) in space.
+// 1D DP in a hash map.
 int coinChangeRecursive(vector<int>& coins, int amount, unordered_map<int, int>& memo) {
     if (amount == 0) {
         return 0;
@@ -59,6 +60,7 @@ int coinChange(vector<int>& coins, int amount) {
 
 // Bottom-up approach - iterative (neat, clear and well done - website solution):
 // O(n*t) in time, O(t) in space.
+// 1D DP, "dp[curr_amount]" below represents the min number of coins to get to curr_amount.
 int coinChange(vector<int>& coins, int amount) {
     vector<int> dp(amount + 1, amount + 1); // since coins[i] >= 1, the maximum n_coins is amount, so amount+1 corresponds to INT_MAX here.
     dp[0] = 0;

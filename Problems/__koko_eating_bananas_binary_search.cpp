@@ -31,6 +31,7 @@ using namespace std;
 
 
 // O(n log m) where m is the max value in piles.
+// Idea: binary search "k" over [1, m].
 int minEatingSpeed(vector<int>& piles, int h) {
 	int l = 1;
 	int r = *max_element(piles.begin(), piles.end()); // upper bound for speed k - minimum of 1 hour for each pile.

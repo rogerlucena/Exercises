@@ -88,8 +88,8 @@ int recursiveKnapSack(int capacity, vector<int> &weights, vector<int> &val) {
 // 1 <= stones.length <= 30
 // 1 <= stones[i] <= 100
 
-// Returns the max sum of a subset of stones until i (exclusive) that is <= target.
-// Suffix could be "Rec", "Tool", "Helper", etc ...
+// Chooses the best subset of stones from i onwards (inclusive) that would make curr_sum closer to target (and still keep it <= target), and return that best curr_sum.
+// Suffix could be "Rec", "Recursive", "Tool", "Helper", etc ...
 int lastStoneWeightIIHelper(int i, const vector<int>& stones, int curr_sum, const int target, vector<vector<int>>& memo) {
     if (i == stones.size() || curr_sum == target) {
         return curr_sum;
@@ -111,16 +111,16 @@ int lastStoneWeightIIHelper(int i, const vector<int>& stones, int curr_sum, cons
 // Idea: Equivalent to assigning + or - to each weight -> which is equivalent to finding a subset which sum is closest to total_sum / 2.
 int lastStoneWeightII(vector<int>& stones) {
     int total_sum = accumulate(stones.begin(), stones.end(), 0);
-    int target = total_sum / 2;
+    int target = total_sum / 2;  // if odd -> rounded to floor (as wanted).
     vector<vector<int>> memo(stones.size(), vector<int>(target + 1, -1));
     int closest_to_target = lastStoneWeightIIHelper(0, stones, 0, target, memo);
 
-    return total_sum - 2 * closest_to_target;  // the other_subset sum minus the found_subset sum.
+    return (total_sum - closest_to_target) - closest_to_target;  // [the other_subset sum] minus [the found_subset sum (which is <= by construction)].
 }
 
 // https://neetcode.io/problems/last-stone-weight
 // https://leetcode.com/problems/last-stone-weight
-// Easier version on which the two heaviest are always chosen and smashed y-x.
+// Easier version of this problem on which the two heaviest are always chosen and smashed y-x.
 // O(n log n) in time and O(n) in space.
 int lastStoneWeight(vector<int>& stones) {
     priority_queue<int> pq(stones.begin(), stones.end());  // max-heap.

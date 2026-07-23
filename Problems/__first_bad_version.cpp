@@ -29,6 +29,7 @@ using namespace std;
 
 // In this problem it is crucial to look at the constraints!! (red flag mistake if not)
 // Attention to limits! even +1 already overflow, use l + (r-l)/2 or use long castings: mid = (long(l) + r)/2 (with a long mid - see below)!
+// Idea: adapted binary search - O(log n) in time.
 int firstBadVersion(int n) {
 	int l = 1;
 	int r = n;
