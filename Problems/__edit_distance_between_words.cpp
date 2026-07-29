@@ -1,4 +1,6 @@
+#include <algorithm>
 #include <iostream>
+#include <string>
 #include <vector>
 
 using namespace std;
@@ -9,6 +11,7 @@ using namespace std;
 // 2D Dynamic Programming.
 // Remember: Lessons - to do not deal with substrings generation, work with indexes!
 // 			 Think simply, one step at a time, and memoize repeated work.
+// Note: see extra on how to reconstruct the "Instructions" from "memo" also below.
 
 // Given two strings A and B, find the minimum number of steps required to convert A to B. (each operation is counted as 1 step.)
 
@@ -129,7 +132,7 @@ int myMinDistance(string A, string B) {
 	int len2 = B.size();
 	vector<vector<int>> m (len1+1, vector<int>(len2+1, -1));
 	
-	// Understand as the min # of operations to transform "A" from "index1" till its end on "B" from "index2" till its end 
+	// Understand as the min # of operations to transform "A" from "index1" till its end on "B" from "index2" till its end (suffixes then).
 	return editDistance(A, 0, B, 0, m);
 }
 
@@ -145,4 +148,59 @@ int main() {
 	cout << "Answer: " << minDistance(A, B) << endl;
 
 	return 0;
+}
+
+// Extra: in another similar problem on Pramp/Exponent I was asked to return the specific instructions for the above (but
+// only "keep", "insert" and "delete" were allowed - and asked to prioritize "insert" over "delete" if in a tie). Take the
+// Gemini code below as reference for that (building from memo/dp on which ans = memo[0][0] - Jul 2026 here).
+
+// Gemini: Since dp[0][0] holds the answer, you are using top-down memoization where dp[i][j] represents the minimum edits
+// required to transform the suffix source[i...] into target[j...].
+struct Instruction {
+    string op;   // "KEEP", "DELETE", "ADD"
+    char ch;     // The character affected
+};
+
+// Backtracks starting from (0, 0) down to (m, n)
+std::vector<Instruction> reconstructPath(const vector<std::vector<int>>& dp, 
+                                         const string& source, 
+                                         const string& target) {
+    vector<Instruction> path;
+    int i = 0;
+    int j = 0;
+    int m = source.length();
+    int n = target.length();
+
+    while (i < m || j < n) {
+        // Base case 1: Reached end of source, remaining target characters must be ADDED
+        if (i == m) {
+            path.push_back({"ADD", target[j]});
+            j++;
+        } 
+        // Base case 2: Reached end of target, remaining source characters must be DELETED
+        else if (j == n) {
+            path.push_back({"DELETE", source[i]});
+            i++;
+        } 
+        else {
+            // Check if we can KEEP current character
+            if (source[i] == target[j] && dp[i][j] == dp[i + 1][j + 1]) {
+                path.push_back({"KEEP", source[i]});
+                i++;
+                j++;
+            }  
+            // Check if we came from ADD: dp[i][j] == 1 + dp[i][j+1] - prioritizing ADD first, over DELETE.
+            else if (dp[i][j] == 1 + dp[i][j + 1]) {
+                path.push_back({"ADD", target[j]});
+                j++;
+            }
+			// Check if we came from DELETE: dp[i][j] == 1 + dp[i+1][j]
+            else if (dp[i][j] == 1 + dp[i + 1][j]) {
+                path.push_back({"DELETE", source[i]});
+                i++;
+            }
+        }
+    }
+
+    return path;
 }
