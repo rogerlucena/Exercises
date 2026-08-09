@@ -185,7 +185,6 @@ vector<string> SplitWithErase(string s, const string& sep) {
 }
 
 // 2) Using stringstream (see problem word_pattern_tokenize_string.cpp):
-
 vector<string> splitBySpace(const string& str) {
 	istringstream iss(str);
 	vector<string> words;
@@ -208,6 +207,26 @@ vector<string> splitByDelimiter(const string& s, const char delimiter) {
     }
 
     return words;
+}
+
+// Best version I liked (simpler and safe against edge cases - adaptation of the first one above):
+vector<string> tokenize(const string& input, const string& sep) {
+	vector<string> ans;
+	if (sep.empty()) {  // if sep is empty, input.find("", start) returns start. Adding sep.size() (0) below results in start = start, causing an infinite loop.
+        ans.push_back(input);
+        return ans;
+    }
+
+	size_t start = 0;  // if the input string is larger than ~2 GB (INT_MAX characters), using int for start or end would overflow, use size_t instead (a type of unsigned int).
+	size_t end = input.find(sep);
+	while (end != string::npos) {
+		ans.push_back(input.substr(start, end - start));
+		start = end + sep.size();
+		end = input.find(sep, start);
+	}
+
+	ans.push_back(input.substr(start));
+	return ans;
 }
 
 int main2() {
