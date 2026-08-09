@@ -11,7 +11,7 @@
 
 using namespace std;
 
-// Process string with operations like the one below (Apple, 2026).
+// Process string with operations like the one below (2026 A).
 // Example:
 // ( + 2 5 8 ( * 2 3 ) 7 ) -> 28
 
