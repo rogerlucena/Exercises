@@ -256,6 +256,11 @@ bool hasCycle(ListNode* head) {
 	// revisit problem __redundant_connection_union_find.cpp
 	// 		one more example in _count_connected_components_in_undirected_graph.cpp
 
+// Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events
+// like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
+// Note that for the problem above the standard "sort" already sort the "vector<vector<int>> intervals" in lexicographical order (-1 goes before than 1 then as wanted for the same timestamp, and if first elements equal but sizes were diferrent the smaller vector would be sorted first too)
+// Revisit other common "Intervals" problems there on that __meeting_rooms.cpp file too.
+
 // Remember backtracking, and dynamic programming (recursive top-down and iterative bottom-up, 1D DP and 2D DP too).
 
 // Revisit problems with bitwise operation (find_the_single_solitary_number and find_single_number_thrice_context)
@@ -269,11 +274,6 @@ bool hasCycle(ListNode* head) {
 // Also, remember when to use sentinel idea for Linked Lists with the tips in __copy_linked_list_with_random_pointer.cpp
 // Also, use (d1 + c + d2) idea for how to find intersection of 2 linked lists from __lowest_common_ancestor.cpp (in the case you have a "parent" pointer)
 	// (but in the case you have a "parent" pointer you can go up marking as visited from one and then go up from the other checking the first visited starting to check from the other itself - simple, but not O(1) in space as you need to track visited)
-
-// Search "Sweep Line algorithm for Coding Interviews" on ChatGPT (transform input into events
-// like {time, +1} or {time, -1}) like in __meeting_rooms problem for min number of meeting rooms (same as "Max number of Overlapping Intervals"), and skyline problem too.
-// Note that for the problem above the standard "sort" already sort the "vector<vector<int>> intervals" in lexicographical order (-1 goes before than 1 then as wanted for the same timestamp, and if first elements equal but sizes were diferrent the smaller vector would be sorted first too)
-// Revisit other common "Intervals" problems there on that __meeting_rooms.cpp file too.
 
 // upper_bound and lower_bound (remember_sort_binary_search_and_lower_bound.cpp)
 // remember "int m = *std::max_element(v.begin(), v.end())" exists as well (O(N)), "min_element" too, "max({1, 3, 2})" (overloaded given vector initializer) works but max(v) does not! "max" is for only 2 elements "max(a, b)"
