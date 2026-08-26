@@ -119,7 +119,7 @@ Follow-up Combination Sum II (in Python):
 # Time complexity: O(n * 2^n) - note the difference from the case I above where an unlimited use of a candidate was allowed.
 # (We have at most O(2^n) leaves (all different elements) and each does a O(n) append - note that we have O(2^n) intermediate nodes but each have a constant complexity that loses to the O(n) append from the leaves).
 # Another way of seeing (thinking through each recursion branch - from Claude): "Summing over all the intermediate (non-leaf) nodes on the way down adds roughly a factor of the recursion depth (≤ n), and each time target == 0 is hit (leaf) we pay O(n) to copy curr[:] into ans (so the complexity is dominated by the leaves, which are 2^n at worst costing O(n) each)".
-# Space complexity: O(n).
+# Space complexity: O(n) extra space, O(n * 2^n) if the output storage is included.
 class Solution:
     def combinationSum2(self, candidates: list[int], target: int) -> list[list[int]]:
         curr, ans = [], []
