@@ -588,7 +588,8 @@ def signature(word):
     return tuple(counts)
 sig = signature("word")  # (0,0,0,1,0,...,1,...,1,...,1,...) — 26-length tuple.
 # 3) Interesting how Xandão did too in the mock that I did for him in 2023:
-sig = "".join(["{}{}".format(k, c[k]) for k in sorted(c.keys())])  # Output: "d1o1r1w1".
+# sig = "".join(["{}{}".format(k, c[k]) for k in sorted(c.keys())])  # Output: "d1o1r1w1" (how Xandão originally did).
+sig_best = "".join([f"{k}{c[k]}" for k in sorted(c.keys())])  # Output: "d1o1r1w1" (my way).
 # Note: if had not used `sorted` in the line above the misleading output would be "w1o1r1d1" (order of insertion) - which would be incorrect to compare two different words with same letters.
 # Additional note: the complexity of the above is dominated by the sorting, so O(K log K) in time - but since these words have lowercase English
 # letters then K ≤ 26 always, thus the complexity becomes O(26 log 26) = O(1) - that is why this is preferred over the sorting version in 1) above (which is O(L log L)).
