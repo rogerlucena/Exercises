@@ -1,0 +1,17 @@
+# Build outputs and temporary CMake files
+cmake-build-*/
+build/
+*.out
+*.exe
+*.o
+*.obj
+
+# IDE settings
+.idea/
+.vscode/
+
+# Python artifacts
+__pycache__/
+*.pyc
+.venv/
+env/
