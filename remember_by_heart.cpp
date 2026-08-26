@@ -236,6 +236,19 @@ bool hasCycle(ListNode* head) {
 
 	return false;
 }
+/*
+# Remove Nth node from end (one pass - pretty neat)
+def removeNthFromEnd(head, n):
+    dummy = ListNode(0, head)
+    fast = slow = dummy
+    for _ in range(n):
+        fast = fast.next
+    while fast.next:
+        fast = fast.next
+        slow = slow.next
+    slow.next = slow.next.next
+    return dummy.next
+*/
 
 // Revisit __course_schedule_dependecies.cpp for topo sort.
 // Remember: topo sort is for *directed_ graphs*, for undirected ones think about simple DFS/BFS (maybe keeping 
