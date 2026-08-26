@@ -250,6 +250,8 @@ def removeNthFromEnd(head, n):
     return dummy.next
 */
 
+// Review some useful and concise LeetCode patterns by the end of remember_python.py too.
+
 // Revisit __course_schedule_dependecies.cpp for topo sort.
 // Remember: topo sort is for *directed_ graphs*, for undirected ones think about simple DFS/BFS (maybe keeping 
 // track of the "parent" to not "come back" if checking if it has no cycles) or even Union-Find - see __valid_tree.cpp
